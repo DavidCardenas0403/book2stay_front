@@ -1,9 +1,5 @@
 <template>
-  <h1 class="bg-blue-300">Book2Stay</h1>
-  <Button label="Check" />
-  <div>
-    <NuxtWelcome />
-  </div>
+  <NuxtPage />
 </template>
 
 <style>
