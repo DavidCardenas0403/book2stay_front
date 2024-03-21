@@ -9,6 +9,29 @@ export default defineNuxtConfig({
   modules: ["nuxt-primevue", "@nuxtjs/i18n"],
   i18n: {
     vueI18n: "./i18n.config.ts",
+    langDir: "./lang",
+    locales: [
+      {
+        code: "es",
+        file: "es.json",
+      },
+      {
+        code: "ca",
+        file: "ca.json",
+      },
+      {
+        code: "en",
+        file: "en.json",
+      },
+      {
+        code: "fr",
+        file: "fr.json",
+      },
+      {
+        code: "nl",
+        file: "nl.json",
+      },
+    ],
   },
   primevue: {
     usePrimeVue: true,
