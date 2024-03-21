@@ -1,3 +1,6 @@
 {
-    "bienvenida": "Welcome to everybody"
+    "bienvenida": {
+        "msg": "Welcome to everybody",
+        "dos": "Two"
+    }
 }

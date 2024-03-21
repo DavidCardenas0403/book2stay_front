@@ -6,5 +6,5 @@ const { locale } = useI18n();
 </script>
 
 <template>
-  <h1 class="bg-primary">{{ $t("bienvenida") }}</h1>
+  <h1 class="bg-primary">{{ $t("bienvenida.dos") }}</h1>
 </template>
