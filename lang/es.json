@@ -1,0 +1,25 @@
+{
+    "variables": {
+        "properties": "Propiedades",
+        "property": "Propiedad",
+
+        "reviews": "reseñas",
+        "review": "reseña",
+
+        "bookings": "reservas",
+        "booking": "reserva",
+
+        "ratings": "valoraciones",
+        "rating": "valoración",
+
+        "prices": "precios",
+        "price": "precio",
+
+        "forSale": "a la venta",
+
+        "forRent": "en alquiler"
+    },
+    "general": {
+        "settings": "Ajustes"
+    }
+}

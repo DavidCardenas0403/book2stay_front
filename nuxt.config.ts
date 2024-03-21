@@ -4,9 +4,35 @@ export default defineNuxtConfig({
   css: [
     "~/assets/css/main.css",
     "primevue/resources/themes/aura-light-blue/theme.css",
-    '@fortawesome/fontawesome-svg-core/styles.css'
+    "@fortawesome/fontawesome-svg-core/styles.css",
   ],
-  modules: ["nuxt-primevue"],
+  modules: ["nuxt-primevue", "@nuxtjs/i18n"],
+  i18n: {
+    vueI18n: "./i18n.config.ts",
+    langDir: "./lang",
+    locales: [
+      {
+        code: "es",
+        file: "es.json",
+      },
+      {
+        code: "ca",
+        file: "ca.json",
+      },
+      {
+        code: "en",
+        file: "en.json",
+      },
+      {
+        code: "fr",
+        file: "fr.json",
+      },
+      {
+        code: "nl",
+        file: "nl.json",
+      },
+    ],
+  },
   primevue: {
     usePrimeVue: true,
     options: {
