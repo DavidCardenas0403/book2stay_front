@@ -4,7 +4,8 @@ export default defineNuxtConfig({
   css: [
     "~/assets/css/main.css",
     "primevue/resources/themes/aura-light-blue/theme.css",
-    '@fortawesome/fontawesome-svg-core/styles.css'
+    '@fortawesome/fontawesome-svg-core/styles.css',
+    'primeicons/primeicons.css'
   ],
   modules: ["nuxt-primevue"],
   primevue: {
