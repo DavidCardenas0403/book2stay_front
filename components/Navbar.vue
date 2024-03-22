@@ -1,3 +1,8 @@
+<script setup>
+import { capitalizeFirstLetter } from "../helpers/index.js";
+import catalan from "../assets/images/catalan.svg";
+</script>
+
 <template>
   <nav class="bg-white border-gray-200 dark:bg-gray-900">
     <div
@@ -63,7 +68,7 @@
               <use xlink:href="#e" x="2470" />
             </g>
           </svg>
-          English (US)
+          {{ capitalizeFirstLetter($t("languages.english")) }}
         </button>
         <!-- Dropdown -->
         <div
@@ -110,7 +115,7 @@
                       />
                     </g>
                   </svg>
-                  English (US)
+                  {{ capitalizeFirstLetter($t("languages.english")) }}
                 </div>
               </a>
             </li>
@@ -132,7 +137,7 @@
                     <path d="M0 0h512v170.7H0z" />
                     <path fill="#d00" d="M0 170.7h512v170.6H0z" />
                   </svg>
-                  Deutsch
+                  {{ capitalizeFirstLetter($t("languages.dutch")) }}
                 </div>
               </a>
             </li>
@@ -156,7 +161,19 @@
                       <path fill="#ce2b37" d="M341.3 0H512v512H341.3z" />
                     </g>
                   </svg>
-                  Italiano
+                  {{ capitalizeFirstLetter($t("languages.spanish")) }}
+                </div>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                role="menuitem"
+              >
+                <div class="inline-flex items-center">
+                  <img class="logo" :src="catalan" alt="" />
+                  {{ capitalizeFirstLetter($t("languages.catalan")) }}
                 </div>
               </a>
             </li>
@@ -214,7 +231,7 @@
                       xlink:href="#a"
                     />
                   </svg>
-                  中文 (繁體)
+                  {{ capitalizeFirstLetter($t("languages.french")) }}
                 </div>
               </a>
             </li>
@@ -293,3 +310,388 @@
     </div>
   </nav>
 </template>
+
+<style type="text/css">
+.st0 {
+  fill: #ffffff;
+}
+.st1 {
+  fill: #c60c30;
+}
+.st2 {
+  fill: #003478;
+}
+.st3 {
+  fill: #ff9933;
+}
+.st4 {
+  fill: #128807;
+}
+.st5 {
+  fill: #000088;
+}
+.st6 {
+  fill: #032774;
+}
+.st7 {
+  fill: #df0333;
+}
+.st8 {
+  fill: #ee2b2c;
+}
+.st9 {
+  fill: #032767;
+}
+.st10 {
+  fill: #006747;
+}
+.st11 {
+  fill: #cd1225;
+}
+.st12 {
+  fill: #fbc942;
+}
+.st13 {
+  fill: #bd9b37;
+}
+.st14 {
+  fill: #9ba068;
+}
+.st15 {
+  fill: #707633;
+}
+.st16 {
+  fill: #006748;
+}
+.st17 {
+  fill: #cc2029;
+}
+.st18 {
+  fill: #30c1db;
+}
+.st19 {
+  fill: #f7c740;
+}
+.st20 {
+  fill: #0c72a6;
+}
+.st21 {
+  fill: #f8a952;
+}
+.st22 {
+  fill: #943120;
+}
+.st23 {
+  fill: #231f20;
+}
+.st24 {
+  fill: #0b8388;
+}
+.st25 {
+  fill: #8bbdbe;
+}
+.st26 {
+  fill: #05534e;
+}
+.st27 {
+  fill: none;
+  stroke: #39b54a;
+  stroke-width: 0.25;
+  stroke-miterlimit: 10;
+}
+.st28 {
+  fill: none;
+  stroke: #00a651;
+  stroke-miterlimit: 10;
+}
+.st29 {
+  fill: none;
+  stroke: #00a651;
+  stroke-width: 0.5;
+  stroke-miterlimit: 10;
+}
+.st30 {
+  fill: url(#SVGID_1_);
+}
+.st31 {
+  fill: url(#SVGID_2_);
+}
+.st32 {
+  fill: url(#SVGID_3_);
+}
+.st33 {
+  fill: url(#SVGID_4_);
+}
+.st34 {
+  fill: url(#SVGID_5_);
+}
+.st35 {
+  fill: url(#SVGID_6_);
+}
+.st36 {
+  fill: url(#SVGID_7_);
+}
+.st37 {
+  fill: url(#SVGID_8_);
+}
+.st38 {
+  fill: url(#SVGID_9_);
+}
+.st39 {
+  fill: url(#SVGID_10_);
+}
+.st40 {
+  fill: url(#SVGID_11_);
+}
+.st41 {
+  fill: url(#SVGID_12_);
+}
+.st42 {
+  fill: url(#SVGID_13_);
+}
+.st43 {
+  fill: url(#SVGID_14_);
+}
+.st44 {
+  fill: url(#SVGID_15_);
+}
+.st45 {
+  fill: #f8c73e;
+}
+.st46 {
+  fill: #77722f;
+}
+.st47 {
+  fill: #a7ab71;
+}
+.st48 {
+  fill: #949457;
+}
+.st49 {
+  fill: #ae6f2a;
+}
+.st50 {
+  fill: #fff200;
+}
+.st51 {
+  fill: #c5c6a6;
+}
+.st52 {
+  fill: #a3a395;
+}
+.st53 {
+  fill: #4c2915;
+}
+.st54 {
+  fill: #8e4520;
+}
+.st55 {
+  fill: #d1a467;
+}
+.st56 {
+  fill: #aa6c2a;
+}
+.st57 {
+  fill: #daac6d;
+}
+.st58 {
+  fill: #8f4620;
+}
+.st59 {
+  fill: #bc7e2f;
+}
+.st60 {
+  fill: #e6e7e8;
+}
+.st61 {
+  fill: #f06d19;
+}
+.st62 {
+  fill: #19b43d;
+}
+.st63 {
+  fill: #07a3dc;
+}
+.st64 {
+  fill: #fbd023;
+}
+.st65 {
+  fill: #ec2938;
+}
+.st66 {
+  fill: #f9df47;
+}
+.st67 {
+  fill: #0967c4;
+}
+.st68 {
+  fill: #c5a310;
+}
+.st69 {
+  clip-path: url(#SVGID_17_);
+}
+.st70 {
+  fill: #6fd7f2;
+}
+.st71 {
+  clip-path: url(#SVGID_19_);
+}
+.st72 {
+  fill: #ff0303;
+}
+.st73 {
+  fill: #ff6407;
+}
+.st74 {
+  fill: #fdfe1f;
+}
+.st75 {
+  fill: #00fe1e;
+}
+.st76 {
+  fill: #08ccfe;
+}
+.st77 {
+  fill: #120ffd;
+}
+.st78 {
+  fill: #810480;
+}
+.st79 {
+  fill: #0642a1;
+}
+.st80 {
+  fill: #02275f;
+}
+.st81 {
+  fill: #80a0d1;
+}
+.st82 {
+  fill: #fb3b3a;
+}
+.st83 {
+  fill: #ff0302;
+}
+.st84 {
+  fill: #520200;
+}
+.st85 {
+  fill: #940101;
+}
+.st86 {
+  clip-path: url(#SVGID_21_);
+}
+.st87 {
+  fill: #91bb35;
+}
+.st88 {
+  fill: #ece62b;
+}
+.st89 {
+  fill: #c5ca2c;
+}
+.st90 {
+  fill: #95c82b;
+}
+.st91 {
+  fill: #009d4a;
+}
+.st92 {
+  fill: #bf0a30;
+}
+.st93 {
+  fill: #002868;
+}
+.st94 {
+  fill: #028832;
+}
+.st95 {
+  fill: #fbdc1d;
+}
+.st96 {
+  fill: #d91219;
+}
+.st97 {
+  fill: #0738a6;
+}
+.st98 {
+  fill: #fd0302;
+}
+.st99 {
+  fill: #060593;
+}
+.st100 {
+  fill: #115ead;
+}
+.st101 {
+  fill: #c50c1e;
+}
+.st102 {
+  fill: #fec315;
+}
+.st103 {
+  fill: #c7b011;
+}
+.st104 {
+  fill: #ac1518;
+}
+.st105 {
+  fill: #028e6e;
+}
+.st106 {
+  fill: #cbcbcb;
+}
+.st107 {
+  fill: #095bbd;
+}
+.st108 {
+  fill: #c7b013;
+}
+.st109 {
+  fill: #00aeef;
+}
+.st110 {
+  fill: #c7b112;
+}
+.st111 {
+  fill: #fed592;
+}
+.st112 {
+  fill: #028d6e;
+}
+.st113 {
+  fill: #c7b012;
+}
+.st114 {
+  fill: #c6b011;
+}
+.st115 {
+  fill: #103bee;
+}
+.st116 {
+  fill: #db4445;
+}
+.st117 {
+  fill: #ec72a9;
+}
+.st118 {
+  fill: #006133;
+}
+.st119 {
+  fill: #d11133;
+}
+.st120 {
+  fill: #042b7d;
+}
+.st121 {
+  fill: #fec527;
+}
+.st122 {
+  fill: #bf920d;
+}
+
+.logo {
+  height: 20px;
+  width: 30px;
+}
+</style>

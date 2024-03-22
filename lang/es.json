@@ -19,7 +19,14 @@
 
         "forRent": "en alquiler"
     },
+    "languages": {
+        "spanish": "español",
+        "catalan": "catalan",
+        "english": "inglés",
+        "dutch": "holandés",
+        "french": "francés"
+    },
     "general": {
-        "settings": "Ajustes"
+        "settings": "ajustes"
     }
 }
