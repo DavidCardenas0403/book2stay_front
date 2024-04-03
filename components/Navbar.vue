@@ -1,6 +1,15 @@
 <script setup>
 import { capitalizeFirstLetter } from "../helpers/index.js";
 import catalan from "../assets/images/catalan.svg";
+import logo from "../assets/images/country-club.svg";
+const { locale } = useI18n();
+const switchLocalePath = useSwitchLocalePath();
+
+function selectLanguage(language) {
+  selectedLanguage.value = language;
+}
+
+const selectedLanguage = ref(locale.value);
 </script>
 
 <template>
@@ -8,20 +17,12 @@ import catalan from "../assets/images/catalan.svg";
     <div
       class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
     >
-      <a
-        href="https://flowbite.com/"
+      <nuxt-link
+        :to="localePath('/')"
         class="flex items-center space-x-3 rtl:space-x-reverse"
       >
-        <img
-          src="https://flowbite.com/docs/images/logo.svg"
-          class="h-8"
-          alt="Flowbite Logo"
-        />
-        <span
-          class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
-          >Flowbite</span
-        >
-      </a>
+        <img :src="logo" class="h-8" alt="Country Club Pals Logo" />
+      </nuxt-link>
       <div
         class="flex items-center md:order-2 space-x-1 md:space-x-0 rtl:space-x-reverse"
       >
@@ -30,6 +31,7 @@ import catalan from "../assets/images/catalan.svg";
           data-dropdown-toggle="language-dropdown-menu"
           class="inline-flex items-center font-medium justify-center px-4 py-2 text-sm text-gray-900 dark:text-white rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
         >
+          <!-- <img :src="selectedLanguage" alt="Bandera del lenguaje" /> -->
           <svg
             class="w-5 h-5 rounded-full me-3"
             aria-hidden="true"
@@ -76,9 +78,9 @@ import catalan from "../assets/images/catalan.svg";
           id="language-dropdown-menu"
         >
           <ul class="py-2 font-medium" role="none">
-            <li>
-              <a
-                href="#"
+            <li @click="changeLanguage('english')">
+              <nuxt-link
+                :to="switchLocalePath('en')"
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
                 role="menuitem"
               >
@@ -117,10 +119,11 @@ import catalan from "../assets/images/catalan.svg";
                   </svg>
                   {{ capitalizeFirstLetter($t("languages.english")) }}
                 </div>
-              </a>
+              </nuxt-link>
             </li>
             <li>
-              <a
+              <nuxt-link
+                :to="switchLocalePath('nl')"
                 href="#"
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
                 role="menuitem"
@@ -139,11 +142,11 @@ import catalan from "../assets/images/catalan.svg";
                   </svg>
                   {{ capitalizeFirstLetter($t("languages.dutch")) }}
                 </div>
-              </a>
+              </nuxt-link>
             </li>
             <li>
-              <a
-                href="#"
+              <nuxt-link
+                :to="switchLocalePath('es')"
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
                 role="menuitem"
               >
@@ -163,11 +166,11 @@ import catalan from "../assets/images/catalan.svg";
                   </svg>
                   {{ capitalizeFirstLetter($t("languages.spanish")) }}
                 </div>
-              </a>
+              </nuxt-link>
             </li>
             <li>
-              <a
-                href="#"
+              <nuxt-link
+                :to="switchLocalePath('ca')"
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
                 role="menuitem"
               >
@@ -175,11 +178,11 @@ import catalan from "../assets/images/catalan.svg";
                   <img class="logo" :src="catalan" alt="" />
                   {{ capitalizeFirstLetter($t("languages.catalan")) }}
                 </div>
-              </a>
+              </nuxt-link>
             </li>
             <li>
-              <a
-                href="#"
+              <nuxt-link
+                :to="switchLocalePath('fr')"
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
                 role="menuitem"
               >
@@ -233,7 +236,7 @@ import catalan from "../assets/images/catalan.svg";
                   </svg>
                   {{ capitalizeFirstLetter($t("languages.french")) }}
                 </div>
-              </a>
+              </nuxt-link>
             </li>
           </ul>
         </div>
