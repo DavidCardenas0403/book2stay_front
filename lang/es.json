@@ -17,7 +17,20 @@
 
         "forSale": "a la venta",
 
-        "forRent": "en alquiler"
+        "forRent": "en alquiler",
+
+        "email": "Correo electrónico",
+
+        "password": "Contraseña",
+        
+        "signUp": "Inscribirse"
+    },
+    "login":{
+        "loginText": "Acceder a su cuenta",
+        "forgotPassword": "Has olvidado tu contraseña?",
+        "login": "Acceder",
+        "oauth": "Inicia sesion con Google",
+        "noAccount": "¿Aún no tienes una cuenta?"
     },
     "general": {
         "settings": "Ajustes"
