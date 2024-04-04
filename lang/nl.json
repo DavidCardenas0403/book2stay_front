@@ -1,3 +1,36 @@
 {
-    "bienvenida": "Hola a todos"
+    "variables": {
+        "properties": "Eigenschappen",
+        "property": "Eigenschap",
+        "reviews": "Beoordelingen",
+        "review": "Beoordeling",
+        "bookings": "Reserveringen",
+        "booking": "Reservering",
+        "ratings": "Beoordelingen",
+        "rating": "Beoordeling",
+        "prices": "Prijzen",
+        "price": "Prijs",
+        "forSale": "Te koop",
+        "forRent": "Te huur",
+        "email": "E-mail",
+        "password": "Wachtwoord",
+        "signUp": "Aanmelden",
+        "name": "Naam"
+    },
+    "login": {
+        "loginText": "Inloggen op uw account",
+        "forgotPassword": "Wachtwoord vergeten?",
+        "login": "Inloggen",
+        "oauth": "Inloggen met Google",
+        "noAccount": "Heb je nog geen account?"
+    },
+    "signup": {
+        "create": "Account aanmaken",
+        "repeat": "Herhaal Wachtwoord",
+        "equal": "Wachtwoorden komen niet overeen",
+        "noAccount": "Heb je al een account?"
+    },
+    "general": {
+        "settings": "Instellingen"
+    }
 }

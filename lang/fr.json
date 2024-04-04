@@ -1,3 +1,36 @@
 {
-    "bienvenida": "Hola a todos"
+    "variables": {
+        "properties": "Propriétés",
+        "property": "Propriété",
+        "reviews": "Avis",
+        "review": "Avis",
+        "bookings": "Réservations",
+        "booking": "Réservation",
+        "ratings": "Évaluations",
+        "rating": "Évaluation",
+        "prices": "Prix",
+        "price": "Prix",
+        "forSale": "À vendre",
+        "forRent": "À louer",
+        "email": "E-mail",
+        "password": "Mot de passe",
+        "signUp": "S'inscrire",
+        "name": "Nom"
+    },
+    "login": {
+        "loginText": "Connectez-vous à votre compte",
+        "forgotPassword": "Mot de passe oublié?",
+        "login": "Se connecter",
+        "oauth": "Se connecter avec Google",
+        "noAccount": "Vous n'avez pas de compte?"
+    },
+    "signup": {
+        "create": "Créer un compte",
+        "repeat": "Répéter le mot de passe",
+        "equal": "Les mots de passe ne correspondent pas",
+        "noAccount": "Vous avez déjà un compte?"
+    },
+    "general": {
+        "settings": "Paramètres"
+    }
 }
