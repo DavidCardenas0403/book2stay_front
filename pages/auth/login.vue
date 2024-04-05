@@ -15,14 +15,14 @@
                 <div class="flex-1">
                     <div class="text-center">
                         <div class="flex justify-center mx-auto">
-                            <img class="w-auto h-60 sm:h-50" src="../../assets/images/country-club.svg" alt="">
+                            <img class="w-auto h-60 sm:h-50" src="../../assets/images/book2stay.png" alt="">
                         </div>
 
                         <p class="mt-3 text-gray-500 dark:text-gray-300">{{ $t('login.loginText') }}</p>
                     </div>
 
                     <div class="mt-8">
-                        <form>
+                        <form @submit.prevent="handleLogin">
 
 
                             <FloatLabel>
@@ -96,9 +96,29 @@
 
 <script setup>
 import { ref } from 'vue';
+import { checkLogin } from '../../services/checkLogin.js'
 const { locale } = useI18n();
 
 
 const email = ref('');
 const password = ref('');
+
+const handleLogin = async () => {
+    // Aquí puedes llamar a la función checkLogin pasando email y password como argumentos
+    try {
+        const loggedIn = await checkLogin(email.value, password.value);
+        if (loggedIn) {
+            console.log("SI");
+            console.log(loggedIn);
+            // Aquí puedes redirigir al usuario a la página de inicio de sesión exitosa
+        } else {
+            console.log("NO");
+            console.log(loggedIn);
+            // Aquí puedes manejar el caso en el que el inicio de sesión falla
+        }
+    } catch (error) {
+        console.error('Error al intentar iniciar sesión:', error);
+    }
+}
+
 </script>

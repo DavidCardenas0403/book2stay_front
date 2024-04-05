@@ -50,5 +50,8 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  devServer: {
+    port: 8000
+  },
   
 });
