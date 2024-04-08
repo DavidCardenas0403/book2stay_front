@@ -7,6 +7,10 @@ const { locale } = useI18n();
 
 const dates = ref()
 const guests = ref()
+
+function findProperties() {
+    console.log("searching")
+}
 </script>
 
 <template>
@@ -44,7 +48,7 @@ const guests = ref()
                     <InputNumber v-model="guests" placeholder="Guests"/>
                 </InputGroup>
 
-                <Button label="Buscar" />
+                <Button label="Buscar" @click="findProperties" />
             </form>
         </div>
     </section>
