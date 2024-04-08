@@ -18,32 +18,48 @@
                             <img class="w-auto h-60 sm:h-50" src="../../assets/images/book2stay.png" alt="">
                         </div>
 
-                        <p class="mt-3 text-gray-500 dark:text-gray-300">{{ $t('login.loginText') }}</p>
+                        <p class="mt-3 text-gray-500 dark:text-gray-300">{{ $t('signup.create') }}</p>
                     </div>
 
                     <div class="mt-8">
-                        <form @submit.prevent="handleLogin">
+                        <form>
 
+                            <div class="mt-6">
 
-                            <FloatLabel>
-                                <InputText type="email" v-model="email"
-                                    class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
-                                <label for="email">{{ $t('variables.email') }}</label>
-                            </FloatLabel>
+                                <FloatLabel>
+                                    <InputText v-model="name"
+                                        class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                    <label for="name">{{ $t('variables.name') }}</label>
+                                </FloatLabel>
+                            </div>
 
                             <div class="mt-6">
                                 <FloatLabel>
-
-                                    <InputText type="password" v-model="password"
+                                    <InputText type="email" v-model="email"
                                         class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
-                                    <label for="email">{{ $t('variables.password') }}</label>
-
+                                    <label for="email">{{ $t('variables.email') }}</label>
                                 </FloatLabel>
-                                <a href="#"
-                                    class="text-sm text-gray-400 focus:text-blue-500 hover:text-blue-500 hover:underline">
-                                    {{$t('login.forgotPassword')}}
-                                </a>
                             </div>
+                            <div class="mt-6">
+                                <FloatLabel>
+                                    <Password v-model="password" toggleMask class="w-full" id="password"
+                                        inputClass="block w-full text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                    <label for="password">{{ $t('variables.password') }}</label>
+                                </FloatLabel>
+
+                            </div>
+                            <div class="mt-6">
+                                <FloatLabel>
+                                    <Password v-model="confirmPassword" toggleMask :feedback="false" class="w-full"
+                                        id="confirmPassword"
+                                        inputClass="block w-full text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                    <label for="confirmPassword">{{ $t('signup.repeat') }}</label>
+                                </FloatLabel>
+
+                            </div>
+
+                            <p v-if="password !== '' && confirmPassword !== '' && password !== confirmPassword"
+                                style="color: red;">{{ $t('signup.equal') }}</p>
 
 
                             <div class="mt-6">
@@ -77,12 +93,13 @@
                                     </svg>
                                 </div>
 
-                                <span class="w-5/6 px-4 py-3 font-bold text-center">{{$t('login.oauth')}}</span>
+                                <span class="w-5/6 px-4 py-3 font-bold text-center">{{ $t('login.oauth') }}</span>
                             </a>
                         </form>
 
-                        <p class="mt-6 text-sm text-center text-gray-400">{{$t('login.noAccount')}}<a href="/es/auth/signUp"
-                                class="text-blue-500 focus:outline-none focus:underline hover:underline">{{$t('variables.signUp')}}</a>.
+                        <p class="mt-6 text-sm text-center text-gray-400">{{ $t('signup.noAccount') }}<a href="login"
+                                class="text-blue-500 focus:outline-none focus:underline hover:underline">{{
+                            $t('login.login') }}</a>.
                         </p>
                     </div>
                 </div>
@@ -95,30 +112,10 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { checkLogin } from '../../services/checkLogin.js'
 const { locale } = useI18n();
-
+import { ref } from 'vue';
 
 const email = ref('');
 const password = ref('');
-
-const handleLogin = async () => {
-    // Aquí puedes llamar a la función checkLogin pasando email y password como argumentos
-    try {
-        const loggedIn = await checkLogin(email.value, password.value);
-        if (loggedIn) {
-            console.log("SI");
-            console.log(loggedIn);
-            // Aquí puedes redirigir al usuario a la página de inicio de sesión exitosa
-        } else {
-            console.log("NO");
-            console.log(loggedIn);
-            // Aquí puedes manejar el caso en el que el inicio de sesión falla
-        }
-    } catch (error) {
-        console.error('Error al intentar iniciar sesión:', error);
-    }
-}
-
+const confirmPassword = ref('');
 </script>

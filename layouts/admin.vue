@@ -5,7 +5,8 @@
             <h2 class="font-bold text-xl text-center">Admin
             </h2>
             <section>
-                <NuxtLink to="/admin/propiedades">
+                <NuxtLink
+                    :to="localePath('/admin/propiedades')">
                     <font-awesome-icon
                         icon="fa-solid fa-house" />
                     Propiedades

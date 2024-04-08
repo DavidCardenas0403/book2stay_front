@@ -1,3 +1,36 @@
 {
-    "bienvenida": "Hola a todos"
+    "variables": {
+        "properties": "Propietats",
+        "property": "Propietat",
+        "reviews": "resenyes",
+        "review": "resenya",
+        "bookings": "reserves",
+        "booking": "reserva",
+        "ratings": "valoracions",
+        "rating": "valoració",
+        "prices": "preus",
+        "price": "preu",
+        "forSale": "a la venda",
+        "forRent": "en lloguer",
+        "email": "Correu electrònic",
+        "password": "Contrasenya",
+        "signUp": "Inscriure's",
+        "name": "Nom"
+    },
+    "login": {
+        "loginText": "Accedir al teu compte",
+        "forgotPassword": "Has oblidat la teva contrasenya?",
+        "login": "Accedir",
+        "oauth": "Inicia sessió amb Google",
+        "noAccount": "Encara no tens un compte?"
+    },
+    "signup": {
+        "create": "Crear compte",
+        "repeat": "Repetir Contrasenya",
+        "equal": "Les contrasenyes no coincideixen",
+        "noAccount": "Ja tens un compte?"
+    },
+    "general": {
+        "settings": "Ajustaments"
+    }
 }

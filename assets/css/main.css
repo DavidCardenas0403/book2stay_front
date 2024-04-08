@@ -1,4 +1,3 @@
-
 @layer tailwind-base, primevue, tailwind-utilities;
 
 @layer tailwind-base {
@@ -16,4 +15,14 @@ h1 {
 
 h2 {
     font-size: 1.8rem;
+}
+
+/* Primevue */
+.p-column-header-content {
+    justify-content: center;
+    text-align: center;
+}
+
+.p-datatable .p-datatable-tbody > tr > td {
+    text-align: center;
 }

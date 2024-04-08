@@ -1,6 +1,36 @@
 {
-    "bienvenida": {
-        "msg": "Welcome to everybody",
-        "dos": "Two"
+    "variables": {
+        "properties": "Properties",
+        "property": "Property",
+        "reviews": "Reviews",
+        "review": "Review",
+        "bookings": "Bookings",
+        "booking": "Booking",
+        "ratings": "Ratings",
+        "rating": "Rating",
+        "prices": "Prices",
+        "price": "Price",
+        "forSale": "For Sale",
+        "forRent": "For Rent",
+        "email": "Email",
+        "password": "Password",
+        "signUp": "Sign Up",
+        "name": "Name"
+    },
+    "login": {
+        "loginText": "Log in to your account",
+        "forgotPassword": "Forgot your password?",
+        "login": "Log in",
+        "oauth": "Sign in with Google",
+        "noAccount": "Don't have an account yet?"
+    },
+    "signup": {
+        "create": "Create Account",
+        "repeat": "Repeat Password",
+        "equal": "Passwords do not match",
+        "noAccount": "Already have an account?"
+    },
+    "general": {
+        "settings": "Settings"
     }
 }
