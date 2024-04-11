@@ -30,7 +30,14 @@
         "equal": "Las contraseñas no coinciden",
         "noAccount": "¿Ya tienes una cuenta?"
     },
+    "languages": {
+        "spanish": "español",
+        "catalan": "catalan",
+        "english": "inglés",
+        "dutch": "holandés",
+        "french": "francés"
+    },
     "general": {
-        "settings": "Ajustes"
+        "settings": "ajustes"
     }
 }

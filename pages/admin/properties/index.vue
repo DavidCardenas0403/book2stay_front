@@ -2,6 +2,13 @@
     <h1 class="text-center">Propiedades</h1>
 
     <section class="mt-12">
+        <div class="flex justify-end">
+            <NuxtLink
+                :to="localePath('/admin/properties/create')">
+                <Button label="Añadir" />
+            </NuxtLink>
+
+        </div>
         <DataTable :value="propiedades"
             class="rounded-md overflow-hidden">
             <Column :field="p => p.idiomas[0].name"
@@ -15,11 +22,14 @@
             </Column>
             <Column header="Estado">
                 <template #body="slotProps">
-                    <Badge :value="slotProps.data.booked ? 'Reservada' : 'Libre' " :severity="slotProps.data.booked ? 'danger' : 'success'" class="block w-full"></Badge>
+                    <Badge
+                        :value="slotProps.data.booked ? 'Reservada' : 'Libre'"
+                        :severity="slotProps.data.booked ? 'danger' : 'success'"
+                        class="block w-full"></Badge>
                 </template>
             </Column>
             <template #footer> Hay un total de {{
-                propiedades ? propiedades.length : 0 }}
+                    propiedades ? propiedades.length : 0 }}
                 propiedades. </template>
         </DataTable>
     </section>
