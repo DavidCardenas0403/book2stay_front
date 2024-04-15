@@ -1,12 +1,12 @@
 <template>
     <div class="flex flex-col md:flex-row min-h-screen">
         <aside v-if="sidebar"
-            class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-50 shadow-md md:w-96 md:min-h-screen flex flex-col gap-6 p-8">
+            class="bg-gray-900 text-gray-50 shadow-md md:w-96 md:min-h-screen flex flex-col gap-6 p-8">
             <h2 class="font-bold text-xl text-center">Admin
             </h2>
             <section>
                 <NuxtLink
-                    :to="localePath('/admin/propiedades')">
+                    :to="localePath('/admin/properties')">
                     <font-awesome-icon
                         icon="fa-solid fa-house" />
                     Propiedades
@@ -16,7 +16,7 @@
         <div
             class="w-full min-h-screen bg-gray-100 dark:bg-gray-700">
             <header
-                class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-50 shadow p-4 flex justify-between">
+                class="bg-gray-900 text-gray-50 shadow p-4 flex justify-between">
                 <button @click="sidebar = !sidebar">
                     <font-awesome-icon
                         icon="fa-solid fa-bars" />
