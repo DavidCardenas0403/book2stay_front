@@ -1,32 +1,22 @@
 <template>
-  <h1 class="text-center">Añadir propiedad</h1>
+  <h1 class="text-center">Add property</h1>
   <Spinner v-if="loading" />
 
   <form
     v-else
     class="mt-6 bg-white dark:bg-gray-800 rounded-lg p-4 w-full border border-gray-800 dark:border-white"
   >
-    <div class="flex mb-2 gap-2 justify-content-end">
+    <div class="flex mb-2 gap-2 justify-end">
       <Button
-        @click="active = 0"
+        v-for="(lang, index) in languages"
+        @click="active = index"
         rounded
-        label="1"
-        class="w-2rem h-2rem p-0"
-        :outlined="active !== 0"
-      />
-      <Button
-        @click="active = 1"
-        rounded
-        label="2"
-        class="w-2rem h-2rem p-0"
-        :outlined="active !== 1"
-      />
-      <Button
-        @click="active = 2"
-        rounded
-        label="3"
-        class="w-2rem h-2rem p-0"
-        :outlined="active !== 2"
+        class="w-7 h-7 p-0"
+        :outlined="active !== index"
+        :class="active == index ? 'opacity-100' : 'opacity-50'"
+        :style="{
+          backgroundImage: `url('https://flagicons.lipis.dev/flags/1x1/${lang.flag}.svg')`,
+        }"
       />
     </div>
 
@@ -67,10 +57,11 @@
         </div>
       </TabPanel>
     </TabView>
-    <div class="ps-5">
+    <div class="ps-5 gap-6 grid justify-end grid-cols-1 lg:grid-cols-2">
       <div>
         <Label for="rooms" class="label" required="true">Rooms</Label>
         <InputNumber
+          inputClass="w-full"
           v-model="data.rooms"
           inputId="rooms"
           showButtons
@@ -89,6 +80,7 @@
       <div>
         <Label for="size" class="label" :required="true">Size</Label>
         <InputNumber
+          inputClass="w-full"
           v-model="data.size"
           inputId="size"
           showButtons
