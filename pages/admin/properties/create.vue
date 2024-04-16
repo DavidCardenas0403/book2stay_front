@@ -1,94 +1,244 @@
 <template>
-  <h1 class="text-center">Añadir propiedad</h1>
+  <h1 class="text-center">Add property</h1>
+  <Spinner v-if="loading" />
 
   <form
+    v-else
     class="mt-6 bg-white dark:bg-gray-800 rounded-lg p-4 w-full border border-gray-800 dark:border-white"
   >
-    <div>
-      <div class="flex mb-2 gap-2 justify-content-end">
-        <Button
-          @click="active = 0"
-          rounded
-          label="1"
-          class="w-2rem h-2rem p-0"
-          :outlined="active !== 0"
-        />
-        <Button
-          @click="active = 1"
-          rounded
-          label="2"
-          class="w-2rem h-2rem p-0"
-          :outlined="active !== 1"
-        />
-        <Button
-          @click="active = 2"
-          rounded
-          label="3"
-          class="w-2rem h-2rem p-0"
-          :outlined="active !== 2"
-        />
-      </div>
-
-      <TabView v-model:activeIndex="active">
-        <TabPanel header="Header I">
-          <div>
-            <label for="name">Name</label>
-            <InputText
-              type="text"
-              id="name"
-              v-model="data.name"
-              class="w-full"
-            />
-          </div>
-          <div class="mt-4">
-            <label for="description">Description</label>
-            <Editor
-              id="description"
-              v-model="data.description"
-              editorStyle="height: 320px"
-            />
-          </div>
-        </TabPanel>
-        <TabPanel header="Header II">
-          <p class="m-0">
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-            quae ab illo inventore veritatis et quasi architecto beatae vitae
-            dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-            aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-            eos qui ratione voluptatem sequi nesciunt. Consectetur, adipisci
-            velit, sed quia non numquam eius modi.
-          </p>
-        </TabPanel>
-        <TabPanel header="Header III">
-          <p class="m-0">
-            At vero eos et accusamus et iusto odio dignissimos ducimus qui
-            blanditiis praesentium voluptatum deleniti atque corrupti quos
-            dolores et quas molestias excepturi sint occaecati cupiditate non
-            provident, similique sunt in culpa qui officia deserunt mollitia
-            animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-            est et expedita distinctio. Nam libero tempore, cum soluta nobis est
-            eligendi optio cumque nihil impedit quo minus.
-          </p>
-        </TabPanel>
-      </TabView>
+    <div class="flex mb-2 gap-2 justify-end">
+      <Button
+        v-for="(lang, index) in languages"
+        @click="active = index"
+        rounded
+        class="w-7 h-7 p-0"
+        :outlined="active !== index"
+        :class="active == index ? 'opacity-100' : 'opacity-50'"
+        :style="{
+          backgroundImage: `url('https://flagicons.lipis.dev/flags/1x1/${lang.flag}.svg')`,
+        }"
+      />
     </div>
+
+    <TabView v-model:activeIndex="active">
+      <TabPanel v-for="lang in languages" :header="lang.name">
+        <div>
+          <Label for="name" class="label" :required="true">Name</Label>
+          <InputText
+            type="text"
+            id="name"
+            v-model="data.name[lang.code]"
+            class="w-full"
+          />
+        </div>
+        <div class="mt-4">
+          <Label for="description" class="label" :required="true"
+            >Description</Label
+          >
+          <Editor
+            itemid="description"
+            id="description"
+            v-model="data.description[lang.code]"
+            editorStyle="height: 320px"
+          >
+            <template v-slot:toolbar>
+              <span class="ql-formats">
+                <button v-tooltip.bottom="'Bold'" class="ql-bold"></button>
+                <button v-tooltip.bottom="'Italic'" class="ql-italic"></button>
+                <button
+                  v-tooltip.bottom="'Underline'"
+                  class="ql-underline"
+                ></button>
+                <button v-tooltip.bottom="'Header'" class="ql-list"></button>
+                <button v-tooltip.bottom="'Link'" class="ql-link"></button>
+              </span>
+            </template>
+          </Editor>
+        </div>
+      </TabPanel>
+    </TabView>
+    <div class="ps-5 gap-6 grid justify-end grid-cols-1 lg:grid-cols-2">
+      <div>
+        <Label for="rooms" class="label" required="true">Rooms</Label>
+        <InputNumber
+          inputClass="w-full"
+          v-model="data.rooms"
+          inputId="rooms"
+          showButtons
+          buttonLayout="horizontal"
+          :step="1"
+          min="1"
+        >
+          <template #incrementbuttonicon>
+            <span class="pi pi-plus" />
+          </template>
+          <template #decrementbuttonicon>
+            <span class="pi pi-minus" />
+          </template>
+        </InputNumber>
+      </div>
+      <div>
+        <Label for="size" class="label" :required="true">Size</Label>
+        <InputNumber
+          inputClass="w-full"
+          v-model="data.size"
+          inputId="size"
+          showButtons
+          buttonLayout="horizontal"
+          :step="5"
+          min="1"
+          suffix=" m&sup2;"
+        >
+          <template #incrementbuttonicon>
+            <span class="pi pi-plus" />
+          </template>
+          <template #decrementbuttonicon>
+            <span class="pi pi-minus" />
+          </template>
+        </InputNumber>
+      </div>
+      <div>
+        <Label for="price" class="label" :required="true"
+          >Price <span class="text-gray-400">per night</span></Label
+        >
+        <InputNumber
+          v-model="data.price"
+          inputId="price"
+          showButtons
+          buttonLayout="horizontal"
+          :step="5"
+          min="1"
+          mode="currency"
+          currency="EUR"
+        >
+          <template #incrementbuttonicon>
+            <span class="pi pi-plus" />
+          </template>
+          <template #decrementbuttonicon>
+            <span class="pi pi-minus" />
+          </template>
+        </InputNumber>
+      </div>
+      <div>
+        <Label for="capacity" class="label" :required="true">Capacity</Label>
+        <InputNumber
+          v-model="data.capacity"
+          inputId="capacity"
+          showButtons
+          buttonLayout="horizontal"
+          :step="1"
+          min="1"
+        >
+          <template #incrementbuttonicon>
+            <span class="pi pi-plus" />
+          </template>
+          <template #decrementbuttonicon>
+            <span class="pi pi-minus" />
+          </template>
+        </InputNumber>
+      </div>
+      <div>
+        <Label for="beds" class="label" :required="true">Beds</Label>
+        <InputNumber
+          v-model="data.beds"
+          inputId="beds"
+          showButtons
+          buttonLayout="horizontal"
+          :step="1"
+          min="1"
+        >
+          <template #incrementbuttonicon>
+            <span class="pi pi-plus" />
+          </template>
+          <template #decrementbuttonicon>
+            <span class="pi pi-minus" />
+          </template>
+        </InputNumber>
+      </div>
+      <div>
+        <Label for="bathrooms" class="label" :required="true">Bathrooms</Label>
+        <InputNumber
+          v-model="data.bathrooms"
+          inputId="bathrooms"
+          showButtons
+          buttonLayout="horizontal"
+          :step="1"
+          min="1"
+        >
+          <template #incrementbuttonicon>
+            <span class="pi pi-plus" />
+          </template>
+          <template #decrementbuttonicon>
+            <span class="pi pi-minus" />
+          </template>
+        </InputNumber>
+      </div>
+      <div>
+        <Label for="parking" class="label" :required="true">Parking</Label>
+        <InputSwitch id="parking" v-model="data.parking" />
+      </div>
+      <div>
+        <Label for="wifi" class="label" :required="true">Wi-Fi</Label>
+        <InputSwitch id="wifi" v-model="data.wifi" />
+      </div>
+      <div>
+        <Label for="swimming_pool" class="label" :required="true"
+          >Swimming Pool</Label
+        >
+        <InputSwitch id="swimming_pool" v-model="data.swimming_pool" />
+      </div>
+      <div>
+        <Label for="terrace" class="label" :required="true">Terrace</Label>
+        <InputSwitch id="terrace" v-model="data.terrace" />
+      </div>
+    </div>
+
+    <Button
+      type="submit"
+      label="Create"
+      @click.prevent="createProperty(data)"
+    />
   </form>
 </template>
 
 <script setup>
 import { reactive } from "vue";
 import Editor from "primevue/editor";
-import { fetchLanguages } from "../../../api/fetchLanguages.js";
+import { fetchLanguages } from "~/api/fetchLanguages.js";
+import { createProperty } from "../../../api/properties/createProperty.js";
+
+const loading = ref(true);
+const languages = ref({});
+
+onMounted(async () => {
+  languages.value = await fetchLanguages();
+  loading.value = false;
+});
 
 definePageMeta({
   layout: "admin",
 });
 
-const data = reactive({
-  name: "",
-  description: "",
-});
+const active = ref(0);
 
-fetchLanguages();
+const data = reactive({
+  name: {},
+  description: {},
+  rooms: 1,
+  size: 50,
+  price: 200,
+  capacity: 1,
+  beds: 1,
+  bathrooms: 1,
+  parking: false,
+  wifi: false,
+  swimming_pool: false,
+  terrace: false,
+});
 </script>
+
+<style scoped>
+.label {
+  @apply font-bold block mb-2;
+}
+</style>
