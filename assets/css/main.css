@@ -9,12 +9,29 @@
     @tailwind utilities;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Ledger&display=swap');
+
+body {
+    font-family: "Ledger", serif;
+    font-weight: 400;
+    font-style: normal;
+
+    font-size: 1.1rem;
+}
+
 h1 {
     font-size: 2.2rem;
 }
 
 h2 {
     font-size: 1.8rem;
+}
+
+.container {
+    max-width: 1440px;
+    width: 95%;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 /* Primevue */
