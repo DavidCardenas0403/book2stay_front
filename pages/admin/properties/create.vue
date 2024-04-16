@@ -1,7 +1,9 @@
 <template>
   <h1 class="text-center">Añadir propiedad</h1>
+  <Spinner v-if="loading" />
 
   <form
+    v-else
     class="mt-6 bg-white dark:bg-gray-800 rounded-lg p-4 w-full border border-gray-800 dark:border-white"
   >
     <div>
@@ -30,48 +32,158 @@
       </div>
 
       <TabView v-model:activeIndex="active">
-        <TabPanel header="Header I">
+        <TabPanel v-for="lang in languages" :header="lang.name">
           <div>
-            <label for="name">Name</label>
+            <Label for="name" class="label" :required="true">Name</Label>
             <InputText
               type="text"
               id="name"
-              v-model="data.name"
+              v-model="data.name[lang.code]"
               class="w-full"
             />
           </div>
           <div class="mt-4">
-            <label for="description">Description</label>
+            <Label for="description" class="label" :required="true"
+              >Description</Label
+            >
             <Editor
+              itemid="description"
               id="description"
-              v-model="data.description"
+              v-model="data.description[lang.code]"
               editorStyle="height: 320px"
-            />
+            >
+              <template v-slot:toolbar>
+                <span class="ql-formats">
+                  <button v-tooltip.bottom="'Bold'" class="ql-bold"></button>
+                  <button
+                    v-tooltip.bottom="'Italic'"
+                    class="ql-italic"
+                  ></button>
+                  <button
+                    v-tooltip.bottom="'Underline'"
+                    class="ql-underline"
+                  ></button>
+                  <button v-tooltip.bottom="'Header'" class="ql-list"></button>
+                  <button v-tooltip.bottom="'Link'" class="ql-link"></button>
+                </span>
+              </template>
+            </Editor>
           </div>
         </TabPanel>
-        <TabPanel header="Header II">
-          <p class="m-0">
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-            quae ab illo inventore veritatis et quasi architecto beatae vitae
-            dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-            aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-            eos qui ratione voluptatem sequi nesciunt. Consectetur, adipisci
-            velit, sed quia non numquam eius modi.
-          </p>
-        </TabPanel>
-        <TabPanel header="Header III">
-          <p class="m-0">
-            At vero eos et accusamus et iusto odio dignissimos ducimus qui
-            blanditiis praesentium voluptatum deleniti atque corrupti quos
-            dolores et quas molestias excepturi sint occaecati cupiditate non
-            provident, similique sunt in culpa qui officia deserunt mollitia
-            animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-            est et expedita distinctio. Nam libero tempore, cum soluta nobis est
-            eligendi optio cumque nihil impedit quo minus.
-          </p>
-        </TabPanel>
       </TabView>
+      <div class="ps-5">
+        <div>
+          <Label for="rooms" class="label" required="true">Rooms</Label>
+          <InputNumber
+            v-model="data.rooms"
+            inputId="rooms"
+            showButtons
+            buttonLayout="horizontal"
+            :step="1"
+            min="1"
+          >
+            <template #incrementbuttonicon>
+              <span class="pi pi-plus" />
+            </template>
+            <template #decrementbuttonicon>
+              <span class="pi pi-minus" />
+            </template>
+          </InputNumber>
+        </div>
+        <div>
+          <Label for="size" class="label" :required="true">Size</Label>
+          <InputNumber
+            v-model="data.size"
+            inputId="size"
+            showButtons
+            buttonLayout="horizontal"
+            :step="5"
+            min="1"
+            suffix=" m&sup2;"
+          >
+            <template #incrementbuttonicon>
+              <span class="pi pi-plus" />
+            </template>
+            <template #decrementbuttonicon>
+              <span class="pi pi-minus" />
+            </template>
+          </InputNumber>
+        </div>
+        <div>
+          <Label for="capacity" class="label" :required="true">Capacity</Label>
+          <InputNumber
+            v-model="data.capacity"
+            inputId="capacity"
+            showButtons
+            buttonLayout="horizontal"
+            :step="1"
+            min="1"
+          >
+            <template #incrementbuttonicon>
+              <span class="pi pi-plus" />
+            </template>
+            <template #decrementbuttonicon>
+              <span class="pi pi-minus" />
+            </template>
+          </InputNumber>
+        </div>
+        <div>
+          <Label for="beds" class="label" :required="true">Beds</Label>
+          <InputNumber
+            v-model="data.beds"
+            inputId="beds"
+            showButtons
+            buttonLayout="horizontal"
+            :step="1"
+            min="1"
+          >
+            <template #incrementbuttonicon>
+              <span class="pi pi-plus" />
+            </template>
+            <template #decrementbuttonicon>
+              <span class="pi pi-minus" />
+            </template>
+          </InputNumber>
+        </div>
+        <div>
+          <Label for="bathrooms" class="label" :required="true"
+            >Bathrooms</Label
+          >
+          <InputNumber
+            v-model="data.bathrooms"
+            inputId="bathrooms"
+            showButtons
+            buttonLayout="horizontal"
+            :step="1"
+            min="1"
+          >
+            <template #incrementbuttonicon>
+              <span class="pi pi-plus" />
+            </template>
+            <template #decrementbuttonicon>
+              <span class="pi pi-minus" />
+            </template>
+          </InputNumber>
+        </div>
+        <div>
+          <Label for="parking" class="label" :required="true">Parking</Label>
+          <InputSwitch id="parking" v-model="data.parking" />
+        </div>
+        <div>
+          <Label for="wifi" class="label" :required="true">Wi-Fi</Label>
+          <InputSwitch id="wifi" v-model="data.wifi" />
+        </div>
+        <div>
+          <Label for="swimming_pool" class="label" :required="true"
+            >Swimming Pool</Label
+          >
+          <InputSwitch id="swimming_pool" v-model="data.swimming_pool" />
+        </div>
+        <div>
+          <Label for="terrace" class="label" :required="true">Terrace</Label>
+          <InputSwitch id="terrace" v-model="data.terrace" />
+        </div>
+      </div>
     </div>
   </form>
 </template>
@@ -81,14 +193,37 @@ import { reactive } from "vue";
 import Editor from "primevue/editor";
 import { fetchLanguages } from "../../../api/fetchLanguages.js";
 
+const loading = ref(true);
+const languages = ref({});
+
+onMounted(async () => {
+  languages.value = await fetchLanguages();
+  loading.value = false;
+});
+
 definePageMeta({
   layout: "admin",
 });
 
-const data = reactive({
-  name: "",
-  description: "",
-});
+const active = ref(0);
 
-fetchLanguages();
+const data = reactive({
+  name: {},
+  description: {},
+  rooms: 1,
+  size: 50,
+  capacity: 1,
+  beds: 1,
+  bathrooms: 1,
+  parking: false,
+  wifi: false,
+  swimming_pool: false,
+  terrace: false,
+});
 </script>
+
+<style scoped>
+.label {
+  @apply font-bold block mb-2;
+}
+</style>
