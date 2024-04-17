@@ -2,36 +2,37 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   css: [
-    "~/assets/css/main.css",
-    "primevue/resources/themes/aura-light-blue/theme.css",
-    "@fortawesome/fontawesome-svg-core/styles.css",
-    "primeicons/primeicons.css",
+    '~/assets/css/main.css',
+    'primevue/resources/themes/aura-light-blue/theme.css',
+    '@fortawesome/fontawesome-svg-core/styles.css',
+    'primeicons/primeicons.css',
   ],
-  modules: ["nuxt-primevue", "@nuxtjs/i18n"],
+  modules: ['nuxt-primevue', '@nuxtjs/i18n'],
   i18n: {
-    vueI18n: "./i18n.config.ts",
-    langDir: "./lang",
+    strategy: 'no_prefix',
+    vueI18n: './i18n.config.ts',
+    langDir: './lang',
     lazy: true,
     locales: [
       {
-        code: "es",
-        file: "es.json",
+        code: 'es',
+        file: 'es.json',
       },
       {
-        code: "ca",
-        file: "ca.json",
+        code: 'ca',
+        file: 'ca.json',
       },
       {
-        code: "en",
-        file: "en.json",
+        code: 'en',
+        file: 'en.json',
       },
       {
-        code: "fr",
-        file: "fr.json",
+        code: 'fr',
+        file: 'fr.json',
       },
       {
-        code: "nl",
-        file: "nl.json",
+        code: 'nl',
+        file: 'nl.json',
       },
     ],
   },
@@ -41,9 +42,9 @@ export default defineNuxtConfig({
       ripple: true,
     },
     components: {
-      include: "*",
+      include: '*',
     },
-    cssLayerOrder: "tailwind-base, primevue, tailwind-utilities",
+    cssLayerOrder: 'tailwind-base, primevue, tailwind-utilities',
   },
   postcss: {
     plugins: {
@@ -54,4 +55,4 @@ export default defineNuxtConfig({
   devServer: {
     port: 8000,
   },
-});
+})
