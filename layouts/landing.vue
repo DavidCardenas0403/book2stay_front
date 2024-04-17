@@ -1,5 +1,5 @@
 <template>
-    <!-- <Navbar></Navbar> -->
+    <LangSwitcher />
     <slot></slot>
     <Footer> </Footer>
 </template>

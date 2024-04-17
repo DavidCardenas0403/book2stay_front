@@ -9,6 +9,7 @@ export default defineNuxtConfig({
   ],
   modules: ["nuxt-primevue", "@nuxtjs/i18n"],
   i18n: {
+    strategy: "no_prefix",
     vueI18n: "./i18n.config.ts",
     langDir: "./lang",
     lazy: true,

@@ -3,8 +3,8 @@
     <div class="bg-white dark:bg-gray-900">
         <div class="flex justify-center h-screen">
             <div class="hidden lg:block lg:w-2/3 relative">
-                <img src="../../assets/images/IMG_9050.JPG" alt="background image"
-                    class="absolute inset-0 w-full h-full object-cover">
+                <!-- <img src="../../assets/images/IMG_9050.JPG" alt="background image"
+                    class="absolute inset-0 w-full h-full object-cover"> -->
 
                 <div class="flex items-center h-full px-20 bg-gray-900 bg-opacity-30 relative z-10">
                 </div>

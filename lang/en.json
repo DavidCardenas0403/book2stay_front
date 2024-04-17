@@ -31,6 +31,10 @@
         "noAccount": "Already have an account?"
     },
     "general": {
-        "settings": "Settings"
+        "settings": "Settings",
+
+    },
+    "index": {
+        "yourUltimateRetreatOnTheCostaBrava": "Your Ultimate Retreat on the Costa Brava."
     }
 }
