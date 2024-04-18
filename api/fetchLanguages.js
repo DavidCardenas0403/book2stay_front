@@ -1,16 +1,11 @@
 import axios from "~/api/axios";
 
-export const fetchLanguages = async () => {
-  let response;
-
-  try {
-    response = await axios.get("/languages");
-    if (response.data) {
-      console.log(response.data);
-      return response.data;
+export async function fetchLanguages() {
+    try {
+        const { data } = await axios.get("/languages");
+        return data
+    } catch (e) {
+        console.log(e);
+        return e;
     }
-  } catch (e) {
-    console.log(response);
-    return e;
-  }
 };
