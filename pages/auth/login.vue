@@ -125,7 +125,7 @@
 import { ref } from 'vue'
 import { login } from '~/api/auth/login.js'
 const { locale } = useI18n()
-import nuxtStorage from 'nuxt-storage'
+//import nuxtStorage from 'nuxt-storage'
 const email = ref('')
 const password = ref('')
 
@@ -134,7 +134,8 @@ const handleLogin = async () => {
   try {
     const loggedIn = await login(email.value, password.value)
     if (loggedIn) {
-      nuxtStorage.localStorage.setData('userInfo', JSON.stringify(loggedIn))
+      if (process.client)
+        localStorage.setItem('userInfo', JSON.stringify(loggedIn))
       console.log('SI')
       console.log(loggedIn)
       // Aquí puedes redirigir al usuario a la página de inicio de sesión exitosa
