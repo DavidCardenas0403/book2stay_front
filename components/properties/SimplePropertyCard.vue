@@ -1,7 +1,7 @@
 <template>
-    <div class="hover:scale-105 transition-all duration-300 ease-in-out"
+    <NuxtLink :to="`/properties/${property.id}`" class="hover:scale-105 transition-all duration-300 ease-in-out"
         v-if="property">
-        <div :style="{ backgroundImage: `url(${property.image})` }"
+        <div :style="{ backgroundImage: `url(${property?.Images[0]?.url})` }"
             class="w-full h-64 bg-cover"></div>
         <div class="p-2">
             <p class="text-primary font-bold text-2xl">
@@ -9,7 +9,7 @@
             </p>
             {{ getPropertyText(property)?.name }}
         </div>
-    </div>
+    </NuxtLink>
 </template>
 
 <script setup>

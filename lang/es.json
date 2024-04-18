@@ -15,7 +15,8 @@
         "email": "Correo electrónico",
         "password": "Contraseña",
         "signUp": "Inscribirse",
-        "name": "Nombre"
+        "name": "Nombre",
+        "night": "Noche"
     },
     "login": {
         "loginText": "Acceder a su cuenta",

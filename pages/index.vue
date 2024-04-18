@@ -25,22 +25,34 @@ function findProperties() {
 </script>
 
 <template>
-    <!-- <h1 class="bg-primary">{{ $t("bienvenida.dos") }}</h1> -->
-
-    <!-- hero -->
     <section class="h-screen w-full bg-center bg-cover"
         style="
             background-image: url('https://apartments-country-club-playa-de-pals-con01387-dya-begur.hotelmix.es/data/Photos/OriginalPhoto/11065/1106546/1106546628/Apartments-Country-Club-Playa-De-Pals-Con01387-Dya-Begur-Exterior.JPEG');
         ">
         <div
             class="bg-black bg-opacity-55 h-full w- px-6 pt-4 pb-20 flex flex-col justify-between">
-            <header class="flex gap-3 items-center">
-                <img :src="logo" alt="Logo" class="h-28 md:h-32" />
-                <h1 class="text-white">Country Club Pals</h1>
+            <header
+                class="flex items-center justify-between">
+                <div class="flex gap-3 items-center">
+                    <img :src="logo" alt="Logo"
+                        class="h-28 md:h-32" />
+                    <h1 class="text-white">
+                        <NuxtLink to="/">
+                            Country
+                            Club Pals
+                        </NuxtLink>
+                    </h1>
+                </div>
+
+
+                <LangSwitcher
+                    class="text-white border p-2" />
             </header>
 
             <h2 class="text-white md:w-2/5">
-                {{$t("index.yourUltimateRetreatOnTheCostaBrava")}}
+                {{
+                        $t("index.yourUltimateRetreatOnTheCostaBrava")
+                    }}
             </h2>
 
             <div class="w-full flex justify-center">

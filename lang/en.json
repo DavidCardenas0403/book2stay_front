@@ -15,7 +15,8 @@
         "email": "Email",
         "password": "Password",
         "signUp": "Sign Up",
-        "name": "Name"
+        "name": "Name",
+        "night": "Night"
     },
     "login": {
         "loginText": "Log in to your account",
