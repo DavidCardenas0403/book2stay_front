@@ -32,6 +32,7 @@
         "noAccount": "Ja tens un compte?"
     },
     "general": {
-        "settings": "Ajustaments"
+        "settings": "Ajustaments",
+        "ourProperties" : "Les nostres propietats"
     }
 }

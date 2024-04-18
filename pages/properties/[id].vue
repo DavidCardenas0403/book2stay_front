@@ -1,26 +1,8 @@
 <template>
-    <header class="border-b border-b-primary mb-10">
-        <div
-            class="container flex justify-between items-center">
-            <div class="flex gap-3 items-center">
-                <img :src="logo" alt="Logo"
-                    class="h-28 md:h-32" />
-                <h1 class="text-black">
-                    <NuxtLink to="/">
-                        Country
-                        Club Pals
-                    </NuxtLink>
-                </h1>
 
-            </div>
-
-            <LangSwitcher />
-        </div>
-
-    </header>
     <div v-if="property" class="container">
         <section
-            class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            class="grid grid-cols-1 md:grid-cols-2 gap-4" @click="toggleImagesGallery">
             <img :src="property?.Images[0]?.url"
                 class="h-full w-full">
             <div
@@ -30,7 +12,7 @@
 
                 <div class="h-full w-full cursor-pointer"
                     :style="{ backgroundImage: `url(${property?.Images[0]?.url})` }"
-                    @click="toggleImagesGallery">
+                    >
                     <div
                         class="w-full h-full bg-black bg-opacity-70 flex flex-col gap-3 justify-center items-center text-white text-xl">
                         <i
@@ -75,9 +57,6 @@ import { fetchProperty } from "../../api/fetchProperties"
 import { getPropertyText } from "../../helpers/lang"
 
 import ImagesGallery from "~/components/properties/ImagesGallery.vue";
-
-import logo from "../assets/images/country-club.svg";
-import LangSwitcher from "~/components/LangSwitcher.vue";
 
 const property = ref(null)
 const imagesGalleryShown = ref(false)

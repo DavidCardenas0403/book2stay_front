@@ -39,7 +39,8 @@
         "french": "francés"
     },
     "general": {
-        "settings": "ajustes"
+        "settings": "ajustes",
+        "ourProperties" : "Nuestras propiedades"
     },
     "index": {
         "yourUltimateRetreatOnTheCostaBrava": "Tu último retiro en la Costa Brava."

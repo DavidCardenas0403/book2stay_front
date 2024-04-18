@@ -51,7 +51,7 @@ const responsiveOptions = ref([
         ">
         <!-- hero -->
         <div
-            class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-60 flex flex-col justify-between px-6 pt-4 pb-20">
+            class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-60 flex flex-col justify-between px-6 pb-20">
             <header
                 class="flex items-center justify-between">
                 <div class="flex gap-3 items-center">
@@ -66,8 +66,12 @@ const responsiveOptions = ref([
                 </div>
 
 
-                <LangSwitcher
+                <div class="flex gap-3 items-center">
+                    <NuxtLink to="/properties" class="text-white">Discover properties</NuxtLink>
+                    <LangSwitcher
                     class="text-white border p-2" />
+                </div>
+   
             </header>
 
 
