@@ -6,6 +6,9 @@ import logo from "../assets/images/country-club.svg";
 
 import { fetchFeaturedProperties } from "../api/fetchProperties";
 import SimplePropertyCard from "~/components/properties/SimplePropertyCard.vue";
+import searchBar from "~/components/SearchBar.vue";
+import { ref, onMounted } from "vue";
+import { PhotoService } from '@/services/PhotoService';
 
 const { locale } = useI18n();
 
@@ -13,6 +16,7 @@ const properties = ref([]);
 
 onMounted(async () => {
     properties.value = await fetchFeaturedProperties();
+    PhotoService.getImages().then((data) => (images.value = data));
 });
 
 //OLD
@@ -21,16 +25,33 @@ const guests = ref();
 
 function findProperties() {
     console.log("searching");
+
 }
+
+const images = ref();
+const responsiveOptions = ref([
+    {
+        breakpoint: '1300px',
+        numVisible: 4
+    },
+    {
+        breakpoint: '575px',
+        numVisible: 1
+    }
+]);
 </script>
+
+
+
 
 <template>
     <section class="h-screen w-full bg-center bg-cover"
         style="
             background-image: url('https://apartments-country-club-playa-de-pals-con01387-dya-begur.hotelmix.es/data/Photos/OriginalPhoto/11065/1106546/1106546628/Apartments-Country-Club-Playa-De-Pals-Con01387-Dya-Begur-Exterior.JPEG');
         ">
+        <!-- hero -->
         <div
-            class="bg-black bg-opacity-55 h-full w- px-6 pt-4 pb-20 flex flex-col justify-between">
+            class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-60 flex flex-col justify-between px-6 pt-4 pb-20">
             <header
                 class="flex items-center justify-between">
                 <div class="flex gap-3 items-center">
@@ -49,6 +70,7 @@ function findProperties() {
                     class="text-white border p-2" />
             </header>
 
+
             <h2 class="text-white md:w-2/5">
                 {{
                         $t("index.yourUltimateRetreatOnTheCostaBrava")
@@ -56,34 +78,12 @@ function findProperties() {
             </h2>
 
             <div class="w-full flex justify-center">
-                <form
-                    class="md:w-1/2 form gap-3 bg-gray-50 p-3 rounded-lg mt-6">
-                    <InputGroup>
-                        <InputGroupAddon>
-                            <i class="pi pi-calendar"></i>
-                        </InputGroupAddon>
-                        <Calendar v-model="dates"
-                            selectionMode="range"
-                            :manualInput="false"
-                            format="dd/mm/yyyy"
-                            placeholder="From - To"
-                            class="w-full" />
-                    </InputGroup>
-
-                    <InputGroup>
-                        <InputGroupAddon>
-                            <i class="pi pi-users"></i>
-                        </InputGroupAddon>
-                        <InputNumber v-model="guests"
-                            placeholder="Guests" />
-                    </InputGroup>
-
-                    <Button label="Buscar"
-                        @click="findProperties" />
-                </form>
+                <searchBar />
             </div>
         </div>
     </section>
+
+
 
     <!-- FEATURED APARTMENTS -->
     <section class="container mt-16">
