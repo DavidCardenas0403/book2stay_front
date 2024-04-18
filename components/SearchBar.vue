@@ -9,7 +9,7 @@
             </InputGroupAddon>
             <FloatLabel>
               <Calendar v-model="checkin" class="custom-calendar" />
-              <label class="text-neutral-400" for="checkout">Check In</label>
+              <label class="text-neutral-400" for="checkin">Check In</label>
             </FloatLabel>
           </InputGroup>
         </div>

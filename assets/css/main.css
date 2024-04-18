@@ -50,3 +50,8 @@ h3 {
 .p-skeleton {
     border-radius: 0 !important;
 }
+
+.p-component * {
+    font-family: "Ledger", serif;
+    border-color: red;
+}
