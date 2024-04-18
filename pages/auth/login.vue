@@ -149,4 +149,3 @@ const handleLogin = async () => {
   }
 }
 </script>
-~/middleware/auth.global
