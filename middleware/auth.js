@@ -1,5 +1,4 @@
 import { getUser } from '~/api/auth/getUser'
-import nuxtStorage from 'nuxt-storage'
 export default defineNuxtRouteMiddleware(async (to, from) => {
   console.log(from.path)
   if (process.client) {
@@ -15,17 +14,17 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
         return
       } else {
         console.log('NO LOGUEADO')
-        if (to.path === '/auth/login') {
+        /* if (to.path === '/auth/login') {
           return
-        }
+        } */
         return navigateTo('/auth/login')
       }
       //return navigateTo('/auth/login')
     } else {
-      if (to.path === '/auth/login') {
+      /* if (to.path === '/auth/login') {
         console.log('else')
         return
-      }
+      } */
       return navigateTo('/auth/login')
     }
   }
