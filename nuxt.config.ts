@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: [
     '~/assets/css/main.css',
-    'primevue/resources/themes/aura-light-blue/theme.css',
+    'primevue/resources/themes/lara-light-blue/theme.css',
     '@fortawesome/fontawesome-svg-core/styles.css',
     'primeicons/primeicons.css',
   ],

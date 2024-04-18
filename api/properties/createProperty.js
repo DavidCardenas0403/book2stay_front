@@ -1,16 +1,11 @@
 import axios from "~/api/axios";
 
 export const createProperty = async (propertyData) => {
-  let response;
-
-  try {
-    response = await axios.post("/properties", propertyData);
-    if (response.data) {
-      console.log(response.data);
-      return response.data;
+    try {
+        const { data } = await axios.post("/properties", propertyData);
+        return data
+    } catch (e) {
+        console.log(response);
+        return e;
     }
-  } catch (e) {
-    console.log(response);
-    return e;
-  }
 };

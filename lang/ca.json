@@ -15,7 +15,8 @@
         "email": "Correu electrònic",
         "password": "Contrasenya",
         "signUp": "Inscriure's",
-        "name": "Nom"
+        "name": "Nom",
+        "night": "Nit"
     },
     "login": {
         "loginText": "Accedir al teu compte",
