@@ -95,6 +95,9 @@
 </template>
 
 <script setup>
+definePageMeta({
+  title: 'Login'
+})
 import { ref } from 'vue';
 import { checkLogin } from '../../services/checkLogin.js'
 const { locale } = useI18n();
