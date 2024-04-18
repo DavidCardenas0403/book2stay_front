@@ -138,6 +138,7 @@ const handleLogin = async () => {
         localStorage.setItem('userInfo', JSON.stringify(loggedIn))
       console.log('SI')
       console.log(loggedIn)
+      navigateTo('/admin')
       // Aquí puedes redirigir al usuario a la página de inicio de sesión exitosa
     } else {
       console.log('NO')
