@@ -38,25 +38,43 @@
           <Editor
             itemid="description"
             id="description"
+            class="break-all"
             v-model="data.description[lang.code]"
-            editorStyle="height: 320px"
+            editorStyle="height: 200px; width: 100%;"
           >
             <template v-slot:toolbar>
               <span class="ql-formats">
-                <button v-tooltip.bottom="'Bold'" class="ql-bold"></button>
-                <button v-tooltip.bottom="'Italic'" class="ql-italic"></button>
-                <button
-                  v-tooltip.bottom="'Underline'"
-                  class="ql-underline"
-                ></button>
-                <button v-tooltip.bottom="'Header'" class="ql-list"></button>
-                <button v-tooltip.bottom="'Link'" class="ql-link"></button>
+                <button class="ql-bold"></button>
+                <button class="ql-italic"></button>
+                <button class="ql-underline"></button>
+                <button class="ql-link"></button>
+              </span>
+              <span class="ql-formats">
+                <button class="ql-list" value="ordered"></button>
+                <button class="ql-list" value="bullet"></button>
+              </span>
+
+              <span class="ql-formats">
+                <select class="ql-size">
+                  <option value="small"></option>
+                  <!-- Note a missing, thus falsy value, is used to reset to default -->
+                  <option selected></option>
+                  <option value="large"></option>
+                  <option value="huge"></option>
+                </select>
+              </span>
+
+              <span class="ql-formats">
+                <select class="ql-color"></select>
+                <select class="ql-background"></select>
               </span>
             </template>
           </Editor>
         </div>
       </TabPanel>
     </TabView>
+
+    <FileUploader></FileUploader>
     <div class="ps-5 gap-6 grid justify-end grid-cols-1 lg:grid-cols-2">
       <div>
         <Label for="rooms" class="label" required="true">Rooms</Label>
@@ -192,8 +210,8 @@
         <InputSwitch id="terrace" v-model="data.terrace" />
       </div>
     </div>
-
     <Button
+      class="w-full mt-6"
       type="submit"
       label="Create"
       @click.prevent="createProperty(data)"
@@ -202,24 +220,25 @@
 </template>
 
 <script setup>
-import { reactive } from "vue";
-import Editor from "primevue/editor";
-import { fetchLanguages } from "~/api/fetchLanguages.js";
-import { createProperty } from "../../../api/properties/createProperty.js";
+import { reactive } from 'vue'
+import Editor from 'primevue/editor'
+import { fetchLanguages } from '~/api/fetchLanguages.js'
+import { createProperty } from '../../../api/properties/createProperty.js'
+import FileUploader from '../../components/properties/FileUploader.vue'
 
-const loading = ref(true);
-const languages = ref({});
+const loading = ref(true)
+const languages = ref({})
 
 onMounted(async () => {
-  languages.value = await fetchLanguages();
-  loading.value = false;
-});
+  languages.value = await fetchLanguages()
+  loading.value = false
+})
 
 definePageMeta({
-  layout: "admin",
-});
+  layout: 'admin',
+})
 
-const active = ref(0);
+const active = ref(0)
 
 const data = reactive({
   name: {},
@@ -234,7 +253,7 @@ const data = reactive({
   wifi: false,
   swimming_pool: false,
   terrace: false,
-});
+})
 </script>
 
 <style scoped>
