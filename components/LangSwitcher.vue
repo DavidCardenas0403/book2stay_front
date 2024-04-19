@@ -14,7 +14,7 @@
             <template #item="{ item, props }">
                 <button @click="locale = item.code"
                     v-if="item.code != locale"
-                    class="flex gap-2 items-center mb-2">
+                    class="flex gap-2 items-center mb-2 w-full">
                     <img :src="`https://flagicons.lipis.dev/flags/1x1/${item.flag}.svg`"
                         :alt="item.name" class="h-6 w-6">
                     {{ item.name }}
