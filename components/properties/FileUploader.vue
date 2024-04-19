@@ -1,7 +1,7 @@
 <template class="ps-5">
   <FileUpload
     customUpload
-    @uploader="uploadFiles"
+    @uploader="handleUpload"
     :multiple="true"
     accept="image/*"
     :maxFileSize="1000000"
@@ -10,23 +10,23 @@
       <p>Drag and drop files to here to upload.</p>
     </template>
   </FileUpload>
+
+  <div v-if="images.length > 0">
+    <Label class="label">Uploaded images</Label>
+    <img v-for="image in images" :src="`${BACKEND_URL}${image.url}`" />
+  </div>
 </template>
 
 <script setup>
 import axios from '~/api/axios'
-const uploadFiles = async (event) => {
-  const formData = new FormData()
+import { BACKEND_URL } from '~/CONSTS'
+import { uploadFiles } from '~/api/properties/uploadFiles.js'
 
-  for (const file of event.files) {
-    formData.append('images', file)
-  }
+const images = ref([])
+const emits = defineEmits(['uploadImages'])
 
-  try {
-    const { data } = await axios.post('/images', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    })
-  } catch (error) {}
+const handleUpload = async (event) => {
+  images.value.push(...(await uploadFiles(event)))
+  emits('uploadImages', images.value)
 }
 </script>

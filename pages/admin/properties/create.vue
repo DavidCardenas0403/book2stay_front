@@ -74,7 +74,9 @@
       </TabPanel>
     </TabView>
 
-    <FileUploader></FileUploader>
+    <FileUploader
+      @uploadImages="(newImages) => data.images.push(...newImages)"
+    ></FileUploader>
     <div class="ps-5 gap-6 grid justify-end grid-cols-1 lg:grid-cols-2">
       <div>
         <Label for="rooms" class="label" required="true">Rooms</Label>
@@ -253,6 +255,7 @@ const data = reactive({
   wifi: false,
   swimming_pool: false,
   terrace: false,
+  images: [],
 })
 </script>
 
