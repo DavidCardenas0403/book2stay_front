@@ -4,7 +4,7 @@
       v-if="sidebar"
       class="bg-gray-900 text-gray-50 shadow-md md:w-96 md:min-h-screen flex flex-col gap-6 p-8"
     >
-      <h2 class="font-bold text-xl text-center">Admin</h2>
+      <h3 class="font-bold text-xl text-center">Admin</h3>
       <section>
         <NuxtLink :to="localePath('/admin/properties')">
           <font-awesome-icon icon="fa-solid fa-house" />
@@ -50,26 +50,26 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-const sidebar = ref(true);
-const menu = ref();
+import { ref } from 'vue'
+const sidebar = ref(true)
+const menu = ref()
 
 const toggleMenu = (event) => {
-  menu.value.toggle(event);
-};
+  menu.value.toggle(event)
+}
 
 const items = ref([
   {
-    label: "Logout",
-    icon: "fa-solid fa-right-from-bracket",
+    label: 'Logout',
+    icon: 'fa-solid fa-right-from-bracket',
     command: () => {
-      console.log("logout");
+      console.log('logout')
     },
   },
-]);
+])
 
-const lightMode = ref(false);
+const lightMode = ref(false)
 function switchTheme() {
-  document.documentElement.classList.toggle("dark");
+  document.documentElement.classList.toggle('dark')
 }
 </script>

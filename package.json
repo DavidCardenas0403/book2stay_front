@@ -19,6 +19,7 @@
     "flowbite": "^2.3.0",
     "libphonenumber-js": "^1.10.59",
     "nuxt": "^3.11.0",
+    "nuxt-storage": "^1.2.2",
     "primeicons": "^6.0.1",
     "primevue": "^3.50.0",
     "quill": "^2.0.0",
