@@ -1,24 +1,6 @@
 <template>
-    <header class="border-b border-b-primary mb-10">
-        <div
-            class="container flex justify-between items-center">
-            <div class="flex gap-3 items-center">
-                <img :src="logo" alt="Logo"
-                    class="h-28 md:h-32" />
-                <h1 class="text-black">
-                    <NuxtLink to="/">
-                        Country
-                        Club Pals
-                    </NuxtLink>
-                </h1>
-
-            </div>
-
-            <LangSwitcher />
-        </div>
-
-    </header>
-    <div v-if="property" class="container">
+    <Header :isFixed="false" :isScrolled="true"/>
+        <div v-if="property" class="container">
         <section
             class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <img :src="property?.Images[0]?.url"
@@ -70,6 +52,7 @@
 </template>
 
 <script setup>
+import Header from "~/components/Header.vue";
 import { onMounted } from "vue";
 import { fetchProperty } from "../../api/fetchProperties"
 import { getPropertyText } from "../../helpers/lang"
