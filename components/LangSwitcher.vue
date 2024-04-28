@@ -1,5 +1,5 @@
 <template>
-    <div v-if="languages">
+    <div v-if="languages" >
         <button @click="toggleDropdown"
             class="flex gap-2 items-center">
             <img :src="`https://flagicons.lipis.dev/flags/1x1/${getSelectedLang()?.flag}.svg`"
@@ -9,7 +9,7 @@
 
         </button>
 
-        <Menu ref="dropdown" :model="languages"
+        <Menu ref="dropdown"  class="rounded-none" :model="languages"
             :popup="true">
             <template #item="{ item, props }">
                 <button @click="locale = item.code"
