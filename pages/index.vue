@@ -1,50 +1,3 @@
-<script setup lang="ts">
-definePageMeta({
-    layout: "landing",
-});
-
-import { fetchFeaturedProperties } from "../api/fetchProperties";
-import SimplePropertyCard from "~/components/properties/SimplePropertyCard.vue";
-import searchBar from "~/components/SearchBar.vue";
-import { ref, onMounted } from "vue";
-import { PhotoService } from '@/services/PhotoService';
-
-import Header from '~/components/Header.vue'
-
-const { locale } = useI18n();
-
-const properties = ref([]);
-
-onMounted(async () => {
-    properties.value = await fetchFeaturedProperties();
-    PhotoService.getImages().then((data) => (images.value = data));
-});
-
-//OLD
-const dates = ref();
-const guests = ref();
-
-function findProperties() {
-    console.log("searching");
-
-}
-
-const images = ref();
-const responsiveOptions = ref([
-    {
-        breakpoint: '1300px',
-        numVisible: 4
-    },
-    {
-        breakpoint: '575px',
-        numVisible: 1
-    }
-]);
-</script>
-
-
-
-
 <template>
     <div>
         <!-- header copmponent -->
@@ -63,7 +16,7 @@ const responsiveOptions = ref([
                 </h2>
 
                 <div class="flex justify-center">
-                    <searchBar />
+                    <searchBar @search="handleSearch" />
                 </div>
             </div>
         </section>
@@ -176,3 +129,49 @@ const responsiveOptions = ref([
     color: rgb(94, 94, 94);
 }
 </style>
+
+<script setup >
+definePageMeta({
+    layout: "landing",
+});
+
+import { fetchFeaturedProperties } from "../api/fetchProperties";
+import SimplePropertyCard from "~/components/properties/SimplePropertyCard.vue";
+import searchBar from "~/components/SearchBar.vue";
+import { ref, onMounted } from "vue";
+import { PhotoService } from '@/services/PhotoService';
+
+import Header from '~/components/Header.vue'
+
+const { locale } = useI18n();
+
+const properties = ref([]);
+
+onMounted(async () => {
+    properties.value = await fetchFeaturedProperties();
+    PhotoService.getImages().then((data) => (images.value = data));
+});
+
+
+function findProperties() {
+    console.log("searching");
+
+}
+
+const images = ref();
+const responsiveOptions = ref([
+    {
+        breakpoint: '1300px',
+        numVisible: 4
+    },
+    {
+        breakpoint: '575px',
+        numVisible: 1
+    }
+]);
+
+function handleSearch(searchData){
+    console.log('Data of search: ', searchData);
+    
+}
+</script>
