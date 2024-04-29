@@ -8,7 +8,7 @@
               <i class="pi pi-calendar"></i>
             </InputGroupAddon>
             <FloatLabel>
-              <Calendar v-model="checkin" class="custom-calendar" />
+              <Calendar v-model="checkin"  dateFormat="dd/mm/yy" class="custom-calendar" />
               <label class="text-neutral-400" for="checkin">Check In</label>
             </FloatLabel>
           </InputGroup>
@@ -20,7 +20,7 @@
               <i class="pi pi-calendar"></i>
             </InputGroupAddon>
             <FloatLabel>
-              <Calendar v-model="checkout" class="custom-calendar" />
+              <Calendar v-model="checkout" selectionMode="range" dateFormat="dd/mm/yy" class="custom-calendar" />
               <label class="text-neutral-400" for="checkout">Check Out</label>
             </FloatLabel>
           </InputGroup>
@@ -51,7 +51,7 @@
         </div>
 
         <div>
-          <Button type="button" label="Search" icon="pi pi-search" class="bg-primary-normal" :loading="loading" @click="load" />
+          <Button type="button"  label="Search" icon="pi pi-search" class="bg-primary-normal" :loading="loading" @click="load" />
         </div>
       </div>
     </div>
@@ -59,18 +59,29 @@
 
 
 <script setup>
-import { ref } from 'vue';
+import { ref, defineEmits } from 'vue';
+
+const emit = defineEmits(['search']);
 
 const checkin = ref('');
 const checkout = ref('');
 const adults = ref();
 const children = ref();
 
+const formatDate = (dateString) => {
+  const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+  return new Date(dateString).toLocaleDateString('es-ES', options);
+};
+
+watch(checkin, (newVal) => {
+      checkout.value = [newVal, checkout.value[1]];
+    });
+
+
 const search = () => {
-  // Aquí puedes emitir un evento con los datos de búsqueda para que el componente padre los maneje
   const searchData = {
-    checkin: checkin.value,
-    checkout: checkout.value,
+    checkin: formatDate(checkin.value),
+    checkout: formatDate(checkout.value[1]),
     adults: adults.value,
     children: children.value
   };
@@ -84,6 +95,7 @@ const load = () => {
     setTimeout(() => {
         loading.value = false;
     }, 2000);
+    search();
 };
 </script>
 
@@ -94,8 +106,6 @@ const load = () => {
 
   
 }
-
-
 
 .p-inputtext,
 .p-inputgroup-addon {

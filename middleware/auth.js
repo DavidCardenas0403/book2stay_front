@@ -1,4 +1,9 @@
 import { getUser } from '~/api/auth/getUser'
+import { ref } from 'vue'
+
+const showLoginModalRef = ref(false);
+
+
 export default defineNuxtRouteMiddleware(async (to, from) => {
   console.log(from.path)
   if (process.client) {
@@ -17,7 +22,9 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
         /* if (to.path === '/auth/login') {
           return
         } */
-        return navigateTo('/auth/login')
+        showLoginModalRef.value = true;
+        return navigateTo('/');
+        // return navigateTo('/auth/login')
       }
       //return navigateTo('/auth/login')
     } else {
@@ -25,7 +32,9 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
         console.log('else')
         return
       } */
-      return navigateTo('/auth/login')
+      showLoginModalRef.value = true;
+      return navigateTo('/');
+      // return navigateTo('/auth/login')
     }
   }
 
@@ -39,3 +48,12 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     return navigateTo('/auth/login')
   } */
 })
+
+export function showLoginModal() {
+  showLoginModalRef.value = true;
+}
+
+// Función para cerrar el modal de inicio de sesión
+export function closeLoginModal() {
+  showLoginModalRef.value = false;
+}
