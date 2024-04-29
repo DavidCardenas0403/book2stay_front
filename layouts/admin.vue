@@ -19,7 +19,7 @@
         </button>
         <div class="flex gap-2">
           <button @click="toggleMenu">
-            Hola Dani <font-awesome-icon icon="fa-solid fa-angle-down" />
+            Hello Dani <font-awesome-icon icon="fa-solid fa-angle-down" />
           </button>
 
           <ToggleButton
