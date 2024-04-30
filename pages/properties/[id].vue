@@ -100,15 +100,7 @@
         />
       </div>
     </section>
-    <Dialog
-      header="Your book"
-      v-model:visible="modalData.visible"
-      modal
-      position="center"
-      :style="{ width: '80%', height: '80%' }"
-    >
-      Hola
-    </Dialog>
+
   </div>
 
   <ImagesGallery
@@ -116,6 +108,8 @@
     :toggle="toggleImagesGallery"
     :images="property?.Images"
   />
+
+  <BookDialog :visible="modalData.visible" :data="data" :property="property" />
 </template>
 
 <script setup>
@@ -124,6 +118,7 @@ import { fetchProperty } from '../../api/fetchProperties'
 import { getPropertyText } from '../../helpers/lang'
 
 import ImagesGallery from '~/components/properties/ImagesGallery.vue'
+import BookDialog from "~/components/bookings/BookDialog.vue"
 
 import logo from '../assets/images/country-club.svg'
 import LangSwitcher from '~/components/LangSwitcher.vue'

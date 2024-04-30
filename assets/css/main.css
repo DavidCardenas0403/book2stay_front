@@ -11,6 +11,10 @@
     @tailwind utilities;
 }
 
+:root {
+    --primary-color: #293D9B !important;
+}
+
 body {
     font-family: "Ledger", serif;
     font-weight: 400;
