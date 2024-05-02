@@ -16,7 +16,27 @@
         "password": "Contraseña",
         "signUp": "Inscribirse",
         "name": "Nombre",
-        "night": "Noche"
+        "night": "Noches",
+        "adults": "Adultos",
+        "children": "Niños"
+    },
+    "booking": {
+        "yourBook": "Tu reserva",
+        "name": "Nombre",
+        "phone": "Teléfono",
+        "email": "Email",
+        "discountCode": "Código de descuento",
+        "validate": "Validar",
+        "next": "Siguiente",
+        "previous": "Anterior",
+        "contact": "Contacto",
+        "payment": "Pago",
+        "summary": "Resumen",
+        "cardholdresName": "Titular de la tarjeta",
+        "cardNumber": "Número de tarjeta",
+        "expiration": "Caducidad",
+        "confirm": "Confirmar",
+        "total": "Total"
     },
     "login": {
         "loginText": "Acceder a su cuenta",

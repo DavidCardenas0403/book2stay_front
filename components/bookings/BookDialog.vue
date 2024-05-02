@@ -1,17 +1,14 @@
-<template>
+<template v-if="!loading">
   <Dialog
     header="Your book"
     :visible="visible"
     modal
     position="center"
-    :style="{ width: '80%', height: '80%' }"
+    class="w-2/3"
   >
-    <div>
-      {{ data }}
-    </div>
-    <div class="grid grid-cols-2">
+    <div class="grid lg:grid-cols-2 gap-x-20">
       <Stepper linear>
-        <StepperPanel header="Personal information">
+        <StepperPanel header="Contact">
           <template #content="{ nextCallback }">
             <form class="col-span-1" @submit.prevent="submitBooking">
               <div class="p-fluid flex flex-col gap-4">
@@ -37,7 +34,7 @@
                   <Button
                     class="mt-4 bg-primary-normal"
                     :disabled="formData.discount_code === '' ? true : false"
-                    label="validate"
+                    label="Validate"
                     @click="validateDiscountCode(formData.discount_code)"
                   />
                   <div v-if="discountData.code" class="text-green-500 my-2">
@@ -105,16 +102,48 @@
         </StepperPanel>
       </Stepper>
 
-      <div></div>
+      <div>
+        <img
+          class="h-1/2 w-full object-cover pt-2"
+          :src="`${BACKEND_URL}${property.Images[0].url}`"
+          alt=""
+        />
+        <div class="grid grid-cols-4 mt-3">
+          <div class="col-span-3 flex flex-col gap-3">
+            <h3>
+              {{ getPropertyText(property).name }}
+            </h3>
+            <p>{{ formatSimpleDate(data.dates[0], 'D MMMM') }}</p>
+            <p>{{ `${data.adults} adults - ${data.children} children` }}</p>
+          </div>
+          <span class="justify-self-end pr-3 content-end">1200€</span>
+        </div>
+      </div>
     </div>
   </Dialog>
 </template>
 
 <script setup>
+const { locale } = useI18n()
+import 'dayjs'
 import { ref } from 'vue'
 import axios from '../../api/axios'
+import { BACKEND_URL } from '~/CONSTS'
+import { getPropertyText } from '~/helpers/lang'
+import dayjs from 'dayjs'
+import { formatSimpleDate } from '~/helpers/dates'
 
-const { visible, data, property } = defineProps(['visible', 'data', 'property'])
+const { visible, data, property } = defineProps([
+  'visible',
+  'data',
+  'property',
+  'loading',
+])
+/* console.log(
+  property.PropertyTexts.filter((text) => text.languageCode == locale?.value)[0]
+    .name
+) */
+//console.log(property)
 
 const formData = ref({
   name: '',

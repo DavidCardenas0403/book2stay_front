@@ -1,5 +1,5 @@
-<template>
-  <div v-if="property" class="container">
+<template v-if="!loading">
+  <div v-if="!loading" class="container">
     <section class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <img
         :src="`${BACKEND_URL}${property?.Images[0].url}`"
@@ -100,7 +100,6 @@
         />
       </div>
     </section>
-
   </div>
 
   <ImagesGallery
@@ -109,7 +108,13 @@
     :images="property?.Images"
   />
 
-  <BookDialog :visible="modalData.visible" :data="data" :property="property" />
+  <BookDialog
+    v-if="!loading"
+    :visible="modalData.visible"
+    :data="data"
+    :property="property"
+    :loading="loading"
+  />
 </template>
 
 <script setup>
@@ -118,11 +123,15 @@ import { fetchProperty } from '../../api/fetchProperties'
 import { getPropertyText } from '../../helpers/lang'
 
 import ImagesGallery from '~/components/properties/ImagesGallery.vue'
-import BookDialog from "~/components/bookings/BookDialog.vue"
+import BookDialog from '~/components/bookings/BookDialog.vue'
 
 import logo from '../assets/images/country-club.svg'
 import LangSwitcher from '~/components/LangSwitcher.vue'
 import { BACKEND_URL } from '~/CONSTS'
+
+const { locale } = useI18n()
+
+const loading = ref(true)
 
 const data = reactive({
   dates: '',
@@ -136,6 +145,7 @@ const modalData = reactive({
 })
 
 const property = ref(null)
+const texts = ref(null)
 const imagesGalleryShown = ref(false)
 function toggleImagesGallery() {
   imagesGalleryShown.value = !imagesGalleryShown.value
@@ -143,5 +153,6 @@ function toggleImagesGallery() {
 
 onMounted(async () => {
   property.value = await fetchProperty(useRoute().params?.id)
+  loading.value = false
 })
 </script>
