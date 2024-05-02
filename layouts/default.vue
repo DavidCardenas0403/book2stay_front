@@ -1,5 +1,5 @@
 <template>
-    <header class="border-b border-b-primary mb-10">
+    <!-- <header class="border-b border-b-primary mb-10">
         <div
             class="container flex justify-between items-center">
             <div class="flex gap-3 items-center">
@@ -17,7 +17,8 @@
             <LangSwitcher />
         </div>
 
-    </header>
+    </header> -->
+
 
     <main class="container">
         <slot></slot>

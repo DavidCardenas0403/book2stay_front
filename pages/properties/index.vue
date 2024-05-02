@@ -1,5 +1,10 @@
 <template>
+    <Header :isFixed="false"></Header>
+
     <h3 class="text-center mb-8">{{ $t("general.ourProperties") }}</h3>
+
+    <FilterBar></FilterBar>
+
     <div v-if="properties.length > 0"
         class="grid grid-cols-1 md:grid-cols-4 gap-6">
         <SimplePropertyCard v-for="property in properties"

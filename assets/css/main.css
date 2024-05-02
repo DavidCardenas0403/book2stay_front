@@ -11,6 +11,10 @@
     @tailwind utilities;
 }
 
+:root{
+    --primary-color: #293D9B !important
+}
+
 body {
     font-family: "Ledger", serif;
     font-weight: 400;
@@ -54,4 +58,11 @@ h3 {
 .p-component * {
     font-family: "Ledger", serif;
     
+}
+
+.p-button, .p-component{
+        border-radius: 0;
+ }
+.p-button, .p-highlight{
+    box-shadow: none;
 }

@@ -28,7 +28,7 @@
 
     <!-- Menú principal -->
     <div class="hidden md:flex items-center">
-      <a href="/apartments">
+      <a href="/properties">
         <h1 :class="{
           'text-black': isScrolled || isFixed,
           'text-white': !isScrolled && isFixed
