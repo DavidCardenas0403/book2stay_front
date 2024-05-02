@@ -22,15 +22,15 @@
             <div class="mt-2">
 
               <FloatLabel class="mt-2">
-                <InputText type="email" v-model="email"
-                  class=" text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                <InputText type="email" v-model="email" 
+                  class=" text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-none dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                 <label for="email">{{ $t('variables.email') }}</label>
               </FloatLabel>
             </div>
             <div class="mt-2">
               <FloatLabel>
                 <InputText type="password" v-model="password"
-                  class=" placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                  class=" placeholder-gray-400 bg-white border border-gray-200 rounded-none dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                 <label for="email">{{ $t('variables.password') }}</label>
               </FloatLabel>
               <a href="#"
@@ -41,7 +41,7 @@
 
             <div class="mt-2">
               <Button type="submit" :label="$t('login.login')"
-                class=" bg-primary-normal hover:bg-primary-hover focus:bg-primary-focus" />
+                class=" bg-primary-normal hover:bg-primary-hover rounded-none border-primary-normal" />
             </div>
 
 
