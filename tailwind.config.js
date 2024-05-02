@@ -13,12 +13,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // primary: "#293D9B",
-        primary:{
-          normal: "#293D9B",
-          hover: "#697797",
-          focus: "#2563eb"
-        }
+        primary: "#293D9B",
+        "primary-normal" : "#293D9B",
+        "primary-hover" : "#697797",
+        "primary-focus" : "#2563eb",
       },
     },
   },
