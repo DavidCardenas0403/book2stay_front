@@ -63,7 +63,11 @@ const items = ref([
     label: 'Logout',
     icon: 'fa-solid fa-right-from-bracket',
     command: () => {
-      console.log('logout')
+      if (process.client) {
+        localStorage.removeItem('userInfo')
+        console.log('logout')
+        navigateTo('/')
+      }
     },
   },
 ])

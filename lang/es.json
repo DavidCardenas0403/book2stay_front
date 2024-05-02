@@ -43,7 +43,8 @@
         "forgotPassword": "Has olvidado tu contraseña?",
         "login": "Acceder",
         "oauth": "Inicia sesion con Google",
-        "noAccount": "¿Aún no tienes una cuenta?"
+        "noAccount": "¿Aún no tienes una cuenta?",
+        "error": "Error al iniciar sesión"
     },
     "signup": {
         "create": "Crear cuenta",
