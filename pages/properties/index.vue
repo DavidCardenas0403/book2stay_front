@@ -1,6 +1,5 @@
 <template>
     <div>
-        <Header :isFixed="false"></Header>
 
         <h3 class="text-center mb-8">{{ $t("general.ourProperties") }}</h3>
 
