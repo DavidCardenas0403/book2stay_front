@@ -1,11 +1,11 @@
 <template>
-  <div className="mx-auto mt-8 loader"></div>
+  <div className="mx-auto my-8 loader"></div>
 </template>
 
 <style scoped>
 /* HTML: <div class="loader"></div> */
 .loader {
-  width: 50px;
+  width: 35px;
   aspect-ratio: 1;
   border-radius: 50%;
   border: 8px solid #000;

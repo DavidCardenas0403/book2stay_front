@@ -35,14 +35,17 @@
             </form>
           </template>
         </StepperPanel>
+
         <StepperPanel header="Payment">
           <template #content="{ prevCallback, nextCallback }">
             <form class="col-span-1" @submit.prevent="submitBooking">
               <div class="p-fluid flex flex-col gap-4">
                 <div>
-                  <div class="flex gap-2 items-end">
-                    <div class="p-field w-full">
-                      <label for="discount_code">Discount Code</label>
+                  <div class="grid grid-cols-4 gap-2 items-end">
+                    <div class="p-field w-full col-span-3">
+                      <label for="discount_code">{{
+                        $t('booking.discountCode')
+                      }}</label>
                       <InputText
                         v-model="formData.discount_code"
                         id="discount_code"
@@ -50,9 +53,9 @@
                     </div>
 
                     <Button
-                      class="bg-primary-normal w-1/5"
+                      class="bg-primary-normal"
                       :disabled="formData.discount_code === '' ? true : false"
-                      label="Apply"
+                      :label="$t('booking.apply')"
                       @click="validateDiscountCode(formData.discount_code)"
                     />
                   </div>
@@ -75,18 +78,33 @@
               />
               <Button
                 class="bg-primary-normal my-4"
-                @click="nextCallback"
-                label="Next"
-                icon="pi pi-arrow-right"
+                @click="
+                  () => {
+                    nextCallback()
+                    pay()
+                  }
+                "
+                label="Pay"
+                icon="pi pi-dollar"
                 iconPos="right"
               ></Button>
             </div>
           </template>
         </StepperPanel>
+
         <StepperPanel header="Summary">
           <template #content="{ prevCallback }">
             <div class="flex flex-column h-12rem">
-              <div class="">Resumen</div>
+              <div v-if="loadingPayment" class="w-full">
+                <Spinner></Spinner>
+                <p class="text-center">{{ $t('booking.wait') }}</p>
+              </div>
+              <div v-else-if="paymentError" class="w-full">
+                <p class="text-center">{{ $t('booking.paymentError') }}</p>
+              </div>
+              <div v-else-if="payedBooking" class="w-full">
+                <p class="text-center">{{ $t('booking.successPayment') }}</p>
+              </div>
             </div>
             <div class="flex gap-2 pt-4 justify-content-between items-center">
               <Button
@@ -118,9 +136,9 @@
             </h3>
             <p>
               {{
-                formatSimpleDate(data.dates[0], "D MMMM") +
-                " - " +
-                formatSimpleDate(data.dates[1], "D MMMM")
+                formatSimpleDate(data.dates[0], 'D MMMM') +
+                ' - ' +
+                formatSimpleDate(data.dates[1], 'D MMMM')
               }}
             </p>
             <p>{{ `${data.adults} adults - ${data.children} children` }}</p>
@@ -163,21 +181,21 @@
 </template>
 
 <script setup>
-const { locale } = useI18n();
-import "dayjs";
-import { ref } from "vue";
-import axios from "../../api/axios";
-import { BACKEND_URL } from "~/CONSTS";
-import { getPropertyText } from "~/helpers/lang";
-import dayjs from "dayjs";
-import { formatSimpleDate } from "~/helpers/dates";
+const { locale } = useI18n()
+import 'dayjs'
+import { ref } from 'vue'
+import axios from '../../api/axios'
+import { BACKEND_URL } from '~/CONSTS'
+import { getPropertyText } from '~/helpers/lang'
+import dayjs from 'dayjs'
+import { formatSimpleDate } from '~/helpers/dates'
 
 const { visible, data, property } = defineProps([
-  "visible",
-  "data",
-  "property",
-  "loading",
-]);
+  'visible',
+  'data',
+  'property',
+  'loading',
+])
 /* console.log(
   property.PropertyTexts.filter((text) => text.languageCode == locale?.value)[0]
     .name
@@ -185,28 +203,50 @@ const { visible, data, property } = defineProps([
 //console.log(property)
 
 const formData = ref({
-  name: "",
-  phone: "",
-  email: "",
-  discount_code: "",
-});
+  name: '',
+  phone: '',
+  email: '',
+  discount_code: '',
+})
 
-const discountData = ref({});
-const finalPrice = ref();
+const discountData = ref({})
+const finalPrice = ref()
+
+const loadingPayment = ref(false)
+const showPaymentError = ref(false)
+
+const payedBooking = ref(false)
+
+async function pay() {
+  loadingPayment.value = true
+  showPaymentError.value = false
+  console.log('Proceso de pago')
+  setTimeout(() => {
+    loadingPayment.value = false
+    payedBooking.value = true
+  }, 4000)
+  const paymentResponse = 'Aquí va la petición a la API de Paypal'
+  if (paymentResponse.data) {
+  } else {
+    showPaymentError.value = true
+  }
+}
+
+watch(payedBooking, submitBooking)
 
 function calculateNights(start_date, end_date) {
-  const start = dayjs(start_date);
-  const end = dayjs(end_date);
-  const nights = end.diff(start, "day");
-  return nights;
+  const start = dayjs(start_date)
+  const end = dayjs(end_date)
+  const nights = end.diff(start, 'day')
+  return nights
 }
 
 async function validateDiscountCode(code) {
   try {
-    const response = await axios.get("/discounts/" + code);
-    discountData.value = response.data;
+    const response = await axios.get('/discounts/' + code)
+    discountData.value = response.data
   } catch (error) {
-    discountData.value = { error: error.response.data.error };
+    discountData.value = { error: error.response.data.error }
   }
 }
 
@@ -215,35 +255,36 @@ function calculateDiscountQuantity() {
     calculateNights(data.dates[0], data.dates[1]) *
     property.price *
     (discountData.value.percentage / 100)
-  );
+  )
 }
 
 function calculateTotal() {
-  let total = calculateNights(data.dates[0], data.dates[1]) * property.price;
+  let total = calculateNights(data.dates[0], data.dates[1]) * property.price
 
   if (discountData.value?.code) {
-    total -= calculateDiscountQuantity();
+    total -= calculateDiscountQuantity()
   }
 
-  return total;
+  return total
 }
 
 async function submitBooking() {
+  console.log('booking petición')
   try {
     // Enviar los datos al endpoint de reservas
-    const response = await axios.post("/bookings", {
+    const response = await axios.post('/bookings', {
       ...formData.value,
       adults: data.adults,
       children: data.children,
       property_id: property?.id,
       start_date: data.dates[0],
       end_date: data.dates[1],
-    });
-    console.log("Booking created:", response.data);
+    })
+    console.log('Booking created:', response.data)
     // Cerrar el modal después de enviar la reserva
     // modalData.value.visible = false;
   } catch (error) {
-    console.error("Error creating booking:", error);
+    console.error('Error creating booking:', error)
   }
 }
 </script>
