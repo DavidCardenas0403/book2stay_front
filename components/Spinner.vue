@@ -1,5 +1,5 @@
 <template>
-  <div className="mx-auto mt-8 loader"></div>
+  <div className="mx-auto my-8 loader"></div>
 </template>
 
 <style scoped>
