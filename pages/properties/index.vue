@@ -7,7 +7,7 @@
         </FilterBar>
 
         <div v-if="filteredProperties.length > 0" class="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <SimplePropertyCard v-for="property in filteredProperties" :key="property?.id" :property="property" />
+            <SimplePropertyCard v-for="property in filteredProperties" :key="property?.id" :search="useRoute().query" :property="property" />
         </div>
         <div v-else>
             <p v-if="filteredProperties.length === 0">No se encontraron propiedades que cumplan con los filtros
@@ -19,7 +19,7 @@
 
 <script setup>
 import { onMounted, ref } from 'vue';
-import { fetchProperties } from "../../api/fetchProperties"
+import { fetchProperties, searchProperties } from "../../api/fetchProperties"
 import SimplePropertyCard from "../../components/properties/SimplePropertyCard.vue"
 
 const properties = ref([]);
@@ -29,7 +29,12 @@ const beds = ref(null); // Define beds ref
 const moreInfo = ref(null); // Define beds ref
 
 onMounted(async () => {
-    properties.value = await fetchProperties();
+    if(useRoute().query?.guests) {
+        properties.value = await searchProperties(useRoute().query);
+    } else {
+        properties.value = await fetchProperties();
+    }
+
     filteredProperties.value = properties.value; // Initially set filteredProperties to all properties
 })
 
