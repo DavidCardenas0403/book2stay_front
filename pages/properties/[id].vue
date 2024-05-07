@@ -164,6 +164,8 @@ import logo from '../assets/images/country-club.svg'
 import LangSwitcher from '~/components/LangSwitcher.vue'
 import { BACKEND_URL } from '~/CONSTS'
 
+import dayjs from 'dayjs'
+
 const { locale } = useI18n()
 
 const loading = ref(true)
