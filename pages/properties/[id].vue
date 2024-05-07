@@ -44,27 +44,30 @@
           <section class="grid grid-cols-2 md:grid-cols-6 gap-4">
             <div
               v-if="property.wifi"
-              class="border bg-gray-300 p-4 flex justify-center items-center"
+              class="text-2xl border bg-gray-300 p-4 flex justify-center items-center"
             >
               <i class="pi pi-wifi"></i>
             </div>
             <div
               v-if="property.parking"
-              class="border bg-gray-300 p-4 flex justify-center items-center"
+              class="text-2xl border bg-gray-300 p-4 flex justify-center items-center"
             >
               <i class="pi pi-car"></i>
             </div>
             <div
               v-if="property.swimming_pool"
-              class="border bg-gray-300 p-4 flex justify-center items-center"
+              class="text-2xl border bg-gray-300 p-4 flex justify-center items-center"
             >
-              POOL
+              <img
+                src="../../assets/images/MaterialSymbolsPool.svg"
+                width="24"
+              />
             </div>
             <div
               v-if="property.terrace"
               class="border bg-gray-300 p-4 flex justify-center items-center"
             >
-              TERRACE
+              <img src="../../assets/images/CbiRoomsbalcony.svg" width="24" />
             </div>
           </section>
         </section>
@@ -166,7 +169,7 @@ const { locale } = useI18n()
 const loading = ref(true)
 
 const data = reactive({
-  dates: '',
+  dates: [],
   adults: 0,
   children: 0,
 })
@@ -185,6 +188,14 @@ function toggleImagesGallery() {
 
 onMounted(async () => {
   property.value = await fetchProperty(useRoute().params?.id)
+
+  if (useRoute().query?.start_date) {
+    data.dates.push(dayjs(useRoute().query.start_date).toDate())
+    data.dates.push(dayjs(useRoute().query.end_date).toDate())
+    data.adults = useRoute().query.adults
+    data.children = useRoute().query.children
+  }
+
   loading.value = false
 })
 </script>

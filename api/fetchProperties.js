@@ -28,3 +28,13 @@ export async function fetchProperty(id) {
         console.log(error)
     }
 }
+
+export async function searchProperties(query) {
+    try {
+        const {data} = await axios.post("/properties/search", query);
+        return data
+    } catch (error) {
+        console.error(error)
+    }
+
+}

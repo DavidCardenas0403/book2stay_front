@@ -169,9 +169,4 @@ const responsiveOptions = ref([
         numVisible: 1
     }
 ]);
-
-function handleSearch(searchData){
-    console.log('Data of search: ', searchData);
-    
-}
 </script>

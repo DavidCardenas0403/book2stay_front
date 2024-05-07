@@ -9,6 +9,8 @@
     >
     </FilterBar>
 
+
+
     <div
       v-if="filteredProperties.length > 0"
       class="grid grid-cols-1 md:grid-cols-4 gap-6"
@@ -16,6 +18,7 @@
       <SimplePropertyCard
         v-for="property in filteredProperties"
         :key="property?.id"
+        :search="useRoute().query"
         :property="property"
       />
     </div>
@@ -25,12 +28,12 @@
       </p>
       <Spinner v-else />
     </div>
-  </div>
+
 </template>
 
 <script setup>
 import { onMounted, ref } from 'vue'
-import { fetchProperties } from '../../api/fetchProperties'
+import { fetchProperties, searchProperties } from '../../api/fetchProperties'
 import SimplePropertyCard from '../../components/properties/SimplePropertyCard.vue'
 
 const loading = ref(true)
@@ -41,7 +44,12 @@ const beds = ref(null) // Define beds ref
 const moreInfo = ref(null) // Define beds ref
 
 onMounted(async () => {
-  properties.value = await fetchProperties()
+  if (useRoute().query?.guests) {
+    properties.value = await searchProperties(useRoute().query)
+  } else {
+    properties.value = await fetchProperties()
+  }
+
   filteredProperties.value = properties.value // Initially set filteredProperties to all properties
   loading.value = false
 })
