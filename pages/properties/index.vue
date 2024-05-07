@@ -29,7 +29,7 @@ const beds = ref(null); // Define beds ref
 const moreInfo = ref(null); // Define beds ref
 
 onMounted(async () => {
-    if(useRoute().query?.guests) {
+    if(useRoute().query?.start_date) {
         properties.value = await searchProperties(useRoute().query);
     } else {
         properties.value = await fetchProperties();
