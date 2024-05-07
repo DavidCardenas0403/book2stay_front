@@ -36,7 +36,7 @@
           <p class="text-primary text-4xl">
             {{ property.price }}€
             <span class="text-gray-500 text-xl lowercase"
-              >/{{ $t('variables.night') }}</span
+              >/{{ $t("variables.night") }}</span
             >
           </p>
           <div v-html="getPropertyText(property)?.description"></div>
@@ -153,51 +153,53 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
-import { fetchProperty } from '../../api/fetchProperties'
-import { getPropertyText } from '../../helpers/lang'
+import { onMounted } from "vue";
+import { fetchProperty } from "../../api/fetchProperties";
+import { getPropertyText } from "../../helpers/lang";
 
-import ImagesGallery from '~/components/properties/ImagesGallery.vue'
-import BookDialog from '~/components/bookings/BookDialog.vue'
+import ImagesGallery from "~/components/properties/ImagesGallery.vue";
+import BookDialog from "~/components/bookings/BookDialog.vue";
 
-import logo from '../assets/images/country-club.svg'
-import LangSwitcher from '~/components/LangSwitcher.vue'
-import { BACKEND_URL } from '~/CONSTS'
+import logo from "../assets/images/country-club.svg";
+import LangSwitcher from "~/components/LangSwitcher.vue";
+import { BACKEND_URL } from "~/CONSTS";
 
-import dayjs from 'dayjs'
+import dayjs from "dayjs";
 
-const { locale } = useI18n()
+const { locale } = useI18n();
 
-const loading = ref(true)
+const loading = ref(true);
 
 const data = reactive({
   dates: [],
   adults: 0,
   children: 0,
-})
+});
 
 const modalData = reactive({
   visible: false,
   step: 1,
-})
+});
 
-const property = ref(null)
-const texts = ref(null)
-const imagesGalleryShown = ref(false)
+const property = ref(null);
+const texts = ref(null);
+const imagesGalleryShown = ref(false);
 function toggleImagesGallery() {
-  imagesGalleryShown.value = !imagesGalleryShown.value
+  imagesGalleryShown.value = !imagesGalleryShown.value;
 }
 
 onMounted(async () => {
-  property.value = await fetchProperty(useRoute().params?.id)
+  const response = await fetchProperty(useRoute().params?.id);
+
+  property.value = response.property;
 
   if (useRoute().query?.start_date) {
-    data.dates.push(dayjs(useRoute().query.start_date).toDate())
-    data.dates.push(dayjs(useRoute().query.end_date).toDate())
-    data.adults = useRoute().query.adults
-    data.children = useRoute().query.children
+    data.dates.push(dayjs(useRoute().query.start_date).toDate());
+    data.dates.push(dayjs(useRoute().query.end_date).toDate());
+    data.adults = useRoute().query.adults;
+    data.children = useRoute().query.children;
   }
 
-  loading.value = false
-})
+  loading.value = false;
+});
 </script>
