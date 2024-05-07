@@ -5,10 +5,26 @@
       class="bg-gray-900 text-gray-50 shadow-md md:w-96 md:min-h-screen flex flex-col gap-6 p-8"
     >
       <h3 class="font-bold text-xl text-center">Admin</h3>
-      <section>
-        <NuxtLink :to="localePath('/admin/properties')">
+      <section class="flex flex-col">
+        <NuxtLink
+          :to="localePath('/admin/properties')"
+          class="p-3"
+          :class="
+            $route.path == '/admin/properties' ? 'bg-white text-gray-900' : ''
+          "
+        >
           <font-awesome-icon icon="fa-solid fa-house" />
           Properties
+        </NuxtLink>
+        <NuxtLink
+          :to="localePath('/admin/bookings')"
+          class="p-3"
+          :class="
+            $route.path == '/admin/bookings' ? 'bg-white text-gray-900' : ''
+          "
+        >
+          <font-awesome-icon icon="fa-solid fa-calendar" />
+          Bookings
         </NuxtLink>
       </section>
     </aside>

@@ -1,7 +1,7 @@
 <template>
   <h1 class="text-center">Properties</h1>
 
-  <section class="mt-12">
+  <section class="mt-8">
     <div class="flex justify-end">
       <NuxtLink :to="localePath('/admin/properties/create')">
         <Button label="Add" />
