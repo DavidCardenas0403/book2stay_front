@@ -28,7 +28,7 @@
       </p>
       <Spinner v-else />
     </div>
-
+  </div>
 </template>
 
 <script setup>
