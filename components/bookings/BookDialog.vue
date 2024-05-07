@@ -1,12 +1,13 @@
 <template v-if="!loading">
   <Dialog
+    @update:visible="$emit('closeModal')"
     header="Your book"
     :visible="visible"
     modal
     position="center"
-    class="w-2/3"
+    class="sm:w-2/3 sm:h-5/6 w-full h-full"
   >
-    <div class="grid lg:grid-cols-2 gap-x-20">
+    <div class="grid lg:grid-cols-2 gap-x-10 h-full sm:p-5">
       <Stepper linear>
         <StepperPanel header="Contact">
           <template #content="{ nextCallback }">
@@ -42,7 +43,7 @@
               <div class="p-fluid flex flex-col gap-4">
                 <div>
                   <div class="grid grid-cols-4 gap-2 items-end">
-                    <div class="p-field w-full col-span-3">
+                    <div class="p-field w-full col-span-4 2xl:col-span-3">
                       <label for="discount_code">{{
                         $t('booking.discountCode')
                       }}</label>
@@ -53,7 +54,7 @@
                     </div>
 
                     <Button
-                      class="bg-primary-normal"
+                      class="bg-primary-normal col-span-4 2xl:col-span-1"
                       :disabled="formData.discount_code === '' ? true : false"
                       :label="$t('booking.apply')"
                       @click="validateDiscountCode(formData.discount_code)"
@@ -80,8 +81,8 @@
                 class="bg-primary-normal my-4"
                 @click="
                   () => {
-                    nextCallback()
-                    pay()
+                    nextCallback();
+                    pay();
                   }
                 "
                 label="Pay"
@@ -123,13 +124,13 @@
         </StepperPanel>
       </Stepper>
 
-      <div>
+      <div class="h-full flex flex-col gap-3">
         <img
           class="h-1/2 w-full object-cover pt-2"
           :src="`${BACKEND_URL}${property.Images[0].url}`"
           alt=""
         />
-        <div class="mt-3 gap-4">
+        <div class="gap-4">
           <div class="flex flex-col gap-3">
             <h3>
               {{ getPropertyText(property).name }}
@@ -181,21 +182,23 @@
 </template>
 
 <script setup>
-const { locale } = useI18n()
-import 'dayjs'
-import { ref } from 'vue'
-import axios from '../../api/axios'
-import { BACKEND_URL } from '~/CONSTS'
-import { getPropertyText } from '~/helpers/lang'
-import dayjs from 'dayjs'
-import { formatSimpleDate } from '~/helpers/dates'
+const { locale } = useI18n();
+import 'dayjs';
+import { ref } from 'vue';
+import axios from '../../api/axios';
+import { BACKEND_URL } from '~/CONSTS';
+import { getPropertyText } from '~/helpers/lang';
+import dayjs from 'dayjs';
+import { formatSimpleDate } from '~/helpers/dates';
+
+const emit = defineEmits(['closeModal']);
 
 const { visible, data, property } = defineProps([
   'visible',
   'data',
   'property',
   'loading',
-])
+]);
 /* console.log(
   property.PropertyTexts.filter((text) => text.languageCode == locale?.value)[0]
     .name
@@ -207,46 +210,46 @@ const formData = ref({
   phone: '',
   email: '',
   discount_code: '',
-})
+});
 
-const discountData = ref({})
-const finalPrice = ref()
+const discountData = ref({});
+const finalPrice = ref();
 
-const loadingPayment = ref(false)
-const showPaymentError = ref(false)
+const loadingPayment = ref(false);
+const showPaymentError = ref(false);
 
-const payedBooking = ref(false)
+const payedBooking = ref(false);
 
 async function pay() {
-  loadingPayment.value = true
-  showPaymentError.value = false
-  console.log('Proceso de pago')
+  loadingPayment.value = true;
+  showPaymentError.value = false;
+  console.log('Proceso de pago');
   setTimeout(() => {
-    loadingPayment.value = false
-    payedBooking.value = true
-  }, 4000)
-  const paymentResponse = 'Aquí va la petición a la API de Paypal'
+    loadingPayment.value = false;
+    payedBooking.value = true;
+  }, 4000);
+  const paymentResponse = 'Aquí va la petición a la API de Paypal';
   if (paymentResponse.data) {
   } else {
-    showPaymentError.value = true
+    showPaymentError.value = true;
   }
 }
 
-watch(payedBooking, submitBooking)
+watch(payedBooking, submitBooking);
 
 function calculateNights(start_date, end_date) {
-  const start = dayjs(start_date)
-  const end = dayjs(end_date)
-  const nights = end.diff(start, 'day')
-  return nights
+  const start = dayjs(start_date);
+  const end = dayjs(end_date);
+  const nights = end.diff(start, 'day');
+  return nights;
 }
 
 async function validateDiscountCode(code) {
   try {
-    const response = await axios.get('/discounts/' + code)
-    discountData.value = response.data
+    const response = await axios.get('/discounts/' + code);
+    discountData.value = response.data;
   } catch (error) {
-    discountData.value = { error: error.response.data.error }
+    discountData.value = { error: error.response.data.error };
   }
 }
 
@@ -255,21 +258,21 @@ function calculateDiscountQuantity() {
     calculateNights(data.dates[0], data.dates[1]) *
     property.price *
     (discountData.value.percentage / 100)
-  )
+  );
 }
 
 function calculateTotal() {
-  let total = calculateNights(data.dates[0], data.dates[1]) * property.price
+  let total = calculateNights(data.dates[0], data.dates[1]) * property.price;
 
   if (discountData.value?.code) {
-    total -= calculateDiscountQuantity()
+    total -= calculateDiscountQuantity();
   }
 
-  return total
+  return total;
 }
 
 async function submitBooking() {
-  console.log('booking petición')
+  console.log('booking petición');
   try {
     // Enviar los datos al endpoint de reservas
     const response = await axios.post('/bookings', {
@@ -279,12 +282,12 @@ async function submitBooking() {
       property_id: property?.id,
       start_date: data.dates[0],
       end_date: data.dates[1],
-    })
-    console.log('Booking created:', response.data)
+    });
+    console.log('Booking created:', response.data);
     // Cerrar el modal después de enviar la reserva
     // modalData.value.visible = false;
   } catch (error) {
-    console.error('Error creating booking:', error)
+    console.error('Error creating booking:', error);
   }
 }
 </script>

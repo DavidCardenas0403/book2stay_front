@@ -36,7 +36,7 @@
           <p class="text-primary text-4xl">
             {{ property.price }}€
             <span class="text-gray-500 text-xl lowercase"
-              >/{{ $t("variables.night") }}</span
+              >/{{ $t('variables.night') }}</span
             >
           </p>
           <div v-html="getPropertyText(property)?.description"></div>
@@ -85,7 +85,26 @@
                 selectionMode="range"
                 dateFormat="dd/mm/yy"
                 class="custom-calendar"
-              />
+                show-button-bar
+                :disabled-dates="reservedDates.map((date) => new Date(date))"
+              >
+                <template #date="slotProps">
+                  <strong
+                    v-if="
+                      reservedDates.includes(
+                        slotProps.date.year +
+                          '-' +
+                          (slotProps.date.month + 1) +
+                          '-' +
+                          slotProps.date.day
+                      )
+                    "
+                    class="line-through"
+                    >{{ `${slotProps.date.day}` }}</strong
+                  >
+                  <template v-else>{{ `${slotProps.date.day}` }}</template>
+                </template>
+              </Calendar>
               <label class="text-neutral-400" for="booking_dates"
                 >Booking dates</label
               >
@@ -148,23 +167,25 @@
       :data="data"
       :property="property"
       :loading="loading"
+      @close-modal="modalData.visible = false"
     />
   </div>
 </template>
 
 <script setup>
-import { onMounted } from "vue";
-import { fetchProperty } from "../../api/fetchProperties";
-import { getPropertyText } from "../../helpers/lang";
+import { onMounted } from 'vue';
+import { fetchProperty } from '../../api/fetchProperties';
+import { getPropertyText } from '../../helpers/lang';
 
-import ImagesGallery from "~/components/properties/ImagesGallery.vue";
-import BookDialog from "~/components/bookings/BookDialog.vue";
+import ImagesGallery from '~/components/properties/ImagesGallery.vue';
+import BookDialog from '~/components/bookings/BookDialog.vue';
 
-import logo from "../assets/images/country-club.svg";
-import LangSwitcher from "~/components/LangSwitcher.vue";
-import { BACKEND_URL } from "~/CONSTS";
+import logo from '../assets/images/country-club.svg';
+import LangSwitcher from '~/components/LangSwitcher.vue';
+import { BACKEND_URL } from '~/CONSTS';
 
-import dayjs from "dayjs";
+import dayjs from 'dayjs';
+import { formatSimpleDate } from '~/helpers/dates';
 
 const { locale } = useI18n();
 
@@ -182,6 +203,7 @@ const modalData = reactive({
 });
 
 const property = ref(null);
+const reservedDates = ref(null);
 const texts = ref(null);
 const imagesGalleryShown = ref(false);
 function toggleImagesGallery() {
@@ -190,8 +212,10 @@ function toggleImagesGallery() {
 
 onMounted(async () => {
   const response = await fetchProperty(useRoute().params?.id);
-
   property.value = response.property;
+  reservedDates.value = response.reservedDates.map((date) =>
+    dayjs(date).format('YYYY-M-D')
+  );
 
   if (useRoute().query?.start_date) {
     data.dates.push(dayjs(useRoute().query.start_date).toDate());
