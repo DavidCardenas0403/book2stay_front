@@ -9,7 +9,7 @@
         <div class="flex flex-column items-center gap-3 w-25rem"> <!-- Centering items -->
           <div class="">
             <span class="font-medium text-900 block mb-2">Filter by price for night</span>
-            <Slider v-model="price" range :max="1000" class="w-14rem mt-3" />
+            <Slider v-model="price" range :min="100" :max="500" class="w-14rem mt-3" />
             <div class="mt-4 flex justify-center gap-2"> <!-- Centering horizontally -->
               <InputNumber suffix="€" v-model.number="price[0]" inputClass="rounded-none w-20" />
               <InputNumber suffix="€" v-model.number="price[1]" inputClass="rounded-none w-20" />
@@ -56,7 +56,7 @@ import { ref } from "vue";
 const emitFilter = defineEmits(['filterPrice', 'filterBeds', 'filterItems']);
 
 // Data and methods for Price filter
-const price = ref([0, 1000]);
+const price = ref([100, 500]);
 const op_price = ref();
 const toggle_price = (event) => op_price.value.toggle(event);
 

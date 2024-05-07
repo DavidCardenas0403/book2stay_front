@@ -24,31 +24,10 @@
                   <label for="email">Email</label>
                   <InputText v-model="formData.email" id="email"></InputText>
                 </div>
-                <div class="p-field">
-                  <label for="discount_code">Discount Code</label>
-                  <InputText
-                    v-model="formData.discount_code"
-                    id="discount_code"
-                  ></InputText>
-
-                  <Button
-                    class="mt-4 bg-primary-normal"
-                    :disabled="formData.discount_code === '' ? true : false"
-                    label="Validate"
-                    @click="validateDiscountCode(formData.discount_code)"
-                  />
-                  <div v-if="discountData.code" class="text-green-500 my-2">
-                    Apply {{ discountData.percentage }}%
-                  </div>
-                  <div v-else-if="discountData.error" class="text-red-500 my-2">
-                    {{ discountData.error }}
-                  </div>
-                </div>
               </div>
               <Button
-                class="bg-primary-normal my-4"
+                class="btn bg-primary-normal my-4"
                 @click="nextCallback"
-                type="submit"
                 label="Next"
                 icon="pi pi-arrow-right"
                 iconPos="right"
@@ -58,14 +37,36 @@
         </StepperPanel>
         <StepperPanel header="Payment">
           <template #content="{ prevCallback, nextCallback }">
-            <div class="flex flex-column h-12rem">
-              <div
-                class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium"
-              >
-                Content II
+            <form class="col-span-1" @submit.prevent="submitBooking">
+              <div class="p-fluid flex flex-col gap-4">
+                <div>
+                  <div class="flex gap-2 items-end">
+                    <div class="p-field w-full">
+                      <label for="discount_code">Discount Code</label>
+                      <InputText
+                        v-model="formData.discount_code"
+                        id="discount_code"
+                      ></InputText>
+                    </div>
+
+                    <Button
+                      class="bg-primary-normal w-1/5"
+                      :disabled="formData.discount_code === '' ? true : false"
+                      label="Apply"
+                      @click="validateDiscountCode(formData.discount_code)"
+                    />
+                  </div>
+                  <div v-if="discountData.code" class="text-green-500 my-2">
+                    Apply {{ discountData.percentage }}%
+                  </div>
+                  <div v-else-if="discountData.error" class="text-red-500 my-2">
+                    {{ discountData.error }}
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="flex pt-4 justify-content-between">
+            </form>
+
+            <div class="flex gap-2 pt-4 justify-content-between items-center">
               <Button
                 label="Back"
                 severity="secondary"
@@ -73,29 +74,31 @@
                 @click="prevCallback"
               />
               <Button
+                class="bg-primary-normal my-4"
+                @click="nextCallback"
                 label="Next"
                 icon="pi pi-arrow-right"
                 iconPos="right"
-                @click="nextCallback"
-              />
+              ></Button>
             </div>
           </template>
         </StepperPanel>
         <StepperPanel header="Summary">
           <template #content="{ prevCallback }">
             <div class="flex flex-column h-12rem">
-              <div
-                class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium"
-              >
-                Content III
-              </div>
+              <div class="">Resumen</div>
             </div>
-            <div class="flex pt-4 justify-content-start">
+            <div class="flex gap-2 pt-4 justify-content-between items-center">
               <Button
                 label="Back"
                 severity="secondary"
                 icon="pi pi-arrow-left"
                 @click="prevCallback"
+              />
+              <Button
+                class="bg-primary-normal"
+                label="Book now"
+                @click="submitBooking"
               />
             </div>
           </template>
@@ -108,15 +111,51 @@
           :src="`${BACKEND_URL}${property.Images[0].url}`"
           alt=""
         />
-        <div class="grid grid-cols-4 mt-3">
-          <div class="col-span-3 flex flex-col gap-3">
+        <div class="mt-3 gap-4">
+          <div class="flex flex-col gap-3">
             <h3>
               {{ getPropertyText(property).name }}
             </h3>
-            <p>{{ formatSimpleDate(data.dates[0], 'D MMMM') }}</p>
+            <p>
+              {{
+                formatSimpleDate(data.dates[0], "D MMMM") +
+                " - " +
+                formatSimpleDate(data.dates[1], "D MMMM")
+              }}
+            </p>
             <p>{{ `${data.adults} adults - ${data.children} children` }}</p>
           </div>
-          <span class="justify-self-end pr-3 content-end">1200€</span>
+
+          <div class="p-4 border border-dashed mt-3">
+            <p class="font-bold">Checkout</p>
+
+            <div class="mt-5 grid grid-cols-2">
+              <p>
+                {{ calculateNights(data.dates[0], data.dates[1]) }} nights x
+                {{ property.price }}€
+              </p>
+              <p class="justify-self-end">
+                {{
+                  calculateNights(data.dates[0], data.dates[1]) *
+                  property.price
+                }}€
+              </p>
+            </div>
+
+            <div class="mt-5 grid grid-cols-2" v-if="discountData.code">
+              <p class="text-green-500">
+                {{ discountData.code }}
+              </p>
+
+              <p class="justify-self-end text-green-500">
+                -{{ calculateDiscountQuantity() }}€
+              </p>
+            </div>
+
+            <p class="text-3xl font-bold text-primary mt-4 text-end">
+              {{ calculateTotal() }}€
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -124,21 +163,21 @@
 </template>
 
 <script setup>
-const { locale } = useI18n()
-import 'dayjs'
-import { ref } from 'vue'
-import axios from '../../api/axios'
-import { BACKEND_URL } from '~/CONSTS'
-import { getPropertyText } from '~/helpers/lang'
-import dayjs from 'dayjs'
-import { formatSimpleDate } from '~/helpers/dates'
+const { locale } = useI18n();
+import "dayjs";
+import { ref } from "vue";
+import axios from "../../api/axios";
+import { BACKEND_URL } from "~/CONSTS";
+import { getPropertyText } from "~/helpers/lang";
+import dayjs from "dayjs";
+import { formatSimpleDate } from "~/helpers/dates";
 
 const { visible, data, property } = defineProps([
-  'visible',
-  'data',
-  'property',
-  'loading',
-])
+  "visible",
+  "data",
+  "property",
+  "loading",
+]);
 /* console.log(
   property.PropertyTexts.filter((text) => text.languageCode == locale?.value)[0]
     .name
@@ -146,40 +185,65 @@ const { visible, data, property } = defineProps([
 //console.log(property)
 
 const formData = ref({
-  name: '',
-  phone: '',
-  email: '',
-  discount_code: '',
-})
+  name: "",
+  phone: "",
+  email: "",
+  discount_code: "",
+});
 
-const discountData = ref({})
-const finalPrice = ref()
+const discountData = ref({});
+const finalPrice = ref();
+
+function calculateNights(start_date, end_date) {
+  const start = dayjs(start_date);
+  const end = dayjs(end_date);
+  const nights = end.diff(start, "day");
+  return nights;
+}
 
 async function validateDiscountCode(code) {
   try {
-    const response = await axios.get('/discounts/' + code)
-    discountData.value = response.data
+    const response = await axios.get("/discounts/" + code);
+    discountData.value = response.data;
   } catch (error) {
-    discountData.value = { error: error.response.data.error }
+    discountData.value = { error: error.response.data.error };
   }
+}
+
+function calculateDiscountQuantity() {
+  return (
+    calculateNights(data.dates[0], data.dates[1]) *
+    property.price *
+    (discountData.value.percentage / 100)
+  );
+}
+
+function calculateTotal() {
+  let total = calculateNights(data.dates[0], data.dates[1]) * property.price;
+
+  if (discountData.value?.code) {
+    total -= calculateDiscountQuantity();
+  }
+
+  return total;
 }
 
 async function submitBooking() {
   try {
     // Enviar los datos al endpoint de reservas
-    const response = await axios.post('/bookings', {
+    const response = await axios.post("/bookings", {
       ...formData.value,
       adults: data.adults,
       children: data.children,
       property_id: property?.id,
       start_date: data.dates[0],
       end_date: data.dates[1],
-    })
-    console.log('Booking created:', response.data)
+    });
+    console.log("Booking created:", response.data);
     // Cerrar el modal después de enviar la reserva
     // modalData.value.visible = false;
   } catch (error) {
-    console.error('Error creating booking:', error)
+    console.error("Error creating booking:", error);
   }
 }
 </script>

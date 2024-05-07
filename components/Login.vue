@@ -82,22 +82,15 @@
                 OR
               </p>
             </div>
-            <div class="flex justify-center items-center color-scheme: auto">
-              <GoogleSignInButton
-                @success="handleLoginSuccess"
-                @error="handleLoginError"
-                class="shadow-lg"
-              />
-            </div>
           </div>
         </form>
-        <p class="mb-6 text-sm text-center text-gray-400">
-          {{ $t('login.noAccount')
-          }}<a
-            class="text-blue-500 focus:outline-none focus:underline hover:underline hover:cursor-pointer"
-            >{{ $t('variables.signUp') }}</a
-          >.
-        </p>
+        <!-- <p class="mb-6 text-sm text-center text-gray-400">
+              {{ $t('login.noAccount')
+              }}<a
+                class="text-blue-500 focus:outline-none focus:underline hover:underline"
+                >{{ $t('variables.signUp') }}</a
+              >.
+            </p> -->
       </template>
     </Dialog>
   </div>
