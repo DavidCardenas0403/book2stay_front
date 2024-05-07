@@ -84,15 +84,25 @@
                 v-model="data.dates"
                 selectionMode="range"
                 dateFormat="dd/mm/yy"
-                class="cusom-calendar"
+                class="custom-calendar"
+                show-button-bar
+                :disabled-dates="reservedDates.map((date) => new Date(date))"
               >
                 <template #date="slotProps">
                   <strong
-                    v-if="reservedDates.includes(slotProps.date)"
-                    style="text-decoration: line-through"
-                    >{{ slotProps.date }}</strong
+                    v-if="
+                      reservedDates.includes(
+                        slotProps.date.year +
+                          '-' +
+                          (slotProps.date.month + 1) +
+                          '-' +
+                          slotProps.date.day
+                      )
+                    "
+                    class="line-through"
+                    >{{ `${slotProps.date.day}` }}</strong
                   >
-                  <template v-else>{{ slotProps.date.day }}</template>
+                  <template v-else>{{ `${slotProps.date.day}` }}</template>
                 </template>
               </Calendar>
               <label class="text-neutral-400" for="booking_dates"
@@ -162,55 +172,57 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
-import { fetchProperty } from '../../api/fetchProperties'
-import { getPropertyText } from '../../helpers/lang'
+import { onMounted } from 'vue';
+import { fetchProperty } from '../../api/fetchProperties';
+import { getPropertyText } from '../../helpers/lang';
 
-import ImagesGallery from '~/components/properties/ImagesGallery.vue'
-import BookDialog from '~/components/bookings/BookDialog.vue'
+import ImagesGallery from '~/components/properties/ImagesGallery.vue';
+import BookDialog from '~/components/bookings/BookDialog.vue';
 
-import logo from '../assets/images/country-club.svg'
-import LangSwitcher from '~/components/LangSwitcher.vue'
-import { BACKEND_URL } from '~/CONSTS'
+import logo from '../assets/images/country-club.svg';
+import LangSwitcher from '~/components/LangSwitcher.vue';
+import { BACKEND_URL } from '~/CONSTS';
 
-import dayjs from 'dayjs'
-import { formatSimpleDate } from '~/helpers/dates'
+import dayjs from 'dayjs';
+import { formatSimpleDate } from '~/helpers/dates';
 
-const { locale } = useI18n()
+const { locale } = useI18n();
 
-const loading = ref(true)
+const loading = ref(true);
 
 const data = reactive({
   dates: [],
   adults: 0,
   children: 0,
-})
+});
 
 const modalData = reactive({
   visible: false,
   step: 1,
-})
+});
 
-const property = ref(null)
-const reservedDates = ref(null)
-const texts = ref(null)
-const imagesGalleryShown = ref(false)
+const property = ref(null);
+const reservedDates = ref(null);
+const texts = ref(null);
+const imagesGalleryShown = ref(false);
 function toggleImagesGallery() {
-  imagesGalleryShown.value = !imagesGalleryShown.value
+  imagesGalleryShown.value = !imagesGalleryShown.value;
 }
 
 onMounted(async () => {
-  const response = await fetchProperty(useRoute().params?.id)
-  property.value = response.property
-  reservedDates.value = response.reservedDates
+  const response = await fetchProperty(useRoute().params?.id);
+  property.value = response.property;
+  reservedDates.value = response.reservedDates.map((date) =>
+    dayjs(date).format('YYYY-M-D')
+  );
 
   if (useRoute().query?.start_date) {
-    data.dates.push(dayjs(useRoute().query.start_date).toDate())
-    data.dates.push(dayjs(useRoute().query.end_date).toDate())
-    data.adults = useRoute().query.adults
-    data.children = useRoute().query.children
+    data.dates.push(dayjs(useRoute().query.start_date).toDate());
+    data.dates.push(dayjs(useRoute().query.end_date).toDate());
+    data.adults = useRoute().query.adults;
+    data.children = useRoute().query.children;
   }
 
-  loading.value = false
-})
+  loading.value = false;
+});
 </script>
