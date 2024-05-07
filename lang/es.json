@@ -36,7 +36,12 @@
         "cardNumber": "Número de tarjeta",
         "expiration": "Caducidad",
         "confirm": "Confirmar",
-        "total": "Total"
+        "total": "Total",
+        "apply": "Aplicar",
+        "wait": "Espera a que se realice el pago...",
+        "paymentError": "Error inesperado en el pago",
+        "successPayment": "¡Pago realizado con éxito!"
+
     },
     "login": {
         "loginText": "Acceder a su cuenta",

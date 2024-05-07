@@ -36,24 +36,42 @@
           <p class="text-primary text-4xl">
             {{ property.price }}€
             <span class="text-gray-500 text-xl lowercase"
-              >/{{ $t("variables.night") }}</span
+              >/{{ $t('variables.night') }}</span
             >
           </p>
           <div v-html="getPropertyText(property)?.description"></div>
 
           <section class="grid grid-cols-2 md:grid-cols-6 gap-4">
-            <div v-if="property.wifi" class="border bg-gray-300 p-4 flex justify-center items-center">
-                <i class="pi pi-wifi"></i>
+            <div
+              v-if="property.wifi"
+              class="border bg-gray-300 p-4 flex justify-center items-center"
+            >
+              <i class="pi pi-wifi"></i>
             </div>
-            <div v-if="property.parking" class="border bg-gray-300 p-4 flex justify-center items-center">
-                <i class="pi pi-car"></i>
+            <div
+              v-if="property.parking"
+              class="border bg-gray-300 p-4 flex justify-center items-center"
+            >
+              <i class="pi pi-car"></i>
             </div>
-            <div v-if="property.swimming_pool" class="border bg-gray-300 p-4 flex justify-center items-center">POOL</div>
-            <div v-if="property.terrace" class="border bg-gray-300 p-4 flex justify-center items-center">TERRACE</div>
+            <div
+              v-if="property.swimming_pool"
+              class="border bg-gray-300 p-4 flex justify-center items-center"
+            >
+              POOL
+            </div>
+            <div
+              v-if="property.terrace"
+              class="border bg-gray-300 p-4 flex justify-center items-center"
+            >
+              TERRACE
+            </div>
           </section>
         </section>
 
-        <div class="bg-gray-200 py-8 px-6 gap-2 grid grid-cols-2 col-span-2">
+        <div
+          class="bg-gray-200 py-8 px-6 gap-2 grid grid-cols-2 col-span-2 self-start"
+        >
           <InputGroup>
             <InputGroupAddon>
               <i class="pi pi-calendar"></i>
@@ -132,41 +150,41 @@
 </template>
 
 <script setup>
-import { onMounted } from "vue";
-import { fetchProperty } from "../../api/fetchProperties";
-import { getPropertyText } from "../../helpers/lang";
+import { onMounted } from 'vue'
+import { fetchProperty } from '../../api/fetchProperties'
+import { getPropertyText } from '../../helpers/lang'
 
-import ImagesGallery from "~/components/properties/ImagesGallery.vue";
-import BookDialog from "~/components/bookings/BookDialog.vue";
+import ImagesGallery from '~/components/properties/ImagesGallery.vue'
+import BookDialog from '~/components/bookings/BookDialog.vue'
 
-import logo from "../assets/images/country-club.svg";
-import LangSwitcher from "~/components/LangSwitcher.vue";
-import { BACKEND_URL } from "~/CONSTS";
+import logo from '../assets/images/country-club.svg'
+import LangSwitcher from '~/components/LangSwitcher.vue'
+import { BACKEND_URL } from '~/CONSTS'
 
-const { locale } = useI18n();
+const { locale } = useI18n()
 
-const loading = ref(true);
+const loading = ref(true)
 
 const data = reactive({
-  dates: "",
+  dates: '',
   adults: 0,
   children: 0,
-});
+})
 
 const modalData = reactive({
   visible: false,
   step: 1,
-});
+})
 
-const property = ref(null);
-const texts = ref(null);
-const imagesGalleryShown = ref(false);
+const property = ref(null)
+const texts = ref(null)
+const imagesGalleryShown = ref(false)
 function toggleImagesGallery() {
-  imagesGalleryShown.value = !imagesGalleryShown.value;
+  imagesGalleryShown.value = !imagesGalleryShown.value
 }
 
 onMounted(async () => {
-  property.value = await fetchProperty(useRoute().params?.id);
-  loading.value = false;
-});
+  property.value = await fetchProperty(useRoute().params?.id)
+  loading.value = false
+})
 </script>
