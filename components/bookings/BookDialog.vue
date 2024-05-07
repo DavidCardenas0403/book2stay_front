@@ -1,12 +1,13 @@
 <template v-if="!loading">
   <Dialog
+    @update:visible="$emit('closeModal')"
     header="Your book"
     :visible="visible"
     modal
     position="center"
-    class="w-2/3 h-3/4"
+    class="sm:w-2/3 sm:h-5/6 w-full h-full"
   >
-    <div class="grid lg:grid-cols-2 gap-x-20 h-full p-5 mb-8">
+    <div class="grid lg:grid-cols-2 gap-x-10 h-full sm:p-5">
       <Stepper linear>
         <StepperPanel header="Contact">
           <template #content="{ nextCallback }">
@@ -42,7 +43,7 @@
               <div class="p-fluid flex flex-col gap-4">
                 <div>
                   <div class="grid grid-cols-4 gap-2 items-end">
-                    <div class="p-field w-full col-span-3">
+                    <div class="p-field w-full col-span-4 2xl:col-span-3">
                       <label for="discount_code">{{
                         $t('booking.discountCode')
                       }}</label>
@@ -53,7 +54,7 @@
                     </div>
 
                     <Button
-                      class="bg-primary-normal"
+                      class="bg-primary-normal col-span-4 2xl:col-span-1"
                       :disabled="formData.discount_code === '' ? true : false"
                       :label="$t('booking.apply')"
                       @click="validateDiscountCode(formData.discount_code)"
@@ -189,6 +190,8 @@ import { BACKEND_URL } from '~/CONSTS';
 import { getPropertyText } from '~/helpers/lang';
 import dayjs from 'dayjs';
 import { formatSimpleDate } from '~/helpers/dates';
+
+const emit = defineEmits(['closeModal']);
 
 const { visible, data, property } = defineProps([
   'visible',

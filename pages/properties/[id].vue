@@ -167,6 +167,7 @@
       :data="data"
       :property="property"
       :loading="loading"
+      @close-modal="modalData.visible = false"
     />
   </div>
 </template>
