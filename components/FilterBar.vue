@@ -33,27 +33,35 @@
     </div>
 
 
+
+
     <div class="card flex justify-content-center">
-      <SelectButton v-model="moreInfo" :options="items" optionLabel="name" multiple aria-labelledby="multiple" />
+      <SelectButton v-model="moreInfo" :options="items" optionLabel="name" multiple aria-labelledby="multiple">
+      </SelectButton>
     </div>
+
 
 
     <!-- Search Bar -->
     <div class="flex-grow" /> <!-- This will push the search bar to the right -->
-    <IconField iconPosition="left">
-      <InputIcon>
-        <i class="pi pi-search" />
-      </InputIcon>
-      <InputText placeholder="Search" />
-    </IconField>
+      <IconField iconPosition="left">
+        <InputIcon>
+          <i class="pi pi-search" />
+        </InputIcon>
+        <InputText v-model="searchTerm" placeholder="Search" />
+      </IconField>
+
+
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, watch, defineEmits } from "vue";
 
 // Define custom events to emit filter information
-const emitFilter = defineEmits(['filterPrice', 'filterBeds', 'filterItems']);
+const emitFilter = defineEmits(['filterPrice', 'filterBeds', 'filterItems', 'filterSearch']);
+
+const searchTerm = ref("");
 
 // Data and methods for Price filter
 const price = ref([0, 1000]);
@@ -69,20 +77,19 @@ for (let i = 1; i <= 10; i++) {
 const op_bed = ref();
 const toggle_bed = (event) => op_bed.value.toggle(event);
 
-
-
 const moreInfo = ref(null);
 const items = ref([
-  { name: 'Terrace', moreInfo: "terrace"},
-  { name: 'Swiming pool', moreInfo: "swimming_pool" },
-  { name: 'Garden', moreInfo: 3 }
+  { name: 'Terrace', moreInfo: "terrace" },
+  { name: 'Swimming pool', moreInfo: "swimming_pool" },
+  { name: 'Wifi', moreInfo: "wifi" },
+  { name: 'Parking', moreInfo: "parking" }
 ]);
 
 // Watchers for filter changes
 watch(price, (newValue) => emitFilter('filterPrice', newValue));
 watch(beds, (newValue) => emitFilter('filterBeds', newValue));
 watch(moreInfo, (newValue) => emitFilter('filterItems', newValue));
-
+watch(searchTerm, (newValue) => emitFilter('filterSearch', newValue));
 </script>
 
 

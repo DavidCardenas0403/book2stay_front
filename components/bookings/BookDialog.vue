@@ -59,6 +59,7 @@
         <StepperPanel header="Payment">
           <template #content="{ prevCallback, nextCallback }">
             <div class="flex flex-column h-12rem">
+              <div id="paypal-container-M9VJNKAU57K6C"></div>
               <div
                 class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium"
               >
@@ -144,6 +145,17 @@ const { visible, data, property } = defineProps([
     .name
 ) */
 //console.log(property)
+
+const paypalContainerId = 'paypal-container-M9VJNKAU57K6C'
+
+onMounted(() => {
+  // Inicializa el botón de PayPal cuando el DOM está completamente cargado
+  document.addEventListener("DOMContentLoaded", () => {
+    paypal.HostedButtons({
+      hostedButtonId: "M9VJNKAU57K6C"
+    }).render(`#${paypalContainerId}`)
+  })
+})
 
 const formData = ref({
   name: '',
