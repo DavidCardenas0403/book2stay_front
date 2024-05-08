@@ -80,7 +80,7 @@
         }"
         class="bg-transparent border border-solid hover:bg-white hover:text-black transition-colors duration-300 ease-in-out flex items-center px-3 py-2"
       />
-      <!-- LOGINNNNN -->
+      <!-- LOGINNNNN
       <button
         @click="openLoginModal"
         :class="{
@@ -93,7 +93,7 @@
         <span class="pi pi-user pr-1"></span>
         Login
       </button>
-      <Login :modelValue="showLogin" @update:modelValue="showLogin = $event" />
+      <Login :modelValue="showLogin" @update:modelValue="showLogin = $event" /> -->
     </div>
 
     <!-- Menú desplegable para dispositivos móviles -->

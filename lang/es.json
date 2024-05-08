@@ -36,14 +36,20 @@
         "cardNumber": "Número de tarjeta",
         "expiration": "Caducidad",
         "confirm": "Confirmar",
-        "total": "Total"
+        "total": "Total",
+        "apply": "Aplicar",
+        "wait": "Espera a que se realice el pago...",
+        "paymentError": "Error inesperado en el pago",
+        "successPayment": "¡Pago realizado con éxito!"
+
     },
     "login": {
         "loginText": "Acceder a su cuenta",
         "forgotPassword": "Has olvidado tu contraseña?",
         "login": "Acceder",
         "oauth": "Inicia sesion con Google",
-        "noAccount": "¿Aún no tienes una cuenta?"
+        "noAccount": "¿Aún no tienes una cuenta?",
+        "error": "Error al iniciar sesión"
     },
     "signup": {
         "create": "Crear cuenta",

@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const { iconsPlugin, dynamicIconsPlugin } = require('@egoist/tailwindcss-icons')
+
 module.exports = {
     darkMode: 'selector',
   content: [
@@ -20,5 +23,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("flowbite/plugin")],
+  plugins: [require("flowbite/plugin"), iconsPlugin(), dynamicIconsPlugin()],
 };
