@@ -40,7 +40,13 @@
         "apply": "Aplicar",
         "wait": "Espera a que se realice el pago...",
         "paymentError": "Error inesperado en el pago",
-        "successPayment": "¡Pago realizado con éxito!"
+        "successPayment": "¡Pago realizado con éxito!",
+        "findBooking": "Encontrar Reserva",
+        "yourBookingCode": "Tu código de reserva",
+        "find": "Encontrar",
+        "data": "Datos de la reserva",
+        "personal": "Datos personales",
+        "totalPrice": "Precio Total"
 
     },
     "property": {
@@ -51,7 +57,8 @@
         "beds": "Camas",
         "rooms": "Habitaciones",
         "bathrooms": "Lavabos",
-        "capacity": "Capacidad"
+        "capacity": "Capacidad",
+        "apartmentList": "Listado de Apartamentos"
 
     },
     "login": {
