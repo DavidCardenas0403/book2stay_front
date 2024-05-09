@@ -57,19 +57,44 @@ h3 {
 
 .p-component * {
     font-family: "Ledger", serif;
-    
+
 }
 
-.p-button, .p-component{
-        border-radius: 0;
- }
-.p-button, .p-highlight{
+.p-button,
+.p-component,
+.p-inputgroup-addon {
+    border-radius: 0;
+}
+
+.p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+
+
+    color: #293D9B;
+}
+
+
+.p-button,
+.p-highlight {
+    /* background-color: #293D9B; */
     box-shadow: none;
+    border-color: var(--primary-color);
+}
+
+.p-stepper-number,
+.p-stepper-title {
+    color: #293D9B;
+}
+
+.p-stepper-separator {
+    background-color: #293D9B;
+}
+
+.p-datepicker table td>span.p-highlight {
+    background: #293d9b;
+    color: white;
 }
 
 /* PERSONALIZADOS */
 .btn {
     @apply py-2 px-3
 }
-
-

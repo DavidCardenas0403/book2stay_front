@@ -8,7 +8,7 @@
       class="mt-6 bg-white dark:bg-gray-800 rounded-lg p-4 w-full border border-gray-800 dark:border-white"
       @submit.prevent="handleSubmit"
     >
-      <TabView v-model:activeIndex="active">
+    <TabView v-model:activeIndex="active">
         <TabPanel
           v-for="lang in languages"
           :header="lang.name"
@@ -21,7 +21,7 @@
               id="name"
               v-model="data.name[lang.code]"
               class="w-full"
-            />
+              />
           </div>
           <div class="mt-4">
             <Label for="description" class="label" :required="true"
@@ -219,7 +219,7 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive, watch } from 'vue'
 import Editor from 'primevue/editor'
 import { fetchLanguages } from '~/api/fetchLanguages.js'
 
@@ -228,6 +228,10 @@ import { updateProperty } from '../../../api/properties/updateProperty.js'
 import { fetchProperty } from '~/api/fetchProperties.js'
 
 import FileUploader from '../../components/properties/FileUploader.vue'
+// import axios from 'axios';
+
+// Importa la función para traducir el nombre
+// import { translateName } from '~/api/deeplTranslate.js'
 
 definePageMeta({
   layout: 'admin',
@@ -249,7 +253,7 @@ function handleSubmit() {
     }
     useRouter().push('/admin/properties')
   } catch (error) {
-    console.log(error)
+    console.error(error)
   }
 }
 
@@ -269,16 +273,44 @@ const data = reactive({
   images: [],
 })
 
-function fillPropertyData(propertyData) {
-  // Obtener las propiedades de texto para cada idioma y asignarlas al objeto `name` y `description`
+
+// async function translateAndApply() {
+//   const fromLang = 'ca'; // Catalan language code
+//   const fromText = data.name[fromLang];
+  
+//   try {
+//     for (const lang of languages.value) {
+//       if (lang.code !== fromLang && fromText) {
+//         const translatedText = await translateName(fromText, lang.code);
+
+//         // traduce translated text
+        
+//         data.name[lang.code] = translatedText;
+//       }
+//     }
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
+
+// // npm 
+
+// const translate = require('node-deepl');
+ 
+// translate("Hello there, what's going on?", "EN", "DE", (err, res) => {
+//     if(err) {
+//         console.log(err);
+//         return;
+//     }
+//     console.log('Result: ', res);
+// });
+
+async function assignPropertyData(propertyData) {
   propertyData.PropertyTexts.forEach((propertyText) => {
-    // Asignar el nombre según el idioma al objeto `name`
     data.name[propertyText.languageCode] = propertyText.name
-    // Asignar la descripción según el idioma al objeto `description`
     data.description[propertyText.languageCode] = propertyText.description
   })
 
-  // Asignar otras propiedades del objeto `propertyData` al objeto `data`
   data.rooms = propertyData.rooms
   data.size = propertyData.size
   data.price = propertyData.price
@@ -290,7 +322,6 @@ function fillPropertyData(propertyData) {
   data.swimming_pool = propertyData.swimming_pool
   data.terrace = propertyData.terrace
 
-  // Asignar las imágenes del objeto `propertyData` al arreglo `images` en `data`
   data.images = propertyData.Images
 }
 
@@ -299,7 +330,7 @@ onMounted(async () => {
 
   if (propertyId.value) {
     const propertyData = await fetchProperty(propertyId.value)
-    fillPropertyData(propertyData)
+    await assignPropertyData(propertyData)
   }
 
   loading.value = false

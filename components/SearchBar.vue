@@ -128,8 +128,5 @@ const load = () => {
   border-radius: 0;
 }
 
-.p-datepicker table td > span.p-highlight {
-  background: #293d9b;
-  color: white;
-}
+
 </style>

@@ -19,6 +19,7 @@
     "dayjs": "^1.11.11",
     "flowbite": "^2.3.0",
     "libphonenumber-js": "^1.10.59",
+    "node-deepl": "^1.0.0",
     "nuxt": "^3.11.0",
     "nuxt-storage": "^1.2.2",
     "nuxt-vue3-google-signin": "^0.0.11",
