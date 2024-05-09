@@ -325,7 +325,7 @@ onMounted(async () => {
 
     if (propertyId.value) {
         const propertyData = await fetchProperty(propertyId.value);
-        fillPropertyData(propertyData);
+        fillPropertyData(propertyData.property);
     }
 
     loading.value = false;

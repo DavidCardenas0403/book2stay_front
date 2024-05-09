@@ -7,14 +7,7 @@
             style="
     background-image: url('https://apartments-country-club-playa-de-pals-con01387-dya-begur.hotelmix.es/data/Photos/OriginalPhoto/11065/1106546/1106546628/Apartments-Country-Club-Playa-De-Pals-Con01387-Dya-Begur-Exterior.JPEG');">
             <div
-                class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-60 flex flex-col justify-between px-6 pt-4 pb-60">
-
-                <h2 class="text-white md:w-2/5 mt-40 ml-20">
-                    {{
-                        $t("index.yourUltimateRetreatOnTheCostaBrava")
-                    }}
-                </h2>
-
+                class="bg-black py-28 bg-opacity-60 h-full w-full flex justify-center items-end">
                 <div class="flex justify-center">
                     <searchBar @search="handleSearch" />
                 </div>
@@ -40,8 +33,8 @@
                 </p>
             </div>
         </section>
-        <section class="container">
-            <h3 class="text-center m-10">RELAX, ENJOY, DREAM AND VISIT</h3>
+        <section class="container mt-16">
+            <h3 class="text-center mb-10">RELAX, ENJOY, DREAM AND VISIT</h3>
 
             <div class="  grid grid-cols-5 grid-rows-2 gap-4 text-center">
                 <div class="col-span-2 relative flex-grow group">
