@@ -50,6 +50,7 @@
 
     },
     "property": {
+        "size": "Dimensiones",
         "terrace": "Terraza",
         "wifi": "WI-FI",
         "parking": "Garaje",

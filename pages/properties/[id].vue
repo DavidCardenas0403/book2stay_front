@@ -10,7 +10,7 @@
           <img
             v-for="image in property?.Images.slice(1, 4)"
             :src="BACKEND_URL + image?.url"
-            class="h-full w-full"
+            class="h-full w-full h-250px"
             :key="image?.url"
           />
 
@@ -43,6 +43,14 @@
           <div v-html="getPropertyText(property)?.description"></div>
 
           <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div
+              v-if="property.beds"
+              v-tooltip.bottom="$t('property.size')"
+              class="text-2xl border bg-gray-300 p-4 flex justify-center items-center"
+            >
+              <p>{{ `${property.size} m` }}</p>
+              <sup>2</sup>
+            </div>
             <div
               v-if="property.beds"
               v-tooltip.bottom="$t('property.beds')"
@@ -98,8 +106,8 @@
               <i class="pi pi-car text-xl"></i>
             </div>
             <div
-              v-if="property.swimmingPool"
-              v-tooltip.bottom="$t('property.swimming_pool')"
+              v-if="property.swimming_pool"
+              v-tooltip.bottom="$t('property.swimmingPool')"
               class="text-2xl border bg-gray-300 p-4 flex justify-center items-center"
             >
               <img
