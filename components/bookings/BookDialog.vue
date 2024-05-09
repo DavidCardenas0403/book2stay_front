@@ -12,27 +12,44 @@
         <StepperPanel header="Contact">
           <template #content="{ nextCallback }">
             <form class="col-span-1" @submit.prevent="submitBooking">
-              <div class="p-fluid flex flex-col gap-4">
-                <div class="p-field">
-                  <label for="name">Name</label>
-                  <InputText v-model="formData.name" id="name"></InputText>
+              <form @submit.prevent="nextCallback">
+                <div class="p-fluid flex flex-col gap-4">
+                  <div class="p-field">
+                    <label for="name">Name</label>
+                    <InputText
+                      required
+                      v-model="formData.name"
+                      id="name"
+                    ></InputText>
+                  </div>
+                  <div class="p-field">
+                    <label for="phone">Phone</label>
+                    <InputMask
+                      required
+                      v-model="formData.phone"
+                      id="phone"
+                      mask="+99 999 999 999"
+                      placeholder="+34 672 542 908"
+                    ></InputMask>
+                  </div>
+                  <div class="p-field">
+                    <label for="email">Email</label>
+                    <InputText
+                      type="email"
+                      required
+                      v-model="formData.email"
+                      id="email"
+                    ></InputText>
+                  </div>
                 </div>
-                <div class="p-field">
-                  <label for="phone">Phone</label>
-                  <InputText v-model="formData.phone" id="phone"></InputText>
-                </div>
-                <div class="p-field">
-                  <label for="email">Email</label>
-                  <InputText v-model="formData.email" id="email"></InputText>
-                </div>
-              </div>
-              <Button
-                class="btn bg-primary-normal my-4"
-                @click="nextCallback"
-                label="Next"
-                icon="pi pi-arrow-right"
-                iconPos="right"
-              ></Button>
+                <Button
+                  type="submit"
+                  class="btn bg-primary-normal my-4"
+                  label="Next"
+                  icon="pi pi-arrow-right"
+                  iconPos="right"
+                ></Button>
+              </form>
             </form>
           </template>
         </StepperPanel>
@@ -81,8 +98,8 @@
                 class="bg-primary-normal my-4"
                 @click="
                   () => {
-                    nextCallback();
-                    pay();
+                    nextCallback()
+                    pay()
                   }
                 "
                 label="Pay"
@@ -182,23 +199,23 @@
 </template>
 
 <script setup>
-const { locale } = useI18n();
-import 'dayjs';
-import { ref } from 'vue';
-import axios from '../../api/axios';
-import { BACKEND_URL } from '~/CONSTS';
-import { getPropertyText } from '~/helpers/lang';
-import dayjs from 'dayjs';
-import { formatSimpleDate } from '~/helpers/dates';
+const { locale } = useI18n()
+import 'dayjs'
+import { ref } from 'vue'
+import axios from '../../api/axios'
+import { BACKEND_URL } from '~/CONSTS'
+import { getPropertyText } from '~/helpers/lang'
+import dayjs from 'dayjs'
+import { formatSimpleDate } from '~/helpers/dates'
 
-const emit = defineEmits(['closeModal']);
+const emit = defineEmits(['closeModal'])
 
 const { visible, data, property } = defineProps([
   'visible',
   'data',
   'property',
   'loading',
-]);
+])
 /* console.log(
   property.PropertyTexts.filter((text) => text.languageCode == locale?.value)[0]
     .name
@@ -221,46 +238,46 @@ const formData = ref({
   phone: '',
   email: '',
   discount_code: '',
-});
+})
 
-const discountData = ref({});
-const finalPrice = ref();
+const discountData = ref({})
+const finalPrice = ref()
 
-const loadingPayment = ref(false);
-const showPaymentError = ref(false);
+const loadingPayment = ref(false)
+const showPaymentError = ref(false)
 
-const payedBooking = ref(false);
+const payedBooking = ref(false)
 
 async function pay() {
-  loadingPayment.value = true;
-  showPaymentError.value = false;
-  console.log('Proceso de pago');
+  loadingPayment.value = true
+  showPaymentError.value = false
+  console.log('Proceso de pago')
   setTimeout(() => {
-    loadingPayment.value = false;
-    payedBooking.value = true;
-  }, 4000);
-  const paymentResponse = 'Aquí va la petición a la API de Paypal';
+    loadingPayment.value = false
+    payedBooking.value = true
+  }, 4000)
+  const paymentResponse = 'Aquí va la petición a la API de Paypal'
   if (paymentResponse.data) {
   } else {
-    showPaymentError.value = true;
+    showPaymentError.value = true
   }
 }
 
-watch(payedBooking, submitBooking);
+watch(payedBooking, submitBooking)
 
 function calculateNights(start_date, end_date) {
-  const start = dayjs(start_date);
-  const end = dayjs(end_date);
-  const nights = end.diff(start, 'day');
-  return nights;
+  const start = dayjs(start_date)
+  const end = dayjs(end_date)
+  const nights = end.diff(start, 'day')
+  return nights
 }
 
 async function validateDiscountCode(code) {
   try {
-    const response = await axios.get('/discounts/' + code);
-    discountData.value = response.data;
+    const response = await axios.get('/discounts/' + code)
+    discountData.value = response.data
   } catch (error) {
-    discountData.value = { error: error.response.data.error };
+    discountData.value = { error: error.response.data.error }
   }
 }
 
@@ -269,21 +286,21 @@ function calculateDiscountQuantity() {
     calculateNights(data.dates[0], data.dates[1]) *
     property.price *
     (discountData.value.percentage / 100)
-  );
+  )
 }
 
 function calculateTotal() {
-  let total = calculateNights(data.dates[0], data.dates[1]) * property.price;
+  let total = calculateNights(data.dates[0], data.dates[1]) * property.price
 
   if (discountData.value?.code) {
-    total -= calculateDiscountQuantity();
+    total -= calculateDiscountQuantity()
   }
 
-  return total;
+  return total
 }
 
 async function submitBooking() {
-  console.log('booking petición');
+  console.log('booking petición')
   try {
     // Enviar los datos al endpoint de reservas
     const response = await axios.post('/bookings', {
@@ -293,12 +310,12 @@ async function submitBooking() {
       property_id: property?.id,
       start_date: data.dates[0],
       end_date: data.dates[1],
-    });
-    console.log('Booking created:', response.data);
+    })
+    console.log('Booking created:', response.data)
     // Cerrar el modal después de enviar la reserva
     // modalData.value.visible = false;
   } catch (error) {
-    console.error('Error creating booking:', error);
+    console.error('Error creating booking:', error)
   }
 }
 </script>

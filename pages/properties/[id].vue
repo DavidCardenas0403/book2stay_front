@@ -39,23 +39,32 @@
               >/{{ $t('variables.night') }}</span
             >
           </p>
+          <div class="grid grid-cols-2 md:grid-cols-4">
+            <div>{{ property.beds }}</div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
           <div v-html="getPropertyText(property)?.description"></div>
 
           <section class="grid grid-cols-2 md:grid-cols-6 gap-4">
             <div
               v-if="property.wifi"
+              v-tooltip.bottom="$t('property.wifi')"
               class="text-2xl border bg-gray-300 p-4 flex justify-center items-center"
             >
               <i class="pi pi-wifi"></i>
             </div>
             <div
               v-if="property.parking"
+              v-tooltip.bottom="$t('property.parking')"
               class="text-2xl border bg-gray-300 p-4 flex justify-center items-center"
             >
               <i class="pi pi-car"></i>
             </div>
             <div
-              v-if="property.swimming_pool"
+              v-if="property.swimmingPool"
+              v-tooltip.bottom="$t('property.swimming_pool')"
               class="text-2xl border bg-gray-300 p-4 flex justify-center items-center"
             >
               <img
@@ -65,6 +74,7 @@
             </div>
             <div
               v-if="property.terrace"
+              v-tooltip.bottom="$t('property.terrace')"
               class="border bg-gray-300 p-4 flex justify-center items-center"
             >
               <img src="../../assets/images/CbiRoomsbalcony.svg" width="24" />
@@ -85,7 +95,6 @@
                 selectionMode="range"
                 dateFormat="dd/mm/yy"
                 class="custom-calendar"
-                show-button-bar
                 :disabled-dates="reservedDates.map((date) => new Date(date))"
               >
                 <template #date="slotProps">
@@ -173,57 +182,57 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
-import { fetchProperty } from '../../api/fetchProperties';
-import { getPropertyText } from '../../helpers/lang';
+import { onMounted } from 'vue'
+import { fetchProperty } from '../../api/fetchProperties'
+import { getPropertyText } from '../../helpers/lang'
 
-import ImagesGallery from '~/components/properties/ImagesGallery.vue';
-import BookDialog from '~/components/bookings/BookDialog.vue';
+import ImagesGallery from '~/components/properties/ImagesGallery.vue'
+import BookDialog from '~/components/bookings/BookDialog.vue'
 
-import logo from '../assets/images/country-club.svg';
-import LangSwitcher from '~/components/LangSwitcher.vue';
-import { BACKEND_URL } from '~/CONSTS';
+import logo from '../assets/images/country-club.svg'
+import LangSwitcher from '~/components/LangSwitcher.vue'
+import { BACKEND_URL } from '~/CONSTS'
 
-import dayjs from 'dayjs';
-import { formatSimpleDate } from '~/helpers/dates';
+import dayjs from 'dayjs'
+import { formatSimpleDate } from '~/helpers/dates'
 
-const { locale } = useI18n();
+const { locale } = useI18n()
 
-const loading = ref(true);
+const loading = ref(true)
 
 const data = reactive({
   dates: [],
   adults: 0,
   children: 0,
-});
+})
 
 const modalData = reactive({
   visible: false,
   step: 1,
-});
+})
 
-const property = ref(null);
-const reservedDates = ref(null);
-const texts = ref(null);
-const imagesGalleryShown = ref(false);
+const property = ref(null)
+const reservedDates = ref(null)
+const texts = ref(null)
+const imagesGalleryShown = ref(false)
 function toggleImagesGallery() {
-  imagesGalleryShown.value = !imagesGalleryShown.value;
+  imagesGalleryShown.value = !imagesGalleryShown.value
 }
 
 onMounted(async () => {
-  const response = await fetchProperty(useRoute().params?.id);
-  property.value = response.property;
+  const response = await fetchProperty(useRoute().params?.id)
+  property.value = response.property
   reservedDates.value = response.reservedDates.map((date) =>
     dayjs(date).format('YYYY-M-D')
-  );
+  )
 
   if (useRoute().query?.start_date) {
-    data.dates.push(dayjs(useRoute().query.start_date).toDate());
-    data.dates.push(dayjs(useRoute().query.end_date).toDate());
-    data.adults = useRoute().query.adults;
-    data.children = useRoute().query.children;
+    data.dates.push(dayjs(useRoute().query.start_date).toDate())
+    data.dates.push(dayjs(useRoute().query.end_date).toDate())
+    data.adults = useRoute().query.adults
+    data.children = useRoute().query.children
   }
 
-  loading.value = false;
-});
+  loading.value = false
+})
 </script>
