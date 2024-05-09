@@ -74,7 +74,6 @@
         :class="{
           'text-black': isScrolled || isFixed,
           'text-white': !isScrolled && isFixed,
-          'border-black': isScrolled || !isFixed,
           'hover:bg-black': isScrolled || isFixed,
           'hover:text-white': isScrolled,
         }"
