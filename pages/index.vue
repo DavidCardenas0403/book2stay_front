@@ -7,7 +7,11 @@
             style="
     background-image: url('https://apartments-country-club-playa-de-pals-con01387-dya-begur.hotelmix.es/data/Photos/OriginalPhoto/11065/1106546/1106546628/Apartments-Country-Club-Playa-De-Pals-Con01387-Dya-Begur-Exterior.JPEG');">
             <div
-                class="bg-black py-28 bg-opacity-60 h-full w-full flex justify-center items-end">
+                class="bg-black py-28 bg-opacity-60 h-full w-full flex flex-col justify-between items-center">
+                <div></div>
+                <h2 class="text-white md:w-1/2 self-start ml-20">
+                    {{ $t("index.h2") }}
+                </h2>
                 <div class="flex justify-center">
                     <searchBar @search="handleSearch" />
                 </div>

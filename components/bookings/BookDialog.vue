@@ -99,8 +99,6 @@
                 icon="pi pi-arrow-left"
                 @click="prevCallback"
               />
-
-              <button @click="pay(nextCallback)">simular pago</button>
             </div>
           </template>
         </StepperPanel>
