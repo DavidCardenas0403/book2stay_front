@@ -85,7 +85,11 @@
                   </div>
                 </div>
               </div>
-              <Paypal :price="calculateTotal()" class="mt-10"></Paypal>
+              <Paypal
+                :price="calculateTotal()"
+                class="mt-10"
+                @paymentConfirmed="pay(nextCallback)"
+              ></Paypal>
             </form>
 
             <div class="flex gap-2 pt-4 justify-content-between items-center">
@@ -119,16 +123,17 @@
                   {{ $t('booking.paymentError') }}
                 </p>
               </div>
-              <div
-                v-else-if="payedBooking"
-                class="w-full text-center text-xl text-green-500"
-              >
-                <i
-                  class="pi pi-check text-3xl border rounded-full p-3 border-2 border-green-500"
-                ></i>
-                <p class="mt-3">
-                  {{ $t('booking.successPayment') }}
-                </p>
+              <div v-else-if="payedBooking" class="w-full text-center text-xl">
+                <div class="text-green-500">
+                  <i
+                    class="pi pi-check text-3xl border rounded-full p-3 border-2 border-green-500"
+                  ></i>
+                  <p class="mt-3">
+                    {{ $t('booking.successPayment') }}
+                  </p>
+                </div>
+
+                <p>#{{ bookingData.id }}</p>
               </div>
             </div>
           </template>
@@ -230,24 +235,20 @@ const showPaymentError = ref(false)
 
 const payedBooking = ref(false)
 
+const bookingData = ref()
+
 async function pay(nextCallback) {
-  loadingPayment.value = true
   showPaymentError.value = false
-  console.log('Proceso de pago')
-  setTimeout(() => {
-    loadingPayment.value = false
-    payedBooking.value = true
-  }, 4000)
-  const paymentResponse = 'Aquí va la petición a la API de Paypal'
+  payedBooking.value = true
+
+  await submitBooking()
 
   nextCallback()
-  if (paymentResponse.data) {
-  } else {
-    showPaymentError.value = true
-  }
+  //   if (paymentResponse.data) {
+  //   } else {
+  //     showPaymentError.value = true;
+  //   }
 }
-
-watch(payedBooking, submitBooking)
 
 function calculateNights(start_date, end_date) {
   const start = dayjs(start_date)
@@ -299,6 +300,7 @@ async function submitBooking() {
       })
       console.log('Booking created:', response.data)
 
+      bookingData.value = response.data
       if (response.data)
         useRouter().push(`/find-booking?id=${response.data.id}`)
       // Cerrar el modal después de enviar la reserva

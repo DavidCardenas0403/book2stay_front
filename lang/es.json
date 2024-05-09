@@ -9,7 +9,7 @@
         "ratings": "valoraciones",
         "rating": "valoración",
         "prices": "precios",
-        "price": "precio",
+        "price": "Precio",
         "forSale": "a la venta",
         "forRent": "en alquiler",
         "email": "Correo electrónico",
@@ -18,7 +18,9 @@
         "name": "Nombre",
         "night": "Noche",
         "adults": "Adultos",
-        "children": "Niños"
+        "children": "Niños",
+        "beds": "Camas",
+        "terrace": "Terraza"
     },
     "booking": {
         "yourBook": "Tu reserva",
@@ -85,7 +87,8 @@
     },
     "general": {
         "settings": "ajustes",
-        "ourProperties" : "Nuestras propiedades"
+        "ourProperties" : "Nuestras propiedades",
+        "search": "buscar"
     },
     "index": {
         "yourUltimateRetreatOnTheCostaBrava": "Tu último retiro en la Costa Brava."

@@ -1,36 +1,76 @@
 {
     "variables": {
         "properties": "Eigenschappen",
-        "property": "Eigenschap",
-        "reviews": "Beoordelingen",
-        "review": "Beoordeling",
-        "bookings": "Reserveringen",
-        "booking": "Reservering",
-        "ratings": "Beoordelingen",
-        "rating": "Beoordeling",
-        "prices": "Prijzen",
+        "property": "Eigendom",
+        "reviews": "beoordelingen",
+        "review": "beoordeling",
+        "bookings": "reserveringen",
+        "booking": "reservering",
+        "ratings": "beoordelingen",
+        "rating": "beoordeling",
+        "prices": "prijzen",
         "price": "Prijs",
-        "forSale": "Te koop",
-        "forRent": "Te huur",
+        "forSale": "te koop",
+        "forRent": "te huur",
         "email": "E-mail",
         "password": "Wachtwoord",
         "signUp": "Aanmelden",
-        "name": "Naam"
+        "name": "Naam",
+        "night": "Nachten",
+        "adults": "Volwassenen",
+        "children": "Kinderen",
+        "beds": "Bedden",
+        "terrace": "Terras"
+    },
+    "booking": {
+        "yourBook": "Uw boeking",
+        "name": "Naam",
+        "phone": "Telefoon",
+        "email": "E-mail",
+        "discountCode": "Kortingscode",
+        "validate": "Valideren",
+        "next": "Volgende",
+        "previous": "Vorige",
+        "contact": "Contact",
+        "payment": "Betaling",
+        "summary": "Samenvatting",
+        "cardholdresName": "Naam kaarthouder",
+        "cardNumber": "Kaartnummer",
+        "expiration": "Vervaldatum",
+        "confirm": "Bevestigen",
+        "total": "Totaal",
+        "apply": "Toepassen",
+        "wait": "Wacht terwijl de betaling wordt verwerkt...",
+        "paymentError": "Onverwachte fout bij betaling",
+        "successPayment": "Betaling succesvol voltooid!"
     },
     "login": {
-        "loginText": "Inloggen op uw account",
+        "loginText": "Toegang tot uw account",
         "forgotPassword": "Wachtwoord vergeten?",
         "login": "Inloggen",
         "oauth": "Inloggen met Google",
-        "noAccount": "Heb je nog geen account?"
+        "noAccount": "Heeft u nog geen account?",
+        "error": "Fout bij inloggen"
     },
     "signup": {
         "create": "Account aanmaken",
         "repeat": "Herhaal Wachtwoord",
-        "equal": "Wachtwoorden komen niet overeen",
-        "noAccount": "Heb je al een account?"
+        "equal": "De wachtwoorden komen niet overeen",
+        "noAccount": "Heeft u al een account?"
+    },
+    "languages": {
+        "spanish": "Spaans",
+        "catalan": "Catalaans",
+        "english": "Engels",
+        "dutch": "Nederlands",
+        "french": "Frans"
     },
     "general": {
-        "settings": "Instellingen"
+        "settings": "instellingen",
+        "ourProperties" : "Onze eigenschappen",
+        "search": "zoeken"
+    },
+    "index": {
+        "yourUltimateRetreatOnTheCostaBrava": "Uw ultieme toevluchtsoord aan de Costa Brava."
     }
 }

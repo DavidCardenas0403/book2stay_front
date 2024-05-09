@@ -3,7 +3,7 @@
   <div class="flex justify-normal items-center bg-gray-200 p-4 mb-5">
     <!-- PRICE -->
     <div class="mr-4">
-      <Button type="button" icon="pi pi-euro" label="Price" @click="toggle_price"
+      <Button type="button" icon="pi pi-euro" :label="$t('variables.price')" @click="toggle_price"
         class="rounded-none bg-primary-normal border-primary-normal" />
       <OverlayPanel ref="op_price" class="rounded-none">
         <div class="flex flex-column items-center gap-3 w-25rem"> <!-- Centering items -->
@@ -21,7 +21,7 @@
 
     <!-- BEDS -->
     <div class="mr-4">
-      <Button type="button" icon="pi pi-filter" label="Beds" @click="toggle_bed"
+      <Button type="button" icon="pi pi-filter" :label="$t('variables.beds')" @click="toggle_bed"
         class="rounded-none bg-primary-normal border-primary-normal" />
       <OverlayPanel ref="op_bed" class="rounded-none">
         <div class="flex flex-column items-center gap-3 w-25rem ">

@@ -46,7 +46,8 @@ export default {
         },
         onApprove: function (data, actions) {
           return actions.order.capture().then(function (details) {
-            alert('Transaction completed by ' + details.payer.name.given_name);
+            self.$emit("paymentConfirmed")
+            // alert('Transaction completed by ' + details.payer.name.given_name);
           });
         }
       }).render(this.$refs.paypal);

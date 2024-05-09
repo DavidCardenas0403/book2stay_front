@@ -2,37 +2,75 @@
     "variables": {
         "properties": "Propietats",
         "property": "Propietat",
-        "reviews": "resenyes",
-        "review": "resenya",
+        "reviews": "avaluacions",
+        "review": "avaluació",
         "bookings": "reserves",
         "booking": "reserva",
         "ratings": "valoracions",
         "rating": "valoració",
         "prices": "preus",
-        "price": "preu",
+        "price": "Preu",
         "forSale": "a la venda",
         "forRent": "en lloguer",
         "email": "Correu electrònic",
         "password": "Contrasenya",
-        "signUp": "Inscriure's",
+        "signUp": "Registra't",
         "name": "Nom",
-        "night": "Nit"
+        "night": "Nits",
+        "adults": "Adults",
+        "children": "Nens",
+        "beds": "Llits",
+        "terrace": "Terrassa"
+    },
+    "booking": {
+        "yourBook": "La teva reserva",
+        "name": "Nom",
+        "phone": "Telèfon",
+        "email": "Correu electrònic",
+        "discountCode": "Codi de descompte",
+        "validate": "Valida",
+        "next": "Següent",
+        "previous": "Anterior",
+        "contact": "Contacte",
+        "payment": "Pagament",
+        "summary": "Resum",
+        "cardholdresName": "Nom del titular de la targeta",
+        "cardNumber": "Número de targeta",
+        "expiration": "Caducitat",
+        "confirm": "Confirma",
+        "total": "Total",
+        "apply": "Aplica",
+        "wait": "Espera mentre es realitza el pagament...",
+        "paymentError": "Error inesperat en el pagament",
+        "successPayment": "¡Pagament realitzat amb èxit!"
     },
     "login": {
-        "loginText": "Accedir al teu compte",
+        "loginText": "Accedeix al teu compte",
         "forgotPassword": "Has oblidat la teva contrasenya?",
-        "login": "Accedir",
+        "login": "Accedeix",
         "oauth": "Inicia sessió amb Google",
-        "noAccount": "Encara no tens un compte?"
+        "noAccount": "Encara no tens un compte?",
+        "error": "Error en iniciar sessió"
     },
     "signup": {
-        "create": "Crear compte",
-        "repeat": "Repetir Contrasenya",
+        "create": "Crea compte",
+        "repeat": "Repeteix Contrasenya",
         "equal": "Les contrasenyes no coincideixen",
         "noAccount": "Ja tens un compte?"
     },
+    "languages": {
+        "spanish": "espanyol",
+        "catalan": "català",
+        "english": "anglès",
+        "dutch": "holandès",
+        "french": "francès"
+    },
     "general": {
-        "settings": "Ajustaments",
-        "ourProperties" : "Les nostres propietats"
+        "settings": "ajustos",
+        "ourProperties" : "Les nostres propietats",
+        "search": "cerca"
+    },
+    "index": {
+        "yourUltimateRetreatOnTheCostaBrava": "El teu últim refugi a la Costa Brava."
     }
 }
