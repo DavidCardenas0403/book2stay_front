@@ -60,6 +60,8 @@
               <div class="p-fluid flex flex-col gap-4">
                 <div>
                   <div class="grid grid-cols-4 gap-2 items-end">
+
+
                     <div class="p-field w-full col-span-4 2xl:col-span-3">
                       <label for="discount_code">{{
                         $t("booking.discountCode")
@@ -85,6 +87,8 @@
                   </div>
                 </div>
               </div>
+              <Paypal :price="calculateTotal()" class="mt-10"></Paypal>
+
             </form>
 
             <div class="flex gap-2 pt-4 justify-content-between items-center">
@@ -214,20 +218,6 @@ const { visible, data, property } = defineProps([
     .name
 ) */
 //console.log(property)
-
-const paypalContainerId = "paypal-container-M9VJNKAU57K6C";
-
-onMounted(() => {
-  // Inicializa el botón de PayPal cuando el DOM está completamente cargado
-  document.addEventListener("DOMContentLoaded", () => {
-    paypal
-      .HostedButtons({
-        hostedButtonId: "M9VJNKAU57K6C",
-      })
-      .render(`#${paypalContainerId}`);
-  });
-});
-
 const formData = ref({
   name: "",
   phone: "",
