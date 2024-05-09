@@ -2,28 +2,70 @@
     "variables": {
         "properties": "Properties",
         "property": "Property",
-        "reviews": "Reviews",
-        "review": "Review",
-        "bookings": "Bookings",
-        "booking": "Booking",
-        "ratings": "Ratings",
-        "rating": "Rating",
-        "prices": "Prices",
-        "price": "Price",
-        "forSale": "For Sale",
-        "forRent": "For Rent",
+        "reviews": "reviews",
+        "review": "review",
+        "bookings": "bookings",
+        "booking": "booking",
+        "ratings": "ratings",
+        "rating": "rating",
+        "prices": "prices",
+        "price": "price",
+        "forSale": "for sale",
+        "forRent": "for rent",
         "email": "Email",
         "password": "Password",
         "signUp": "Sign Up",
         "name": "Name",
-        "night": "Night"
+        "night": "Night",
+        "adults": "Adults",
+        "children": "Children"
+    },
+    "booking": {
+        "yourBook": "Your booking",
+        "name": "Name",
+        "phone": "Phone",
+        "email": "Email",
+        "discountCode": "Discount Code",
+        "validate": "Validate",
+        "next": "Next",
+        "previous": "Previous",
+        "contact": "Contact",
+        "payment": "Payment",
+        "summary": "Summary",
+        "cardholdresName": "Cardholder's Name",
+        "cardNumber": "Card Number",
+        "expiration": "Expiration",
+        "confirm": "Confirm",
+        "total": "Total",
+        "apply": "Apply",
+        "wait": "Please wait for payment...",
+        "paymentError": "Unexpected error during payment",
+        "successPayment": "Payment successful!",
+        "findBooking": "Find Booking",
+        "yourBookingCode": "Your booking code",
+        "find": "Find",
+        "data": "Booking Data",
+        "personal": "Personal Data",
+        "totalPrice": "Total Price"
+    },
+    "property": {
+        "terrace": "Terrace",
+        "wifi": "WI-FI",
+        "parking": "Parking",
+        "swimmingPool": "Swimming Pool",
+        "beds": "Beds",
+        "rooms": "Rooms",
+        "bathrooms": "Bathrooms",
+        "capacity": "Capacity",
+        "apartmentList": "Apartment List"
     },
     "login": {
         "loginText": "Log in to your account",
         "forgotPassword": "Forgot your password?",
-        "login": "Log in",
+        "login": "Log In",
         "oauth": "Sign in with Google",
-        "noAccount": "Don't have an account yet?"
+        "noAccount": "Don't have an account?",
+        "error": "Error logging in"
     },
     "signup": {
         "create": "Create Account",
@@ -31,10 +73,16 @@
         "equal": "Passwords do not match",
         "noAccount": "Already have an account?"
     },
+    "languages": {
+        "spanish": "Spanish",
+        "catalan": "Catalan",
+        "english": "English",
+        "dutch": "Dutch",
+        "french": "French"
+    },
     "general": {
         "settings": "Settings",
-        "ourProperties" : "Our properties"
-
+        "ourProperties": "Our Properties"
     },
     "index": {
         "yourUltimateRetreatOnTheCostaBrava": "Your Ultimate Retreat on the Costa Brava."

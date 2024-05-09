@@ -56,7 +56,7 @@
         }"
         class="font-semibold transition-colors duration-300 ease-in-out hover:text-primary-hover"
       >
-        Apartment list
+        {{$t("property.apartmentList")}}
       </a>
 
       <a
@@ -67,7 +67,7 @@
         }"
         class="font-semibold transition-colors duration-300 ease-in-out hover:text-primary-hover"
       >
-        Find Booking
+        {{$t("booking.findBooking")}}
       </a>
 
       <LangSwitcher

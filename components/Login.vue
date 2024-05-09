@@ -35,32 +35,31 @@
               </svg>
             </button>
 
-            <img src="~/assets/images/country-club.svg" class="w-auto" alt="" />
+            <img src="~/assets/images/country-club.svg" class="w-auto"/>
             <div class="mt-2">
               <FloatLabel class="mt-2">
                 <InputText
                   type="email"
                   v-model="email"
-                  class="text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-none dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                  class="text-gray-700 w-max placeholder-gray-400 bg-white border border-gray-200 rounded-none dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
                 <label for="email">{{ $t('variables.email') }}</label>
               </FloatLabel>
             </div>
             <div class="mt-2">
               <FloatLabel>
-                <InputText
+                <!-- <InputText
                   type="password"
                   v-model="password"
                   class="placeholder-gray-400 bg-white border border-gray-200 rounded-none dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                  /> -->
+                <Password v-model="password" :feedback="false" toggleMask 
+                input-class="text-gray-700 w-60 placeholder-gray-400 bg-white border border-gray-200 rounded-none dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+
                 />
                 <label for="email">{{ $t('variables.password') }}</label>
               </FloatLabel>
-              <a
-                href="#"
-                class="text-sm text-gray-400 focus:text-primary-focus hover:text-primary-hover hover:underline"
-              >
-                {{ $t('login.forgotPassword') }}
-              </a>
+
             </div>
 
             <div class="mt-2">
@@ -75,13 +74,7 @@
             <p v-if="showError" class="mt-4 text-red-500">
               {{ $t('login.error') }}
             </p>
-            <div
-              class="my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300 dark:before:border-neutral-500 dark:after:border-neutral-500"
-            >
-              <p class="mx-4 mb-0 text-center font-bold dark:text-neutral-200">
-                OR
-              </p>
-            </div>
+
           </div>
         </form>
         <!-- <p class="mb-6 text-sm text-center text-gray-400">

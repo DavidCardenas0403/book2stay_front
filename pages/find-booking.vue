@@ -1,59 +1,49 @@
 <template>
-    <div>
-        <h1 class="text-center">Find your booking</h1>
-        <form class="flex flex-col items-center mt-6 gap-3">
-            <Label class="block">Your booking code</Label>
+  <div>
+    <h1 class="text-center">{{$t("booking.findBooking")}}</h1>
+    <form class="flex flex-col items-center mt-6 gap-3">
+      <Label class="block">{{ $t("booking.yourBookingCode") }}</Label>
+      <InputMask v-model="bookingId" mask="999999" />
+      <Button class="btn bg-primary" @click.prevent="findBookingById"
+        >{{ $t("booking.find") }}</Button
+      >
+    </form>
 
-            <div>
-                <InputOtp v-model="bookingId" integerOnly :length="6" />
-            </div>
+    <section class="mt-6 flex flex-col items-center justify-center">
+      <div v-if="loading">
+        <Spinner />
+      </div>
+      <div v-else-if="error" class="text-center text-red-500">{{ error }}</div>
+      <div v-else-if="bookingData?.id" class="md:w-1/2 border-2 border-dashed p-4">
+        <div>
+          <p class="font-bold">{{ $t("booking.data") }}</p>
+          <p>
+            {{
+              formatSimpleDate(bookingData?.start_date, "D MMMM") +
+              " - " +
+              formatSimpleDate(bookingData?.end_date, "D MMMM")
+            }}
+          </p>
 
+          <p>{{ `${bookingData?.adults} ${ $t("variables.adults") } - ${bookingData?.children} ${ $t("variables.children") }` }}</p>
+        </div>
 
-            <Button class="btn bg-primary"
-                @click.prevent="findBookingById">Find</Button>
-        </form>
+        <div class="mt-4">
+          <p class="font-bold">{{ $t("booking.personal") }}</p>
+          <p>{{ $t("booking.name") }}: {{ bookingData?.name }}</p>
+          <p>{{ $t("booking.phone") }}: {{ bookingData?.phone }}</p>
+          <p>{{ $t("booking.email") }}: {{ bookingData?.email }}</p>
+        </div>
 
-        <section
-            class="mt-6 flex flex-col items-center justify-center">
-            <div v-if="loading">
-                <Spinner />
-            </div>
-            <div v-else-if="error"
-                class="text-center text-red-500">
-                {{ error }}</div>
-            <div v-else-if="bookingData?.id"
-                class="md:w-1/2 border-2 border-dashed p-4">
-                <div>
-                    <p class="font-bold">Booking Data</p>
-                    <p>
-                        {{
-                formatSimpleDate(bookingData?.start_date,
-                    "D MMMM") +
-                " - " +
-                formatSimpleDate(bookingData?.end_date,
-                    "D MMMM") }}
-                    </p>
-
-                    <p>{{ `${bookingData?.adults} adults -
-                        ${bookingData?.children} children`
-                        }}</p>
-                </div>
-
-                <div class="mt-4">
-                    <p class="font-bold">Personal data</p>
-                    <p>Name: {{ bookingData?.name }}</p>
-                    <p>Phone: {{ bookingData?.phone }}</p>
-                    <p>Email: {{ bookingData?.email }}</p>
-                </div>
-
-                <p class="text-end">
-                    Total Price:
-                    <span class="text-primary font-bold">{{
-                bookingData?.final_price }}€</span>
-                </p>
-            </div>
-        </section>
-    </div>
+        <p class="text-end">
+          {{ $t("booking.totalPrice") }}:
+          <span class="text-primary font-bold"
+            >{{ bookingData?.final_price }}€</span
+          >
+        </p>
+      </div>
+    </section>
+  </div>
 </template>
 
 <script setup>

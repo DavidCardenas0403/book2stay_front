@@ -64,8 +64,14 @@ export default defineNuxtConfig({
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
-      title: "Country Club Pals"
-
+      title: "Country Club Pals",
+      script: [
+        {
+          src: 'https://www.paypal.com/sdk/js?client-id=BAAvM3hP8mb481aadBMRwILVlKb_DgNIpsDCbXwELna7Nu6tbpjvm89TkMS3KldzyrRUE3AkT9QV70OUo8&components=hosted-buttons&disable-funding=venmo&currency=EUR',
+          crossorigin: 'anonymous',
+          async: true
+        }
+      ]
     }
   },
   ssr: false,

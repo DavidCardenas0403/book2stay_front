@@ -2,12 +2,11 @@
   <div>
     <h3 class="text-center mb-8">{{ $t('general.ourProperties') }}</h3>
 
-    <FilterBar
-      @filterPrice="handleFilterPrice"
-      @filterBeds="handleFilterBeds"
-      @filterItems="handleFilterMoreInfo"
-    >
-    </FilterBar>
+        <FilterBar @filterPrice="handleFilterPrice" @filterBeds="handleFilterBeds" @filterItems="handleFilterMoreInfo"
+            @filterSearch="handleFilterSearch">
+        </FilterBar>
+
+
 
 
 
@@ -30,7 +29,6 @@
     </div>
   </div>
 </template>
-
 <script setup>
 import { onMounted, ref } from 'vue'
 import { fetchProperties, searchProperties } from '../../api/fetchProperties'
@@ -39,9 +37,10 @@ import SimplePropertyCard from '../../components/properties/SimplePropertyCard.v
 const loading = ref(true)
 const properties = ref([])
 const filteredProperties = ref([])
-const price = ref(null) // Define price ref
-const beds = ref(null) // Define beds ref
-const moreInfo = ref(null) // Define beds ref
+const price = ref(null)
+const beds = ref(null)
+const moreInfo = ref(null)
+const searchTerm = ref(null);
 
 onMounted(async () => {
     if(useRoute().query?.start_date) {
@@ -54,42 +53,30 @@ onMounted(async () => {
   loading.value = false
 })
 
-// Event handlers for filter changes
 const handleFilterPrice = (newValue) => {
-  // Handle price filter change
-  console.log('Price Filter Changed:', newValue)
-  price.value = newValue // Update price ref
-  filterProperties()
+    price.value = newValue;
+    filterProperties();
 }
 
 const handleFilterBeds = (newValue) => {
-  // Handle beds filter change
-  console.log('Beds Filter Changed:', newValue)
-  beds.value = newValue // Update beds ref
-  filterProperties()
+    beds.value = newValue;
+    filterProperties();
 }
 
 const handleFilterMoreInfo = (newValue) => {
-  // Handle beds filter change
-  console.log('More Info Filter Changed:', newValue)
-  moreInfo.value = newValue // Update beds ref
-  moreInfo.value.forEach((posicion) => {
-    console.log(posicion.name)
-  })
-  filterProperties()
+    moreInfo.value = newValue;
+    console.log(moreInfo.value);
+    if (moreInfo.value.length == 0) {
+        moreInfo.value = null
+    }
+    filterProperties();
 }
-// Function to filter properties based on filter values
-// const filterProperties = () => {
-//     filteredProperties.value = properties.value.filter(property => {
-//         const priceFilter = price.value;
-//         const bedsFilter = beds.value;
-//         const itemFiler = moreInfo.value;
 
-//         // Check if property passes both price and beds filters
-//         return (priceFilter ? (property.price >= priceFilter[0] && property.price <= priceFilter[1]) : true) &&
-//             (bedsFilter ? (property.beds >= bedsFilter.beds) : true);
-//     });
-// }
+const handleFilterSearch = (newValue) => {
+    searchTerm.value = newValue;
+    filterProperties();
+};
+
 
 const filterProperties = () => {
   filteredProperties.value = properties.value.filter((property) => {
@@ -97,22 +84,14 @@ const filterProperties = () => {
     const bedsFilter = beds.value
     const itemFilter = moreInfo.value
 
-    // Check if property passes price and beds filters
-    const passesPriceFilter = priceFilter
-      ? property.price >= priceFilter[0] && property.price <= priceFilter[1]
-      : true
-    const passesBedsFilter = bedsFilter
-      ? property.beds >= bedsFilter.beds
-      : true
+        const passesPriceFilter = priceFilter ? (property.price >= priceFilter[0] && property.price <= priceFilter[1]) : true;
+        const passesBedsFilter = bedsFilter ? (property.beds >= bedsFilter.beds) : true;
+        const passesMoreInfoFilter = itemFilter ? itemFilter.some(detail => property[detail.moreInfo]) : true;
+        const passesSearchFilter = searchTerm.value ?
+            property.PropertyTexts.some(text => text.name.toLowerCase().includes(searchTerm.value.toLowerCase())) :
+            true;
 
-    // Check if property has any itemFilter
-    const passesItemFilter = itemFilter
-      ? itemFilter.some((item) => property.find(item.name))
-      : true
-    console.log(passesItemFilter)
-
-    // Return true if property passes all filters
-    return passesPriceFilter && passesBedsFilter && passesItemFilter
-  })
+        return passesPriceFilter && passesBedsFilter && passesMoreInfoFilter && passesSearchFilter;
+    });
 }
 </script>

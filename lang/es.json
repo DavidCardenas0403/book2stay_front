@@ -16,7 +16,7 @@
         "password": "Contraseña",
         "signUp": "Inscribirse",
         "name": "Nombre",
-        "night": "Noches",
+        "night": "Noche",
         "adults": "Adultos",
         "children": "Niños",
         "beds": "Camas",
@@ -42,7 +42,26 @@
         "apply": "Aplicar",
         "wait": "Espera a que se realice el pago...",
         "paymentError": "Error inesperado en el pago",
-        "successPayment": "¡Pago realizado con éxito!"
+        "successPayment": "¡Pago realizado con éxito!",
+        "findBooking": "Encontrar Reserva",
+        "yourBookingCode": "Tu código de reserva",
+        "find": "Encontrar",
+        "data": "Datos de la reserva",
+        "personal": "Datos personales",
+        "totalPrice": "Precio Total"
+
+    },
+    "property": {
+        "size": "Dimensiones",
+        "terrace": "Terraza",
+        "wifi": "WI-FI",
+        "parking": "Garaje",
+        "swimmingPool": "Piscina",
+        "beds": "Camas",
+        "rooms": "Habitaciones",
+        "bathrooms": "Lavabos",
+        "capacity": "Capacidad",
+        "apartmentList": "Listado de Apartamentos"
 
     },
     "login": {
