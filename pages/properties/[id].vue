@@ -39,28 +39,63 @@
               >/{{ $t('variables.night') }}</span
             >
           </p>
-          <div class="grid grid-cols-2 md:grid-cols-4">
-            <div>{{ property.beds }}</div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
+
           <div v-html="getPropertyText(property)?.description"></div>
 
-          <section class="grid grid-cols-2 md:grid-cols-6 gap-4">
+          <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div
+              v-if="property.beds"
+              v-tooltip.bottom="$t('property.beds')"
+              class="text-2xl border bg-gray-300 p-4 flex justify-center items-center"
+            >
+              <p class="pr-6">{{ property.beds }}</p>
+              <img
+                class="text-xl"
+                src="../../assets/images/bed.svg"
+                width="24"
+              />
+            </div>
+            <div
+              v-if="property.rooms"
+              v-tooltip.bottom="$t('property.rooms')"
+              class="text-2xl border bg-gray-300 p-4 flex justify-center items-center"
+            >
+              <p class="pr-6">{{ property.rooms }}</p>
+              <i class="pi pi-home text-xl"></i>
+            </div>
+            <div
+              v-if="property.bathrooms"
+              v-tooltip.bottom="$t('property.bathrooms')"
+              class="text-2xl border bg-gray-300 p-4 flex justify-center items-center"
+            >
+              <p class="pr-6">{{ property.bathrooms }}</p>
+              <img
+                class="text-xl"
+                src="../../assets/images/bathroom.svg"
+                width="24"
+              />
+            </div>
+            <div
+              v-if="property.capacity"
+              v-tooltip.bottom="$t('property.capacity')"
+              class="text-2xl border bg-gray-300 p-4 flex justify-center items-center"
+            >
+              <p class="pr-6">{{ property.capacity }}</p>
+              <i class="pi pi-users text-xl"></i>
+            </div>
             <div
               v-if="property.wifi"
               v-tooltip.bottom="$t('property.wifi')"
               class="text-2xl border bg-gray-300 p-4 flex justify-center items-center"
             >
-              <i class="pi pi-wifi"></i>
+              <i class="pi pi-wifi text-xl"></i>
             </div>
             <div
               v-if="property.parking"
               v-tooltip.bottom="$t('property.parking')"
               class="text-2xl border bg-gray-300 p-4 flex justify-center items-center"
             >
-              <i class="pi pi-car"></i>
+              <i class="pi pi-car text-xl"></i>
             </div>
             <div
               v-if="property.swimmingPool"
@@ -68,6 +103,7 @@
               class="text-2xl border bg-gray-300 p-4 flex justify-center items-center"
             >
               <img
+                class="text-xl"
                 src="../../assets/images/MaterialSymbolsPool.svg"
                 width="24"
               />
@@ -77,7 +113,11 @@
               v-tooltip.bottom="$t('property.terrace')"
               class="border bg-gray-300 p-4 flex justify-center items-center"
             >
-              <img src="../../assets/images/CbiRoomsbalcony.svg" width="24" />
+              <img
+                class="text-xl"
+                src="../../assets/images/CbiRoomsbalcony.svg"
+                width="24"
+              />
             </div>
           </section>
         </section>
@@ -91,6 +131,7 @@
             </InputGroupAddon>
             <FloatLabel>
               <Calendar
+                inputId="booking_dates"
                 v-model="data.dates"
                 selectionMode="range"
                 dateFormat="dd/mm/yy"
