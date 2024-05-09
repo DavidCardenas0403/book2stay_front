@@ -8,7 +8,24 @@
       </NuxtLink>
     </div>
 
-    <DataTable :value="properties" class="rounded-md overflow-hidden mt-6">
+    <DataTable
+      ref="dt"
+      stripedRows
+      :value="properties"
+      class="rounded-md overflow-hidden mt-6"
+      paginator
+      :rows="10"
+      :rowsPerPageOptions="[5, 10, 20, 50]"
+    >
+      <template #header>
+        <div style="text-align: left">
+          <Button
+            icon="pi pi-external-link"
+            label="Export"
+            @click="exportCSV($event)"
+          />
+        </div>
+      </template>
       <Column :field="(p) => p.PropertyTexts[0].name" header="Name"></Column>
       <Column header="Image">
         <template #body="slotProps">
@@ -65,11 +82,17 @@ definePageMeta({
   layout: 'admin',
 })
 
+const dt = ref()
+
 const properties = ref()
 
 function handleDelete(id) {
   deleteProperty(id)
   properties.value = properties.value.filter((p) => p.id != id)
+}
+
+const exportCSV = () => {
+  dt.value.exportCSV()
 }
 
 onMounted(async () => {

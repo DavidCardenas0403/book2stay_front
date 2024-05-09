@@ -330,7 +330,7 @@ onMounted(async () => {
 
   if (propertyId.value) {
     const propertyData = await fetchProperty(propertyId.value)
-    await assignPropertyData(propertyData)
+    fillPropertyData(propertyData.property)
   }
 
   loading.value = false

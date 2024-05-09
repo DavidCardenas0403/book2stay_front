@@ -2,35 +2,75 @@
     "variables": {
         "properties": "Propriétés",
         "property": "Propriété",
-        "reviews": "Avis",
-        "review": "Avis",
-        "bookings": "Réservations",
-        "booking": "Réservation",
-        "ratings": "Évaluations",
-        "rating": "Évaluation",
-        "prices": "Prix",
+        "reviews": "avis",
+        "review": "avis",
+        "bookings": "réservations",
+        "booking": "réservation",
+        "ratings": "évaluations",
+        "rating": "évaluation",
+        "prices": "prix",
         "price": "Prix",
-        "forSale": "À vendre",
-        "forRent": "À louer",
+        "forSale": "à vendre",
+        "forRent": "à louer",
         "email": "E-mail",
         "password": "Mot de passe",
         "signUp": "S'inscrire",
-        "name": "Nom"
+        "name": "Nom",
+        "night": "Nuitées",
+        "adults": "Adultes",
+        "children": "Enfants",
+        "beds": "Lits",
+        "terrace": "Terrasse"
+    },
+    "booking": {
+        "yourBook": "Votre réservation",
+        "name": "Nom",
+        "phone": "Téléphone",
+        "email": "E-mail",
+        "discountCode": "Code de réduction",
+        "validate": "Valider",
+        "next": "Suivant",
+        "previous": "Précédent",
+        "contact": "Contact",
+        "payment": "Paiement",
+        "summary": "Résumé",
+        "cardholdresName": "Nom du titulaire de la carte",
+        "cardNumber": "Numéro de carte",
+        "expiration": "Date d'expiration",
+        "confirm": "Confirmer",
+        "total": "Total",
+        "apply": "Appliquer",
+        "wait": "Veuillez patienter pendant que le paiement est en cours...",
+        "paymentError": "Erreur inattendue lors du paiement",
+        "successPayment": "Paiement effectué avec succès !"
     },
     "login": {
-        "loginText": "Connectez-vous à votre compte",
+        "loginText": "Accéder à votre compte",
         "forgotPassword": "Mot de passe oublié?",
         "login": "Se connecter",
         "oauth": "Se connecter avec Google",
-        "noAccount": "Vous n'avez pas de compte?"
+        "noAccount": "Vous n'avez pas encore de compte ?",
+        "error": "Erreur de connexion"
     },
     "signup": {
         "create": "Créer un compte",
         "repeat": "Répéter le mot de passe",
         "equal": "Les mots de passe ne correspondent pas",
-        "noAccount": "Vous avez déjà un compte?"
+        "noAccount": "Vous avez déjà un compte ?"
+    },
+    "languages": {
+        "spanish": "Espagnol",
+        "catalan": "Catalan",
+        "english": "Anglais",
+        "dutch": "Néerlandais",
+        "french": "Français"
     },
     "general": {
-        "settings": "Paramètres"
+        "settings": "paramètres",
+        "ourProperties" : "Nos propriétés",
+        "search": "recherche"
+    },
+    "index": {
+        "yourUltimateRetreatOnTheCostaBrava": "Votre refuge ultime sur la Costa Brava."
     }
 }
