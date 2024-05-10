@@ -6,8 +6,7 @@
         <section class="h-screen w-full bg-center bg-cover"
             style="
     background-image: url('https://apartments-country-club-playa-de-pals-con01387-dya-begur.hotelmix.es/data/Photos/OriginalPhoto/11065/1106546/1106546628/Apartments-Country-Club-Playa-De-Pals-Con01387-Dya-Begur-Exterior.JPEG');">
-            <div
-                class="bg-black py-28 bg-opacity-60 h-full w-full flex flex-col justify-between items-center">
+            <div class="bg-black py-28 bg-opacity-60 h-full w-full flex flex-col justify-between items-center">
                 <div></div>
                 <h2 class="text-white md:w-1/2 self-start ml-20">
                     {{ $t("index.h2") }}
@@ -23,22 +22,16 @@
                 <img src="/assets/images/IMG_2.png" class="border-none w-full h-full " alt="Costa Brava">
             </div>
             <div class="lg:w-1/2 mt-6 lg:mt-0 lg:ml-6">
-                <h3 class="text-lg font-bold mb-4">Where tranquillity Meets the Horizon on the Costa Brava.</h3>
+                <!-- <h3 class="text-lg font-bold mb-4">Where tranquillity Meets the Horizon on the Costa Brava.</h3> -->
+                <h3 class="text-lg font-bold mb-4">{{ $t("index.tranquillity") }}</h3>
                 <p class="text-gray-700">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eff icitur
-                    ullamcorper dictum. Fusce velit justo, auctor in eros a, tincidunt laoreet
-                    felis. Maecenas sit amet condimentum justo. Nullam tincidunt vel felis a
-                    finibus. Vivamus hendrerit, orci vel rutrum laoreet, ipsum orci convallis
-                    risus, nec sodales augue eros ut elit. Ut pellentesque vitae augue sit amet
-                    aliquam. Suspendisse ac commodo mi. Donec ligula ante, pellentesque eget
-                    cursus sit amet, mattis malesuada neque. Nam nec aliquam sapien. Mauris
-                    non justo viverra, ultrices dui dapibus, f inibus odio. Vivamus feugiat sem
-                    dictum erat vulputate aliquam.
+
+                    {{ $t("index.def") }}
                 </p>
             </div>
         </section>
         <section class="container mt-16">
-            <h3 class="text-center mb-10">RELAX, ENJOY, DREAM AND VISIT</h3>
+            <h3 class="text-center mb-10">{{ $t("index.relax") }}</h3>
 
             <div class="  grid grid-cols-5 grid-rows-2 gap-4 text-center">
                 <div class="col-span-2 relative flex-grow group">
@@ -48,7 +41,8 @@
                     </div>
                     <div class="absolute inset-0 flex items-center justify-center">
                         <p class="text-white text-3xl font-bold ">
-                            Relax playing golf</p>
+                        {{ $t("index.golf") }}
+                        </p>
                     </div>
 
                 </div>
@@ -60,7 +54,8 @@
                         </div>
                         <div class="absolute inset-0 flex items-center justify-center">
                             <p class="text-white text-3xl font-bold ">
-                                Dream with Medes Island</p>
+                                {{ $t("index.islands") }}
+                            </p>
                         </div>
 
                     </div>
@@ -73,7 +68,8 @@
                         </div>
                         <div class="absolute inset-0 flex items-center justify-center">
                             <p class="text-white text-3xl font-bold ">
-                                Enjoy Costa Brava</p>
+                                {{ $t("index.enjoy") }}
+                            </p>
                         </div>
 
                     </div>
@@ -87,7 +83,8 @@
                         </div>
                         <div class="absolute inset-0 flex items-center justify-center">
                             <p class="text-white text-3xl font-bold p-5">
-                                Visit the magic of the town of Pals</p>
+                                {{ $t("index.pals") }}
+                            </p>
                         </div>
 
                     </div>
@@ -103,7 +100,7 @@
 
         <!-- FEATURED APARTMENTS -->
         <section class="container mt-16">
-            <h3>Featured Apartments</h3>
+            <h3>{{ $t("index.featured") }}</h3>
             <div v-if="properties.length > 0" class="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
                 <SimplePropertyCard v-for="property in properties" :key="property?.id" :property="property" />
             </div>
@@ -127,7 +124,7 @@
 }
 </style>
 
-<script setup >
+<script setup>
 definePageMeta({
     layout: "landing",
 });

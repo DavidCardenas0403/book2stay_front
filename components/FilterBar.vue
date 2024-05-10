@@ -8,7 +8,7 @@
       <OverlayPanel ref="op_price" class="rounded-none">
         <div class="flex flex-column items-center gap-3 w-25rem"> <!-- Centering items -->
           <div class="">
-            <span class="font-medium text-900 block mb-2">Filter by price for night</span>
+            <span class="font-medium text-900 block mb-2">{{ $t("property.price_night") }}</span>
             <Slider v-model="price" range :min="100" :max="500" class="w-14rem mt-3" />
             <div class="mt-4 flex justify-center gap-2"> <!-- Centering horizontally -->
               <InputNumber suffix="€" v-model.number="price[0]" inputClass="rounded-none w-20" />
@@ -36,10 +36,14 @@
 
 
     <div class="card flex justify-content-center">
-      <SelectButton v-model="moreInfo" :options="items" optionLabel="name" multiple aria-labelledby="multiple">
-      </SelectButton>
-    </div>
-
+  <SelectButton v-for="(item, index) in items" :key="index" :class="{ 'no_color': true }" v-model="moreInfo" :options="[item]" optionLabel="name" multiple aria-labelledby="multiple">
+    <template v-slot:item="option">
+      <div :class="{ 'no_color': moreInfo.includes(option.item.moreInfo) }">
+        {{ option.item.name }}
+      </div>
+    </template>
+  </SelectButton>
+</div>
 
 
     <!-- Search Bar -->
@@ -48,7 +52,7 @@
         <InputIcon>
           <i class="pi pi-search" />
         </InputIcon>
-        <InputText v-model="searchTerm" placeholder="Search" />
+        <InputText v-model="searchTerm" :placeholder="$t('searchBar.search')" />
       </IconField>
 
 
@@ -114,5 +118,8 @@ watch(searchTerm, (newValue) => emitFilter('filterSearch', newValue));
 
 .p-button.p-highlight .p-button-label {
   color: white;
+}
+.p-button.p-component{
+  border-color: transparent;
 }
 </style>

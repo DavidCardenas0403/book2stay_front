@@ -2,21 +2,21 @@
     "variables": {
         "properties": "Propriétés",
         "property": "Propriété",
-        "reviews": "avis",
-        "review": "avis",
-        "bookings": "réservations",
-        "booking": "réservation",
-        "ratings": "évaluations",
-        "rating": "évaluation",
-        "prices": "prix",
+        "reviews": "Avis",
+        "review": "Avis",
+        "bookings": "Réservations",
+        "booking": "Réservation",
+        "ratings": "Évaluations",
+        "rating": "Évaluation",
+        "prices": "Prix",
         "price": "Prix",
-        "forSale": "à vendre",
-        "forRent": "à louer",
+        "forSale": "À vendre",
+        "forRent": "À louer",
         "email": "E-mail",
         "password": "Mot de passe",
         "signUp": "S'inscrire",
         "name": "Nom",
-        "night": "Nuitées",
+        "night": "Nuit",
         "adults": "Adultes",
         "children": "Enfants",
         "beds": "Lits",
@@ -36,18 +36,37 @@
         "summary": "Résumé",
         "cardholdresName": "Nom du titulaire de la carte",
         "cardNumber": "Numéro de carte",
-        "expiration": "Date d'expiration",
+        "expiration": "Expiration",
         "confirm": "Confirmer",
         "total": "Total",
         "apply": "Appliquer",
-        "wait": "Veuillez patienter pendant que le paiement est en cours...",
+        "wait": "Veuillez patienter pendant le traitement du paiement...",
         "paymentError": "Erreur inattendue lors du paiement",
-        "successPayment": "Paiement effectué avec succès !"
+        "successPayment": "Paiement réussi !",
+        "findBooking": "Trouver une réservation",
+        "yourBookingCode": "Votre code de réservation",
+        "find": "Trouver",
+        "data": "Données de réservation",
+        "personal": "Informations personnelles",
+        "totalPrice": "Prix total"
+    },
+    "property": {
+        "size": "Taille",
+        "terrace": "Terrasse",
+        "wifi": "WI-FI",
+        "parking": "Parking",
+        "swimmingPool": "Piscine",
+        "beds": "Lits",
+        "rooms": "Chambres",
+        "bathrooms": "Salles de bain",
+        "capacity": "Capacité",
+        "apartmentList": "Liste des appartements",
+        "price_night": "Filtrer le prix par nuit"
     },
     "login": {
-        "loginText": "Accéder à votre compte",
-        "forgotPassword": "Mot de passe oublié?",
-        "login": "Se connecter",
+        "loginText": "Connectez-vous à votre compte",
+        "forgotPassword": "Mot de passe oublié ?",
+        "login": "Connexion",
         "oauth": "Se connecter avec Google",
         "noAccount": "Vous n'avez pas encore de compte ?",
         "error": "Erreur de connexion"
@@ -66,11 +85,25 @@
         "french": "Français"
     },
     "general": {
-        "settings": "paramètres",
+        "settings": "Paramètres",
         "ourProperties" : "Nos propriétés",
-        "search": "recherche"
+        "search": "Recherche"
     },
     "index": {
-        "yourUltimateRetreatOnTheCostaBrava": "Votre refuge ultime sur la Costa Brava."
-    }
+        "h2": "Votre escapade ultime sur la Costa Brava.",
+        "tranquillity" : "Où la tranquillité rencontre l'horizon sur la Costa Brava.",
+        "def": "Découvrez la magie de la Costa Brava ! \nImmergez-vous dans un monde de tranquillité où l'horizon se confond avec la mer. Des plages dorées aux criques cachées, la Costa Brava vous attend avec ses paysages époustouflants et son charme unique. Explorez des villages pittoresques, régalez-vous de la délicieuse cuisine méditerranéenne et laissez-vous séduire par la beauté naturelle qui entoure chaque coin. \n \nVenez découvrir pourquoi la Costa Brava est une destination de rêve pour se détendre, profiter et rêver !",
+        "relax": "DÉTENDEZ-VOUS, PROFITEZ, RÊVEZ ET VISITEZ",
+        "golf": "Détendez-vous en jouant au golf",
+        "islands": "Rêvez des îles Medes",
+        "enjoy": "Profitez de la Costa Brava",
+        "pals": "Visitez la magie du village de Pals",
+        "featured": "Appartements en vedette"
+    },
+    "searchBar": {
+        "bookingDate": "Date de réservation",
+        "adults": "Adultes",
+        "children": "Enfants",
+        "search": "Rechercher"
+      }
 }

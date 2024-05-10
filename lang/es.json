@@ -61,7 +61,8 @@
         "rooms": "Habitaciones",
         "bathrooms": "Lavabos",
         "capacity": "Capacidad",
-        "apartmentList": "Listado de Apartamentos"
+        "apartmentList": "Listado de Apartamentos",
+        "price_night": "Filtrar el precio por noche"
 
     },
     "login": {
@@ -91,6 +92,20 @@
         "search": "buscar"
     },
     "index": {
-        "h2": "La mejor forma de vivir la Costa Brava"
-    }
+        "h2": "Tu escapada definitiva en la Costa Brava.",
+        "tranquillity" : "Donde la tranquilidad se encuentra con el horizonte en la Costa Brava.",
+        "def": "¡Descubre la magia de la Costa Brava! \nSumérgete en un mundo de tranquilidad donde el horizonte se funde con el mar. Desde playas doradas hasta caletas escondidas, la Costa Brava te espera con sus paisajes impresionantes y su encanto único. Explora pueblos pintorescos, disfruta de la deliciosa gastronomía mediterránea y déjate llevar por la belleza natural que rodea cada rincón. \n \n¡Ven y descubre por qué la Costa Brava es un destino de ensueño para relajarse, disfrutar y soñar!",
+        "relax": "RELÁJATE, DISFRUTA, SUEÑA Y VISITA",
+        "golf": "Relájate jugando al golf",
+        "islands": "Sueña con las Islas Medas",
+        "enjoy": "Disfruta de la Costa Brava",
+        "pals": "Visita la magia del pueblo de Pals",
+        "featured": "Apartamentos destacados"
+    },
+    "searchBar": {
+        "bookingDate": "Fecha de reserva",
+        "adults": "Adultos",
+        "children": "Niños",
+        "search": "Buscar"
+      }
 }

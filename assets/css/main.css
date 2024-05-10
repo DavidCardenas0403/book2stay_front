@@ -75,6 +75,7 @@ h3 {
 
 .p-button,
 .p-highlight {
+    /* Estilos que deseas aplicar a todos los botones excepto los que tienen la clase .no_button */
     /* background-color: #293D9B; */
     box-shadow: none;
     border-color: var(--primary-color);

@@ -2,8 +2,8 @@
     "variables": {
         "properties": "Propietats",
         "property": "Propietat",
-        "reviews": "avaluacions",
-        "review": "avaluació",
+        "reviews": "resenyes",
+        "review": "resenya",
         "bookings": "reserves",
         "booking": "reserva",
         "ratings": "valoracions",
@@ -14,9 +14,9 @@
         "forRent": "en lloguer",
         "email": "Correu electrònic",
         "password": "Contrasenya",
-        "signUp": "Registra't",
+        "signUp": "Inscriure's",
         "name": "Nom",
-        "night": "Nits",
+        "night": "Nit",
         "adults": "Adults",
         "children": "Nens",
         "beds": "Llits",
@@ -26,23 +26,42 @@
         "yourBook": "La teva reserva",
         "name": "Nom",
         "phone": "Telèfon",
-        "email": "Correu electrònic",
+        "email": "Email",
         "discountCode": "Codi de descompte",
-        "validate": "Valida",
+        "validate": "Validar",
         "next": "Següent",
         "previous": "Anterior",
         "contact": "Contacte",
         "payment": "Pagament",
         "summary": "Resum",
-        "cardholdresName": "Nom del titular de la targeta",
+        "cardholdresName": "Titular de la targeta",
         "cardNumber": "Número de targeta",
         "expiration": "Caducitat",
-        "confirm": "Confirma",
+        "confirm": "Confirmar",
         "total": "Total",
-        "apply": "Aplica",
-        "wait": "Espera mentre es realitza el pagament...",
+        "apply": "Aplicar",
+        "wait": "Espera que es faci el pagament...",
         "paymentError": "Error inesperat en el pagament",
-        "successPayment": "¡Pagament realitzat amb èxit!"
+        "successPayment": "Pagament realitzat amb èxit!",
+        "findBooking": "Trobar Reserva",
+        "yourBookingCode": "El teu codi de reserva",
+        "find": "Trobar",
+        "data": "Dades de la reserva",
+        "personal": "Dades personals",
+        "totalPrice": "Preu Total"
+    },
+    "property": {
+        "size": "Dimensions",
+        "terrace": "Terrassa",
+        "wifi": "WI-FI",
+        "parking": "Aparcament",
+        "swimmingPool": "Piscina",
+        "beds": "Llits",
+        "rooms": "Habitacions",
+        "bathrooms": "Banys",
+        "capacity": "Capacitat",
+        "apartmentList": "Llistat d'Apartaments",
+        "price_night": "Filtrar el preu per nit"
     },
     "login": {
         "loginText": "Accedeix al teu compte",
@@ -53,8 +72,8 @@
         "error": "Error en iniciar sessió"
     },
     "signup": {
-        "create": "Crea compte",
-        "repeat": "Repeteix Contrasenya",
+        "create": "Crear compte",
+        "repeat": "Repetir Contrasenya",
         "equal": "Les contrasenyes no coincideixen",
         "noAccount": "Ja tens un compte?"
     },
@@ -66,11 +85,25 @@
         "french": "francès"
     },
     "general": {
-        "settings": "ajustos",
+        "settings": "ajustaments",
         "ourProperties" : "Les nostres propietats",
         "search": "cerca"
     },
     "index": {
-        "yourUltimateRetreatOnTheCostaBrava": "El teu últim refugi a la Costa Brava."
-    }
+        "h2": "La teva escapada definitiva a la Costa Brava.",
+        "tranquillity" : "On la tranquil·litat es troba amb l'horitzó a la Costa Brava.",
+        "def": "Descobreix la màgia de la Costa Brava! \nSubmergeix-te en un món de tranquil·litat on l'horitzó es fon amb el mar. Des de platges daurades fins a cales amagades, la Costa Brava et espera amb els seus paisatges impressionants i el seu encant únic. Explora pobles pintorescs, gaudeix de la deliciosa gastronomia mediterrània i deixa't portar per la bellesa natural que envolta cada racó. \n \nVine i descobreix per què la Costa Brava és un destí de somni per relaxar-se, gaudir i somiar!",
+        "relax": "RELAXA'T, GAUDEIX, SOMIA I VISITA",
+        "golf": "Relaxa't jugant al golf",
+        "islands": "Somia amb les Illes Medes",
+        "enjoy": "Gaudeix de la Costa Brava",
+        "pals": "Visita la màgia del poble de Pals",
+        "featured": "Apartaments destacats"
+    },
+    "searchBar": {
+        "bookingDate": "Data de reserva",
+        "adults": "Adults",
+        "children": "Nens",
+        "search": "Cerca"
+      }
 }

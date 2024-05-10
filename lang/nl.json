@@ -1,22 +1,22 @@
 {
     "variables": {
         "properties": "Eigenschappen",
-        "property": "Eigendom",
-        "reviews": "beoordelingen",
-        "review": "beoordeling",
-        "bookings": "reserveringen",
-        "booking": "reservering",
-        "ratings": "beoordelingen",
-        "rating": "beoordeling",
-        "prices": "prijzen",
+        "property": "Eigenschap",
+        "reviews": "Beoordelingen",
+        "review": "Beoordeling",
+        "bookings": "Boekingen",
+        "booking": "Boeking",
+        "ratings": "Beoordelingen",
+        "rating": "Beoordeling",
+        "prices": "Prijzen",
         "price": "Prijs",
-        "forSale": "te koop",
-        "forRent": "te huur",
+        "forSale": "Te koop",
+        "forRent": "Te huur",
         "email": "E-mail",
         "password": "Wachtwoord",
         "signUp": "Aanmelden",
         "name": "Naam",
-        "night": "Nachten",
+        "night": "Nacht",
         "adults": "Volwassenen",
         "children": "Kinderen",
         "beds": "Bedden",
@@ -34,28 +34,47 @@
         "contact": "Contact",
         "payment": "Betaling",
         "summary": "Samenvatting",
-        "cardholdresName": "Naam kaarthouder",
+        "cardholdresName": "Naam van de kaarthouder",
         "cardNumber": "Kaartnummer",
         "expiration": "Vervaldatum",
         "confirm": "Bevestigen",
         "total": "Totaal",
         "apply": "Toepassen",
-        "wait": "Wacht terwijl de betaling wordt verwerkt...",
-        "paymentError": "Onverwachte fout bij betaling",
-        "successPayment": "Betaling succesvol voltooid!"
+        "wait": "Even geduld terwijl de betaling wordt verwerkt...",
+        "paymentError": "Onverwachte fout tijdens betaling",
+        "successPayment": "Betaling geslaagd!",
+        "findBooking": "Boeking zoeken",
+        "yourBookingCode": "Uw boekingscode",
+        "find": "Zoeken",
+        "data": "Boekingsgegevens",
+        "personal": "Persoonlijke informatie",
+        "totalPrice": "Totale prijs"
+    },
+    "property": {
+        "size": "Afmetingen",
+        "terrace": "Terras",
+        "wifi": "WI-FI",
+        "parking": "Parkeergelegenheid",
+        "swimmingPool": "Zwembad",
+        "beds": "Bedden",
+        "rooms": "Kamers",
+        "bathrooms": "Badkamers",
+        "capacity": "Capaciteit",
+        "apartmentList": "Appartementenlijst",
+        "price_night": "Prijs filteren per nacht"
     },
     "login": {
-        "loginText": "Toegang tot uw account",
+        "loginText": "Inloggen op uw account",
         "forgotPassword": "Wachtwoord vergeten?",
         "login": "Inloggen",
         "oauth": "Inloggen met Google",
         "noAccount": "Heeft u nog geen account?",
-        "error": "Fout bij inloggen"
+        "error": "Fout bij het inloggen"
     },
     "signup": {
         "create": "Account aanmaken",
-        "repeat": "Herhaal Wachtwoord",
-        "equal": "De wachtwoorden komen niet overeen",
+        "repeat": "Wachtwoord herhalen",
+        "equal": "Wachtwoorden komen niet overeen",
         "noAccount": "Heeft u al een account?"
     },
     "languages": {
@@ -66,11 +85,25 @@
         "french": "Frans"
     },
     "general": {
-        "settings": "instellingen",
-        "ourProperties" : "Onze eigenschappen",
-        "search": "zoeken"
+        "settings": "Instellingen",
+        "ourProperties" : "Onze eigendommen",
+        "search": "Zoeken"
     },
     "index": {
-        "yourUltimateRetreatOnTheCostaBrava": "Uw ultieme toevluchtsoord aan de Costa Brava."
-    }
+        "h2": "Uw ultieme uitje aan de Costa Brava.",
+        "tranquillity" : "Waar rust de horizon ontmoet aan de Costa Brava.",
+        "def": "Ontdek de magie van de Costa Brava! \nDompel jezelf onder in een wereld van rust waar de horizon samenkomt met de zee. Van gouden stranden tot verborgen baaien, de Costa Brava wacht op u met zijn adembenemende landschappen en unieke charme. Verken pittoreske dorpjes, geniet van heerlijke mediterrane gerechten en laat u betoveren door de natuurlijke schoonheid die elk hoekje omringt. \n \nKom en ontdek waarom de Costa Brava een droombestemming is om te ontspannen, te genieten en te dromen!",
+        "relax": "ONTSPANNEN, GENIETEN, DROMEN EN BEZOEKEN",
+        "golf": "Ontspan met een potje golf",
+        "islands": "Droom van de Medes-eilanden",
+        "enjoy": "Geniet van de Costa Brava",
+        "pals": "Bezoek de magie van het dorp Pals",
+        "featured": "Aanbevolen appartementen"
+    },
+    "searchBar": {
+        "bookingDate": "Datum van boeking",
+        "adults": "Volwassenen",
+        "children": "Kinderen",
+        "search": "Zoeken"
+      }
 }

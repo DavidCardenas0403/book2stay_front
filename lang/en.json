@@ -2,26 +2,28 @@
     "variables": {
         "properties": "Properties",
         "property": "Property",
-        "reviews": "reviews",
-        "review": "review",
-        "bookings": "bookings",
-        "booking": "booking",
-        "ratings": "ratings",
-        "rating": "rating",
-        "prices": "prices",
-        "price": "price",
-        "forSale": "for sale",
-        "forRent": "for rent",
+        "reviews": "Reviews",
+        "review": "Review",
+        "bookings": "Bookings",
+        "booking": "Booking",
+        "ratings": "Ratings",
+        "rating": "Rating",
+        "prices": "Prices",
+        "price": "Price",
+        "forSale": "For Sale",
+        "forRent": "For Rent",
         "email": "Email",
         "password": "Password",
         "signUp": "Sign Up",
         "name": "Name",
         "night": "Night",
         "adults": "Adults",
-        "children": "Children"
+        "children": "Children",
+        "beds": "Beds",
+        "terrace": "Terrace"
     },
     "booking": {
-        "yourBook": "Your booking",
+        "yourBook": "Your Booking",
         "name": "Name",
         "phone": "Phone",
         "email": "Email",
@@ -38,17 +40,18 @@
         "confirm": "Confirm",
         "total": "Total",
         "apply": "Apply",
-        "wait": "Please wait for payment...",
+        "wait": "Please wait while payment is being processed...",
         "paymentError": "Unexpected error during payment",
-        "successPayment": "Payment successful!",
+        "successPayment": "Payment Successful!",
         "findBooking": "Find Booking",
-        "yourBookingCode": "Your booking code",
+        "yourBookingCode": "Your Booking Code",
         "find": "Find",
         "data": "Booking Data",
-        "personal": "Personal Data",
+        "personal": "Personal Information",
         "totalPrice": "Total Price"
     },
     "property": {
+        "size": "Size",
         "terrace": "Terrace",
         "wifi": "WI-FI",
         "parking": "Parking",
@@ -57,14 +60,15 @@
         "rooms": "Rooms",
         "bathrooms": "Bathrooms",
         "capacity": "Capacity",
-        "apartmentList": "Apartment List"
+        "apartmentList": "Apartment List",
+        "price_night": "Filter price per night"
     },
     "login": {
-        "loginText": "Log in to your account",
+        "loginText": "Log into your account",
         "forgotPassword": "Forgot your password?",
-        "login": "Log In",
+        "login": "Login",
         "oauth": "Sign in with Google",
-        "noAccount": "Don't have an account?",
+        "noAccount": "Don't have an account yet?",
         "error": "Error logging in"
     },
     "signup": {
@@ -82,9 +86,24 @@
     },
     "general": {
         "settings": "Settings",
-        "ourProperties": "Our Properties"
+        "ourProperties" : "Our Properties",
+        "search": "Search"
     },
     "index": {
-        "yourUltimateRetreatOnTheCostaBrava": "Your Ultimate Retreat on the Costa Brava."
-    }
+        "h2": "Your Ultimate Getaway on the Costa Brava.",
+        "tranquillity" : "Where tranquility meets the horizon on the Costa Brava.",
+        "def": "Discover the magic of the Costa Brava! \nImmerse yourself in a world of tranquility where the horizon merges with the sea. From golden beaches to hidden coves, the Costa Brava awaits you with its stunning landscapes and unique charm. Explore picturesque villages, indulge in delicious Mediterranean cuisine, and be captivated by the natural beauty that surrounds every corner. \n \nCome and discover why the Costa Brava is a dream destination to relax, enjoy, and dream!",
+        "relax": "RELAX, ENJOY, DREAM, AND VISIT",
+        "golf": "Relax by playing golf",
+        "islands": "Dream of the Medes Islands",
+        "enjoy": "Enjoy the Costa Brava",
+        "pals": "Visit the magic of the town of Pals",
+        "featured": "Featured Apartments"
+    },
+    "searchBar": {
+        "bookingDate": "Booking Date",
+        "adults": "Adults",
+        "children": "Children",
+        "search": "Search"
+      }
 }

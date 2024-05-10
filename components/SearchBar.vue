@@ -15,7 +15,7 @@
               dateFormat="dd/mm/yy"
               class="custom-calendar"
             />
-            <label class="text-neutral-400" for="checkout">Booking Date</label>
+            <label class="text-neutral-400" for="checkout">{{ $t('searchBar.bookingDate') }}</label>
           </FloatLabel>
         </InputGroup>
       </div>
@@ -33,7 +33,7 @@
               showButtons
               :min="0"
             />
-            <label class="text-neutral-400" for="adults">Adults</label>
+            <label class="text-neutral-400" for="adults">{{ $t('searchBar.adults') }}</label>
           </FloatLabel>
         </InputGroup>
       </div>
@@ -51,7 +51,7 @@
               showButtons
               :min="0"
             />
-            <label class="text-neutral-400" for="children">Children</label>
+            <label class="text-neutral-400" for="children">{{ $t('searchBar.children') }}</label>
           </FloatLabel>
         </InputGroup>
       </div>
@@ -59,7 +59,7 @@
       <div>
         <Button
           type="button"
-          label="Search"
+          :label="$t('searchBar.search')"
           icon="pi pi-search"
           class="bg-primary-normal"
           :loading="loading"
