@@ -12,22 +12,28 @@
       ref="dt"
       stripedRows
       :value="properties"
+      v-model:filter="filters"
       class="rounded-md overflow-hidden mt-6"
       paginator
       :rows="10"
       :rowsPerPageOptions="[5, 10, 20, 50]"
     >
       <template #header>
-        <div style="text-align: left">
+        <div class="flex justify-between" style="text-align: left">
           <Button
             icon="pi pi-external-link"
             label="Export"
             @click="exportCSV($event)"
           />
+          <InputText v-model="filters['global'].value" placeholder="Search" />
         </div>
       </template>
-      <Column :field="(p) => p.PropertyTexts[0].name" header="Name"></Column>
-      <Column header="Image">
+      <Column
+        sortable
+        :field="(p) => p.PropertyTexts[0].name"
+        header="Name"
+      ></Column>
+      <Column field="id" header="Image">
         <template #body="slotProps">
           <img
             :src="BACKEND_URL + slotProps.data?.Images[0].url"
@@ -75,7 +81,7 @@ import DataTable from 'primevue/datatable'
 import Column from 'primevue/column' // optional
 import { fetchProperties } from '~/api/fetchProperties'
 import { BACKEND_URL } from '~/CONSTS'
-
+import { FilterMatchMode } from 'primevue/api'
 import { deleteProperty } from '~/api/properties/deleteProperty'
 
 definePageMeta({
@@ -86,6 +92,8 @@ const dt = ref()
 
 const properties = ref()
 
+const filters = ref()
+
 function handleDelete(id) {
   deleteProperty(id)
   properties.value = properties.value.filter((p) => p.id != id)
@@ -94,6 +102,14 @@ function handleDelete(id) {
 const exportCSV = () => {
   dt.value.exportCSV()
 }
+
+const initFilters = () => {
+  filters.value = {
+    global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+  }
+}
+
+initFilters()
 
 onMounted(async () => {
   properties.value = await fetchProperties()
