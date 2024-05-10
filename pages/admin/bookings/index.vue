@@ -6,6 +6,7 @@
       <section class="w-full">
         <DataTable
           :value="bookings"
+          v-model:filters="filters"
           class="rounded-md overflow-hidden mt-6 w-full"
           ref="dt"
           stripedRows
@@ -16,18 +17,27 @@
           selectionMode="single"
         >
           <template #header>
-            <div style="text-align: left">
+            <div class="flex justify-between" style="text-align: left">
               <Button
                 icon="pi pi-external-link"
                 label="Export"
                 @click="exportCSV($event)"
               />
+              <InputText
+                v-model="filters['global'].value"
+                placeholder="Search"
+              />
             </div>
           </template>
-          <Column header="Booking Code" sortField="id" sortable>
+          <Column field="id" header="Booking Code" sortField="id" sortable>
             <template #body="slotProps"> #{{ slotProps.data.id }} </template>
           </Column>
-          <Column header="Dates" sortable sortField="start_date">
+          <Column
+            field="start_date"
+            header="Dates"
+            sortable
+            sortField="start_date"
+          >
             <template #body="slotProps">
               {{
                 formatSimpleDate(slotProps.data.start_date, 'D MMMM') +
@@ -39,7 +49,7 @@
           <Column field="name" header="Name" />
           <Column field="email" header="Email" />
           <Column field="phone" header="Phone" />
-          <Column header="State" sortable sortField="canceled">
+          <Column field="canceled" header="State" sortable sortField="canceled">
             <template #body="slotProps">
               <div
                 v-if="slotProps.data.canceled"
@@ -129,6 +139,7 @@ import { onMounted } from 'vue'
 import axios from '../../../api/axios'
 import { formatSimpleDate } from '../../../helpers/dates'
 import { useConfirm } from 'primevue/useconfirm'
+import { FilterMatchMode } from 'primevue/api'
 
 definePageMeta({
   layout: 'admin',
@@ -137,6 +148,8 @@ definePageMeta({
 const dt = ref()
 const bookings = ref()
 const selectedBooking = ref(null)
+
+const filters = ref()
 
 const confirm = useConfirm()
 
@@ -175,6 +188,14 @@ async function restoreBooking(id) {
 
   bookings.value[index].canceled = false
 }
+
+const initFilters = () => {
+  filters.value = {
+    global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+  }
+}
+
+initFilters()
 
 onMounted(async () => {
   const response = await axios.get('/bookings')
