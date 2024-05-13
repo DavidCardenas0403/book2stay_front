@@ -104,6 +104,8 @@
         "bookingDate": "Booking Date",
         "adults": "Adults",
         "children": "Children",
-        "search": "Search"
+        "search": "Search",
+        "book": "Book"
+
       }
 }

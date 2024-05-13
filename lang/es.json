@@ -106,6 +106,7 @@
         "bookingDate": "Fecha de reserva",
         "adults": "Adultos",
         "children": "Niños",
-        "search": "Buscar"
+        "search": "Buscar",
+        "book": "Reservar"
       }
 }

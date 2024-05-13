@@ -164,7 +164,7 @@
                 </template>
               </Calendar>
               <label class="text-neutral-400" for="booking_dates"
-                >Booking dates</label
+                >{{ $t('searchBar.bookingDates') }}</label
               >
             </FloatLabel>
           </InputGroup>
@@ -181,7 +181,7 @@
                   showButtons
                   :min="0"
                 />
-                <label class="text-neutral-400" for="adults">Adults</label>
+                <label class="text-neutral-400" for="adults">{{ $t('searchBar.adults') }}</label>
               </FloatLabel>
             </InputGroup>
 
@@ -197,14 +197,14 @@
                   showButtons
                   :min="0"
                 />
-                <label class="text-neutral-400" for="children">Children</label>
+                <label class="text-neutral-400" for="children">{{ $t('searchBar.children') }}</label>
               </FloatLabel>
             </InputGroup>
           </div>
 
           <Button
             type="button"
-            label="Book"
+            :label=" $t('searchBar.book')"
             class="bg-primary-normal col-span-2"
             :loading="loading"
             @click="modalData.visible = true"
