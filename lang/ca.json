@@ -104,6 +104,7 @@
         "bookingDate": "Data de reserva",
         "adults": "Adults",
         "children": "Nens",
-        "search": "Cerca"
+        "search": "Cerca",
+        "book": "Reservar"
       }
 }
