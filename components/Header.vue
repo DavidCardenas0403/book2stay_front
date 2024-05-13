@@ -79,31 +79,45 @@
         }"
         class="bg-transparent border border-solid hover:bg-white hover:text-black transition-colors duration-300 ease-in-out flex items-center px-3 py-2"
       />
-      <!-- LOGINNNNN
-      <button
-        @click="openLoginModal"
-        :class="{
-          'text-black': isScrolled || isFixed,
-          'text-white': !isScrolled && isFixed,
-          'border-black': isScrolled || !isFixed,
-        }"
-        class="bg-transparent border border-solid hover:bg-white hover:text-black transition-colors duration-300 ease-in-out flex items-center px-3 py-2"
-      >
-        <span class="pi pi-user pr-1"></span>
-        Login
-      </button>
-      <Login :modelValue="showLogin" @update:modelValue="showLogin = $event" /> -->
     </div>
 
     <!-- Menú desplegable para dispositivos móviles -->
     <div
       v-if="mobileMenuOpen"
-      class="md:hidden absolute top-0 right-0 bg-white w-full p-4"
+      class="md:hidden absolute top-0 right-0 bg-white w-full p-4 z-50"
     >
-      <!-- Aquí puedes agregar tus elementos de menú para dispositivos móviles -->
-      <!-- Por ejemplo: -->
-      <a href="/apartments" class="block py-2">Apartment list</a>
+      <a href="/properties" class="block py-2">{{$t("property.apartmentList")}}</a>
+      <a href="/booking" class="block py-2">{{$t("booking.findBooking")}}</a>
+      <LangSwitcher
+        
+        class="bg-transparent border border-solid w-52 hover:bg-white hover:text-black transition-colors duration-300 ease-in-out flex items-center px-3 py-2"
+      />
+      
+      <!-- Icono de cruz para cerrar el menú móvil -->
+      <button @click="toggleMenu" class="absolute  top-4 right-5 p-2">
+        <svg
+          class="h-6 w-6 text-gray-700"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          ></path>
+        </svg>
+      </button>
     </div>
+
+    <!-- Capa transparente para cerrar el menú móvil al hacer clic fuera de él -->
+    <div
+      v-if="mobileMenuOpen"
+      @click="toggleMenu"
+      class="md:hidden fixed inset-0 bg-black opacity-25 z-40"
+    ></div>
   </header>
 </template>
 

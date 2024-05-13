@@ -164,7 +164,7 @@
                 </template>
               </Calendar>
               <label class="text-neutral-400" for="booking_dates"
-                >{{ $t('searchBar.bookingDates') }}</label
+                >{{ $t('searchBar.bookingDate') }}</label
               >
             </FloatLabel>
           </InputGroup>
