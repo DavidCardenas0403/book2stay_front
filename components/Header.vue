@@ -11,7 +11,7 @@
     <div>
       <a href="/">
         <div class="flex items-center">
-          <img :src="logo" alt="Logo de la empresa" class="w-20" />
+          <img :src="logo" alt="Logo de la empresa" class="w-14" />
           <h1
             :class="{
               'text-black': isScrolled || isFixed,
@@ -19,7 +19,7 @@
             }"
             class="text-lg font-semibold pl-5 transition-colors duration-300 ease-in-out"
           >
-            Country Club Pals
+            Book2Stay
           </h1>
         </div>
       </a>
@@ -126,7 +126,7 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import logo from '../assets/images/country-club.svg'
+import logo from '../assets/images/book2stay.png'
 import Login from './Login.vue'
 
 let showLogin = ref(false)

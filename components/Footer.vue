@@ -5,13 +5,13 @@
     >
       <div>
         <div>
-          <img src="../assets/images/country-club.svg" class="w-20" />
+          <img src="../assets/images/book2stay.png" class="w-20" />
         </div>
 
-        <p class="mt-4 max-w-xs text-gray-500">Country Club Pals</p>
+        <p class="mt-4 max-w-xs text-gray-500">Book2Stay</p>
 
         <p class="text-xs text-gray-500">
-          &copy; 2024. Country Club Pals. All rights reserved.
+          &copy; 2024. Book2Stay. All rights reserved.
         </p>
       </div>
 
@@ -84,5 +84,5 @@
 </template>
 
 <script setup>
-const showLogin = ref(false);
+const showLogin = ref(false)
 </script>

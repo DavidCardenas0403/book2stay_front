@@ -35,7 +35,7 @@
               </svg>
             </button>
 
-            <img src="~/assets/images/country-club.svg" class="w-auto"/>
+            <img src="~/assets/images/book2stay.png" class="w-auto" />
             <div class="mt-2">
               <FloatLabel class="mt-2">
                 <InputText
@@ -53,13 +53,14 @@
                   v-model="password"
                   class="placeholder-gray-400 bg-white border border-gray-200 rounded-none dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                   /> -->
-                <Password v-model="password" :feedback="false" toggleMask 
-                input-class="text-gray-700 w-60 placeholder-gray-400 bg-white border border-gray-200 rounded-none dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
-
+                <Password
+                  v-model="password"
+                  :feedback="false"
+                  toggleMask
+                  input-class="text-gray-700 w-60 placeholder-gray-400 bg-white border border-gray-200 rounded-none dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
                 <label for="email">{{ $t('variables.password') }}</label>
               </FloatLabel>
-
             </div>
 
             <div class="mt-2">
@@ -74,7 +75,6 @@
             <p v-if="showError" class="mt-4 text-red-500">
               {{ $t('login.error') }}
             </p>
-
           </div>
         </form>
         <!-- <p class="mb-6 text-sm text-center text-gray-400">

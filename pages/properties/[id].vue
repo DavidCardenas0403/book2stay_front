@@ -242,7 +242,7 @@ import { getPropertyText } from '../../helpers/lang'
 import ImagesGallery from '~/components/properties/ImagesGallery.vue'
 import BookDialog from '~/components/bookings/BookDialog.vue'
 
-import logo from '../assets/images/country-club.svg'
+import logo from '../assets/images/book2stay.png'
 import LangSwitcher from '~/components/LangSwitcher.vue'
 import { BACKEND_URL } from '~/CONSTS'
 
