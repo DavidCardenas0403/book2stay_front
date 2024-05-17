@@ -148,7 +148,7 @@ const mobileMenuOpen = ref(false)
 
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 0
-  if (useRoute().fullPath != '/') {
+  if (useRoute().fullPath !== '/') {
     isScrolled.value = true
   }
 }
@@ -161,7 +161,7 @@ console.log(useRoute().fullPath)
 
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
-  if (!useRoute().fullPath != '/') {
+  if (useRoute().fullPath !== '/') {
     isScrolled.value = true
   }
 })
