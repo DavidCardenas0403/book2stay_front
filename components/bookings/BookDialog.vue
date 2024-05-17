@@ -7,9 +7,7 @@
     position="center"
     class="md:w-2/3 md:h-5/6 w-full h-full"
   >
-    <div
-      class="flex flex-col-reverse md:grid lg:grid-cols-2 gap-x-10 h-full sm:p-5"
-    >
+    <div class="flex flex-col md:grid lg:grid-cols-2 gap-x-10 h-full sm:p-5">
       <Stepper linear>
         <StepperPanel header="Contact">
           <template #content="{ nextCallback }">

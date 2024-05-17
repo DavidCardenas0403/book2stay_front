@@ -56,7 +56,7 @@
         }"
         class="font-semibold transition-colors duration-300 ease-in-out hover:text-primary-hover"
       >
-        {{$t("property.apartmentList")}}
+        {{ $t('property.apartmentList') }}
       </a>
 
       <a
@@ -67,7 +67,7 @@
         }"
         class="font-semibold transition-colors duration-300 ease-in-out hover:text-primary-hover"
       >
-        {{$t("booking.findBooking")}}
+        {{ $t('booking.findBooking') }}
       </a>
 
       <LangSwitcher
@@ -86,15 +86,18 @@
       v-if="mobileMenuOpen"
       class="md:hidden absolute top-0 right-0 bg-white w-full p-4 z-50"
     >
-      <a href="/properties" class="block py-2">{{$t("property.apartmentList")}}</a>
-      <a href="/booking" class="block py-2">{{$t("booking.findBooking")}}</a>
+      <a href="/properties" class="block py-2">{{
+        $t('property.apartmentList')
+      }}</a>
+      <a href="/find-booking" class="block py-2">{{
+        $t('booking.findBooking')
+      }}</a>
       <LangSwitcher
-        
         class="bg-transparent border border-solid w-52 hover:bg-white hover:text-black transition-colors duration-300 ease-in-out flex items-center px-3 py-2"
       />
-      
+
       <!-- Icono de cruz para cerrar el menú móvil -->
-      <button @click="toggleMenu" class="absolute  top-4 right-5 p-2">
+      <button @click="toggleMenu" class="absolute top-4 right-5 p-2">
         <svg
           class="h-6 w-6 text-gray-700"
           fill="none"
@@ -122,40 +125,48 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
-import logo from "../assets/images/country-club.svg";
-import Login from "./Login.vue";
+import { ref, onMounted, onUnmounted } from 'vue'
+import logo from '../assets/images/country-club.svg'
+import Login from './Login.vue'
 
-let showLogin = ref(false);
+let showLogin = ref(false)
 
 const props = defineProps({
   isFixed: {
     type: Boolean,
     default: true,
   },
-});
+})
 
 const openLoginModal = () => {
-  showLogin.value = true;
-  console.log(showLogin.value);
-};
+  showLogin.value = true
+  console.log(showLogin.value)
+}
 
-const isScrolled = ref(false);
-const mobileMenuOpen = ref(false);
+const isScrolled = ref(false)
+const mobileMenuOpen = ref(false)
 
 const handleScroll = () => {
-  isScrolled.value = window.scrollY > 0;
-};
+  isScrolled.value = window.scrollY > 0
+  if (useRoute().fullPath != '/') {
+    isScrolled.value = true
+  }
+}
 
 const toggleMenu = () => {
-  mobileMenuOpen.value = !mobileMenuOpen.value;
-};
+  mobileMenuOpen.value = !mobileMenuOpen.value
+}
+
+console.log(useRoute().fullPath)
 
 onMounted(() => {
-  window.addEventListener("scroll", handleScroll);
-});
+  window.addEventListener('scroll', handleScroll)
+  if (!useRoute().fullPath != '/') {
+    isScrolled.value = true
+  }
+})
 
 onUnmounted(() => {
-  window.removeEventListener("scroll", handleScroll);
-});
+  window.removeEventListener('scroll', handleScroll)
+})
 </script>

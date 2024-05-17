@@ -31,7 +31,7 @@
         </div>
       </section>
       <section class="grid grid-cols-5 gap-12 mt-8">
-        <section class="flex flex-col gap-8 col-span-3">
+        <section class="flex flex-col gap-8 col-span-5 md:col-span-3">
           <h3>{{ getPropertyText(property)?.name }}</h3>
           <p class="text-primary text-4xl">
             {{ property.price }}€
@@ -42,7 +42,7 @@
 
           <div v-html="getPropertyText(property)?.description"></div>
 
-          <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <section class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
             <div
               v-if="property.beds"
               v-tooltip.bottom="$t('property.size')"
@@ -131,9 +131,9 @@
         </section>
 
         <div
-          class="bg-gray-200 py-8 px-6 gap-2 grid grid-cols-2 col-span-2 self-start"
+          class="bg-gray-200 py-8 px-6 xl:gap-2 gap-10 grid grid-cols-2 col-span-5 md:col-span-2 self-start"
         >
-          <InputGroup>
+          <InputGroup class="col-span-2 xl:col-span-1">
             <InputGroupAddon>
               <i class="pi pi-calendar"></i>
             </InputGroupAddon>
@@ -163,12 +163,12 @@
                   <template v-else>{{ `${slotProps.date.day}` }}</template>
                 </template>
               </Calendar>
-              <label class="text-neutral-400" for="booking_dates"
-                >{{ $t('searchBar.bookingDate') }}</label
-              >
+              <label class="text-neutral-400" for="booking_dates">{{
+                $t('searchBar.bookingDate')
+              }}</label>
             </FloatLabel>
           </InputGroup>
-          <div class="grid grid-cols-2 gap-2">
+          <div class="grid grid-cols-2 gap-2 col-span-2 xl:col-span-1">
             <InputGroup class="flex-1">
               <InputGroupAddon>
                 <i class="pi pi-user"></i>
@@ -181,7 +181,9 @@
                   showButtons
                   :min="0"
                 />
-                <label class="text-neutral-400" for="adults">{{ $t('searchBar.adults') }}</label>
+                <label class="text-neutral-400" for="adults">{{
+                  $t('searchBar.adults')
+                }}</label>
               </FloatLabel>
             </InputGroup>
 
@@ -197,14 +199,16 @@
                   showButtons
                   :min="0"
                 />
-                <label class="text-neutral-400" for="children">{{ $t('searchBar.children') }}</label>
+                <label class="text-neutral-400" for="children">{{
+                  $t('searchBar.children')
+                }}</label>
               </FloatLabel>
             </InputGroup>
           </div>
 
           <Button
             type="button"
-            :label=" $t('searchBar.book')"
+            :label="$t('searchBar.book')"
             class="bg-primary-normal col-span-2"
             :loading="loading"
             @click="modalData.visible = true"

@@ -1,8 +1,10 @@
 <template>
   <div>
     <h1 class="text-center">{{ $t('booking.findBooking') }}</h1>
-    <form class="flex flex-col items-center mt-6 gap-3 w-1/4 mx-auto">
-      <Label class="block">{{ $t('booking.yourBookingCode') }}</Label>
+    <form class="flex flex-col items-center mt-6 gap-3 w-1/2 md:w-1/4 mx-auto">
+      <Label class="block text-center">{{
+        $t('booking.yourBookingCode')
+      }}</Label>
       <InputMask v-model="bookingId" class="w-full" mask="999999" />
       <Button class="btn bg-primary" @click.prevent="findBookingById">{{
         $t('booking.find')
