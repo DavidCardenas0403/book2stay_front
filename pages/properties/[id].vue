@@ -10,12 +10,12 @@
           <img
             v-for="image in property?.Images.slice(1, 4)"
             :src="BACKEND_URL + image?.url"
-            class="h-full w-full h-250px"
+            class="w-1/4 h-250px md:w-full md:h-full"
             :key="image?.url"
           />
 
           <div
-            class="h-full w-full cursor-pointer"
+            class="w-1/4 cursor-pointer md:w-full md:h-full"
             :style="{
               backgroundImage: `url(${BACKEND_URL + property?.Images[0]?.url})`,
             }"
