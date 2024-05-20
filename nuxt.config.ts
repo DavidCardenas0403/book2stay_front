@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   css: [
     '~/assets/css/main.css',
     'primevue/resources/themes/lara-light-blue/theme.css',
@@ -9,8 +9,7 @@ export default defineNuxtConfig({
   ],
   modules: ['nuxt-primevue', '@nuxtjs/i18n', 'nuxt-vue3-google-signin'],
   googleSignIn: {
-    clientId:
-      '986843791144-8ep38s50blm3n4tmguk5aahi5touom0o.apps.googleusercontent.com',
+    clientId: '986843791144-8ep38s50blm3n4tmguk5aahi5touom0o.apps.googleusercontent.com',
   },
   i18n: {
     strategy: 'no_prefix',
@@ -58,23 +57,29 @@ export default defineNuxtConfig({
   },
   devServer: {
     port: 8000,
-    host: '0',
   },
 
   app: {
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
-      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
-      title: 'Book2Stay',
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        { rel: 'manifest', href: 'https://progressier.app/RsVZB92t2cjmZsE3EcMV/progressier.json' } // Añadido aquí
+      ],
+      title: "Book2Stay",
       script: [
         {
           src: 'https://www.paypal.com/sdk/js?client-id=BAAvM3hP8mb481aadBMRwILVlKb_DgNIpsDCbXwELna7Nu6tbpjvm89TkMS3KldzyrRUE3AkT9QV70OUo8&components=hosted-buttons&disable-funding=venmo&currency=EUR',
           crossorigin: 'anonymous',
-          async: true,
+          async: true
         },
-      ],
-    },
+        {
+          src: 'https://progressier.app/RsVZB92t2cjmZsE3EcMV/script.js', // Añadido aquí
+          defer: true
+        }
+      ]
+    }
   },
   ssr: false,
 })
