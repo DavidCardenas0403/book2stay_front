@@ -75,7 +75,7 @@
           'text-black': isScrolled || isFixed,
           'text-white': !isScrolled && isFixed,
           'hover:bg-black': isScrolled || isFixed,
-          'hover:text-white': isScrolled,
+          'hover:bg-white': isScrolled,
         }"
         class="bg-transparent border border-solid hover:bg-white hover:text-black transition-colors duration-300 ease-in-out flex items-center px-3 py-2"
       />
