@@ -35,7 +35,7 @@
               </svg>
             </button>
 
-            <img src="~/assets/images/book2stay.png" class="w-auto" />
+            <img src="~/assets/images/book2stay.png" class="w-1/2" />
             <div class="mt-2">
               <FloatLabel class="mt-2">
                 <InputText
@@ -155,19 +155,20 @@ const handleLogin = async () => {
         const checkLogin = await getUser(
           localStorage.getItem('userInfo')?.accessToken
         )
-        if (checkLogin) {
+        if (checkLogin?.id) {
           console.log('checked')
           return navigateTo('/admin')
         }
       }
     }
     const loggedIn = await login(email.value, password.value)
-    if (loggedIn) {
-      if (process.client)
+    if (loggedIn?.id) {
+      if (process.client) {
         localStorage.setItem('userInfo', JSON.stringify(loggedIn))
-      console.log('SI')
-      console.log(loggedIn)
-      return navigateTo('/admin')
+        console.log('SI')
+        console.log(loggedIn)
+        return navigateTo('/admin')
+      }
       // Aquí puedes redirigir al usuario a la página de inicio de sesión exitosa
     } else {
       loading.value = false
