@@ -105,6 +105,7 @@
         "adults": "Adults",
         "children": "Nens",
         "search": "Cerca",
-        "book": "Reservar"
+        "book": "Reservar",
+        "error": "Omple tots els camps"
       }
 }

@@ -105,7 +105,8 @@
         "adults": "Adults",
         "children": "Children",
         "search": "Search",
-        "book": "Book"
+        "book": "Book",
+        "error": "Fill all the fields"
 
       }
 }

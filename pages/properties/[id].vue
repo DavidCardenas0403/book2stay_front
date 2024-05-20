@@ -141,6 +141,7 @@
               <Calendar
                 inputId="booking_dates"
                 v-model="data.dates"
+                :minDate="new Date()"
                 selectionMode="range"
                 dateFormat="dd/mm/yy"
                 class="custom-calendar"
@@ -211,6 +212,7 @@
             :label="$t('searchBar.book')"
             class="bg-primary-normal col-span-2"
             :loading="loading"
+            :disabled="checkValidity()"
             @click="modalData.visible = true"
           />
         </div>
@@ -252,6 +254,18 @@ import { formatSimpleDate } from '~/helpers/dates'
 const { locale } = useI18n()
 
 const loading = ref(true)
+
+const disableBooking = ref(true)
+
+const checkValidity = () => {
+  if (data.dates.length == 0) return true
+  if (data?.dates[0] == null) return true
+  if (data?.dates[1] == null) return true
+  if (data?.adults == 0) return true
+  if (data?.adults == null) return true
+
+  return false
+}
 
 const data = reactive({
   dates: [],

@@ -107,6 +107,7 @@
         "adults": "Adultos",
         "children": "Niños",
         "search": "Buscar",
-        "book": "Reservar"
+        "book": "Reservar",
+        "error": "Rellena todos los campos"
       }
 }
