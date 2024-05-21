@@ -54,7 +54,7 @@
 
         <StepperPanel header="Payment">
           <template #content="{ prevCallback, nextCallback }">
-            <form class="col-span-1" @submit.prevent="submitBooking">
+            <form class="col-span-1" @submit.prevent="() => submitBooking()">
               <div class="p-fluid flex flex-col gap-4">
                 <div>
                   <div class="grid grid-cols-4 gap-2 items-end">
@@ -65,6 +65,19 @@
                       <InputText
                         v-model="formData.discount_code"
                         id="discount_code"
+                        @keydown="
+                          (e) => {
+                            if (e.key == 'Enter') {
+                              e.preventDefault()
+                              if (formData.discount_code) {
+                                return validateDiscountCode(
+                                  formData.discount_code
+                                )
+                              }
+                              return false
+                            }
+                          }
+                        "
                       ></InputText>
                     </div>
 
@@ -72,6 +85,7 @@
                       class="bg-primary-normal col-span-4 2xl:col-span-1"
                       :disabled="formData.discount_code === '' ? true : false"
                       :label="$t('booking.apply')"
+                      type="button"
                       @click="validateDiscountCode(formData.discount_code)"
                     />
                   </div>
