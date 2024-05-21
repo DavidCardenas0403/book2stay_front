@@ -122,7 +122,7 @@ const search = async () => {
         start_date: in_out.value[0],
         end_date: in_out.value[1],
         adults: adults.value,
-        children: children.value,
+        children: children.value || 0,
       },
     })
   } else {
