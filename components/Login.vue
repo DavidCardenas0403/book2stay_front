@@ -153,11 +153,11 @@ const handleLogin = async () => {
     if (process.client) {
       if (localStorage.getItem('userInfo')) {
         const checkLogin = await getUser(
-          localStorage.getItem('userInfo')?.accessToken
+          JSON.parse(localStorage.getItem('userInfo'))?.accessToken
         )
         if (checkLogin?.id) {
           console.log('checked')
-          return navigateTo('/admin')
+          return navigateTo('/admin/properties')
         }
       }
     }
@@ -167,7 +167,7 @@ const handleLogin = async () => {
         localStorage.setItem('userInfo', JSON.stringify(loggedIn))
         console.log('SI')
         console.log(loggedIn)
-        return navigateTo('/admin')
+        return navigateTo('/admin/properties')
       }
       // Aquí puedes redirigir al usuario a la página de inicio de sesión exitosa
     } else {
