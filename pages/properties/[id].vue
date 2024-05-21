@@ -258,11 +258,18 @@ const loading = ref(true)
 const disableBooking = ref(true)
 
 const checkValidity = () => {
+  console.log(parseInt(data?.adults) + parseInt(data?.children))
+  console.log(property)
   if (data.dates.length == 0) return true
   if (data?.dates[0] == null) return true
   if (data?.dates[1] == null) return true
   if (data?.adults == 0) return true
   if (data?.adults == null) return true
+  if (
+    parseInt(data?.adults) + parseInt(data?.children) >
+    property.value.capacity
+  )
+    return true
 
   return false
 }
